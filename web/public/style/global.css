@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&family=Spectral:wght@200;300;400;500;600;700;800&display=swap');
+
+html, body {
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #FFFDF5;
+
+  scroll-behavior: smooth !important;
+}
+
+footer {
+  margin-top: auto;
+}
+
+.rainbow {
+  background: linear-gradient(270deg, #CDC6FF 0%, #FFD5E4 32.81%, #FFFB9D 69.79%, #D7FCD3 100%);
+}
