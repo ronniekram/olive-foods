@@ -10,8 +10,7 @@
   },
   "babelMacros": {
     "twin": {
-      "preset": "emotion",
-      "path": "./tailwind.config.js"
+      "preset": "emotion"
     }
   },
   "dependencies": {

@@ -59,8 +59,8 @@ module.exports = {
         black: 900,
       },
       fontFamily: {
-        sans: [`var(--sans)`, ...fontFamily.sans],
-        display: [`var(--display)`, ...fontFamily.display],
+        sans: [`var(--sans)`, fontFamily.sans],
+        display: [`var(--display)`, fontFamily.display],
       },
     },
   },
