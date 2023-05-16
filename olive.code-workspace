@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "path": "studio"
+    },
+    {
+      "path": "web"
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+     "eslint.workingDirectories": [
+      "./web",
+      "./studio"
+    ]
+  }
+}
