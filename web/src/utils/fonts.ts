@@ -7,6 +7,6 @@ export const micro = localFont({
 });
 
 export const gentle = localFont({
-  src: "../assets/fonts/made-gentle.otf",
-  variable: "--display",
+  src: "../assets/fonts/made-gentle.ttf",
+  variable: "--serif",
 });
