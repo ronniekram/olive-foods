@@ -7,7 +7,7 @@ import useMeasure from "react-use-measure";
 import { items, NavItem } from "./nav";
 
 //! ----------> STYLES <----------
-const Wrapper = styled.nav`
+const Wrapper = styled.div`
   ${tw`w-full h-screen bg-green-100`};
   ${tw`flex flex-col justify-between`};
   ${tw`px-5 pt-16 pb-24`};

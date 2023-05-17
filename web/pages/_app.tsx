@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <GlobalStyles />
       <div className={`${gentle.variable} ${micro.variable}`} tw="antialiased flex flex-col min-h-screen bg-green-100">
         <NavBar />
-        <main tw="mt-16 md:(mt-24) xl:(mt-[149px])">
+        <main tw="mt-5 md:(mt-24) xl:(mt-[149px])">
           <Component {...pageProps} />
         </main>
         <Footer />

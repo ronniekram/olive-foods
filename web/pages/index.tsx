@@ -1,15 +1,27 @@
 import Image from "next/image";
-import "twin.macro";
+import tw, { styled } from "twin.macro";
+
+import { Wrapper } from "@/style/base";
+import Hero from "@/components/home/hero";
+import Mission from "@/components/home/mission";
+import Meet from "@/components/home/meet";
 
 const HomePage = () => {
   return (
-    <div tw="w-screen min-h-screen flex flex-col space-y-7 items-center justify-center bg-green-100" id="outer">
-      <h1 tw="font-display! text-5xl text-orange-200 text-center" id="headline">Olive Foods Catering Co.</h1>
-      <h2 tw="font-sans text-blue-200 text-2xl text-center" id="sub-headline">Minneapolis, MN</h2>
-      <div tw="w-1/4 mx-auto" id="fruit-basket">
-        <Image src="/images/story/AVOCADO.png" width={1002} height={837} alt="Simple line drawing of an avocado on a circular blue background." id="avocado" />
+    <>
+      <Hero />
+      <div tw="w-full bg-green-100">
+        <Wrapper>
+          <h1 tw="text-orange-200 text-5xl font-display tracking-[1px] pb-10 md:(text-[56px] pb-12) lg:(text-6xl) xl:(text-8xl pb-20)">Olive Foods Catering Co.</h1>
+        </Wrapper>
       </div>
-    </div>
+      <section tw="w-full h-44 flex md:(h-[18.15625rem]) xl:(h-[36.3125rem])">
+        <Image src="/images/home/HOME-001.png" width={2048} height={1366} style={{ objectFit: `cover`, objectPosition: `bottom` }} alt="A woman in an orange apron preparing a charcuterie board" />
+      </section>
+
+      <Mission />
+      <Meet />
+    </>
   );
 };
 

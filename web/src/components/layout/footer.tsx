@@ -68,7 +68,7 @@ const Footer = () => {
           <div tw="flex flex-col space-y-5 w-full md:(w-[50.75%] space-y-4) xl:(w-[41%] space-y-6) 2xl:(w-[33.6%])">
             <h2 tw="text-orange-200 font-display text-xl md:(text-2xl) xl:(text-3xl)">Hungry for more? Join our list</h2>
             <SignUp />
-            <ul tw="flex items-center space-x-3 md:(space-x-4) xl:(space-x-5) text-orange-200">
+            <ul tw="flex items-center space-x-3 md:(space-x-4) xl:(space-x-8) text-orange-200">
               <li>
                 <Social href="https://tiktok.com/@olivefoodsco" target="_blank" rel="noreferrer" aria-label="TikTok">
                   <BsTiktok />
@@ -90,7 +90,7 @@ const Footer = () => {
             <Image src="/logo-foot.png" width={321} height={247} alt="Olive Foods logo" />
           </Link>
         </div>
-        <p tw="text-orange-200 text-xs font-sans mt-2 xl:(text-base mt-5)">All rights reserved, Olive Foods Company, LLC {new Date().getFullYear()}</p>
+        <p tw="text-orange-200 text-xs font-sans mt-2 xl:(text-base mt-8)">All rights reserved, Olive Foods Company, LLC {new Date().getFullYear()}</p>
       </Wrapper>
     </footer>
   );

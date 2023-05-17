@@ -92,7 +92,7 @@ const NavBar = () => {
             <h1 tw="text-2xl text-orange-200 font-display tracking-[1px] md:(hidden)">Olive Foods Co.</h1>
 
             {width < 768 ? (
-              <Burger toggled={open} toggle={setOpen} size={32} rounded label={open ? `Close menu` : `Open menu`} color="#E95C32" />
+              <Burger toggled={open} toggle={setOpen} size={28} rounded label={open ? `Close menu` : `Open menu`} color="#E95C32" />
             ) : (
               <ul tw="flex flex-col space-y-11 md:(flex-row items-center space-x-6 space-y-0) xl:(space-x-16)">
                 {items.map((item) => (
