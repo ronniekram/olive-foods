@@ -83,9 +83,9 @@ const NavBar = () => {
   return (
     <ScrollLocky enabled={open}>
       <>
-        <a.header tw="w-full bg-green-100 h-16 py-3 md:(h-24 py-4) xl:(h-36 py-5) fixed top-0" style={spring} id="nav">
+        <a.header tw="w-full bg-green-100 py-3 md:(py-4) xl:(py-5) fixed top-0" style={spring} id="nav">
           <Wrapper>
-            <Link href="/" prefetch={false} tw="w-14 h-auto md:(w-16) xl:(w-20)">
+            <Link href="/" prefetch={false} tw="w-14 h-auto md:(w-16) xl:(w-20)" aria-label="Home">
               <Image src="/logo.png" width={304} height={307} alt="Olive Foods Catering Co. logo, orange background with thick blue outline and white text" priority quality={100} />
             </Link>
 
