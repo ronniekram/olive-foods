@@ -20,31 +20,24 @@ const Wrapper = styled.div`
 const Container = styled.ul`
   ${tw`flex flex-col space-y-9`};
 `;
-//! ----------> COMPONENTS <----------
-const Mobile = ({ open }: { open: boolean }) => {
-  const [ref, bounds] = useMeasure();
 
-  const spring = useSpring({
-    height: open ? bounds.height : 0,
-    zIndex: open ? 10 : -1,
-  });
+//! ----------> COMPONENTS <----------
+const Mobile = () => {
 
   return (
-    <a.div style={spring} tw="overflow-hidden mt-16 md:(hidden)">
-      <Wrapper ref={ref}>
-        <Container>
-          {items.map((item) => (
-            <li key={item.href}>
-              <NavItem href={item.href} prefetch={false}>
-                {item.label}
-              </NavItem>
-            </li>
-          ))}
-        </Container>
+    <Wrapper>
+      <Container>
+        {items.map((item) => (
+          <li key={item.href}>
+            <NavItem href={item.href} prefetch={false}>
+              {item.label}
+            </NavItem>
+          </li>
+        ))}
+      </Container>
 
-        <h2>Olive Foods Catering Co.</h2>
-      </Wrapper>
-    </a.div>
+      <h2>Olive Foods Catering Co.</h2>
+    </Wrapper>
   );
 };
 

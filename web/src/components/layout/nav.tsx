@@ -7,7 +7,8 @@ import tw, { styled } from "twin.macro";
 import { useSpring, config, animated as a } from "react-spring";
 import { useWindowSize } from "react-use";
 import { Fade as Burger } from "hamburger-react";
-import { ScrollLocky } from "react-scroll-locky";
+import { RemoveScroll } from "react-remove-scroll";
+import useMeasure from "react-use-measure";
 
 import { useScrollListener } from "@/utils/use-scroll-lock";
 import Mobile from "./mobile";
@@ -48,9 +49,16 @@ const Wrapper = styled.nav`
   ${tw`antialiased`};
 `;
 
+const MobileContainer = styled(a.nav)`
+  ${tw`w-screen flex`};
+  ${tw`fixed lg:(hidden)`};
+  ${tw`top-20`};
+`;
+
 //! ----------> COMPONENTS <----------
 const NavBar = () => {
   const router = useRouter();
+  const [ref, bounds] = useMeasure();
 
   const [open, setOpen] = useState<boolean>(false);
   const [show, setShow] = useState<boolean>(false);
@@ -65,6 +73,11 @@ const NavBar = () => {
     config: { ...config.slow, clamp: true },
   });
 
+  const mobileSpring = useSpring({
+    height: open ? bounds.height : 0,
+    zIndex: open ? 10 : -1,
+  });
+
   useEffect(() => {
     if (scroll.y > 100 && scroll.y - scroll.lastY > 0) {
       setShow(false);
@@ -73,15 +86,15 @@ const NavBar = () => {
     }
   }, [scroll.y, scroll.lastY]);
 
-    useEffect(() => {
-      router.events.on(`routeChangeStart`, () => setOpen(false));
+  useEffect(() => {
+    router.events.on(`routeChangeStart`, () => setOpen(false));
 
-      return () => router.events.off(`routeChangeStart`, () => setOpen(false));
+    return () => router.events.off(`routeChangeStart`, () => setOpen(false));
   }, []);
 
 
   return (
-    <ScrollLocky enabled={open}>
+    <RemoveScroll enabled={open}>
       <>
         <a.header tw="w-full bg-green-100 py-3 md:(py-4) xl:(py-5) fixed top-0" style={spring} id="nav">
           <Wrapper>
@@ -106,9 +119,11 @@ const NavBar = () => {
             )}
           </Wrapper>
         </a.header>
-        <Mobile open={open} />
+        <MobileContainer ref={ref} style={mobileSpring} tw="overflow-hidden">
+          <Mobile />
+        </MobileContainer>
       </>
-    </ScrollLocky>
+    </RemoveScroll>
   );
 };
 
