@@ -28,6 +28,9 @@ dependencies:
   '@types/react-dom':
     specifier: 18.2.1
     version: 18.2.1
+  '@visx/text':
+    specifier: ^3.0.0
+    version: 3.0.0(react@18.2.0)
   eslint:
     specifier: 8.39.0
     version: 8.39.0
@@ -76,6 +79,9 @@ dependencies:
   react-spring:
     specifier: ^9.7.1
     version: 9.7.1(@react-three/fiber@8.13.0)(konva@9.0.2)(react-dom@18.2.0)(react-konva@18.2.8)(react-native@0.71.8)(react-zdog@1.0.11)(react@18.2.0)(three@0.152.2)(zdog@1.1.3)
+  react-spring-carousel:
+    specifier: ^2.0.19
+    version: 2.0.19(react-dom@18.2.0)(react-spring@9.7.1)(react@18.2.0)
   react-use:
     specifier: ^17.4.0
     version: 17.4.0(react-dom@18.2.0)(react@18.2.0)
@@ -3742,6 +3748,19 @@ packages:
       '@typescript-eslint/types': 5.59.6
       eslint-visitor-keys: 3.4.1
 
+  /@use-gesture/core@10.2.26:
+    resolution: {integrity: sha512-NyFpQ3iID9iFBROXyyvU1D0NK+t+dP+WAVByhCvqHUenpxLD2NlRLVRpoK3XGGwksr6mU3PvZ2Nm4q0q+gLJPA==}
+    dev: false
+
+  /@use-gesture/react@10.2.26(react@18.2.0):
+    resolution: {integrity: sha512-0QhaE5mhaQbFlip4MX7n1nwCX8gax6Da1LsP2fZ/BU6xW9zyEmV6NX7DPelDxq1rr2NiBJh30vx9RIp80YeA/A==}
+    peerDependencies:
+      react: '>= 16.8.0'
+    dependencies:
+      '@use-gesture/core': 10.2.26
+      react: 18.2.0
+    dev: false
+
   /@vercel/error-utils@1.0.9:
     resolution: {integrity: sha512-EqnCFBOUtUCXhVOTwE7QJOI63l6uvFNUy51vAHil0jgfP+GTdVtJdNK1UG7inXPOsLxRs+Wi/PyNuwBW9j63Lw==}
 
@@ -3769,6 +3788,20 @@ packages:
       path-to-regexp: 6.1.0
     optionalDependencies:
       ajv: 6.12.6
+
+  /@visx/text@3.0.0(react@18.2.0):
+    resolution: {integrity: sha512-LW6v5T/gpd9RGw83/ScXncYc6IlcfzXTpaN8WbbxLRI65gdvSqrykwAMR0cbpQmzoVFuZXljqOf0QslHGnBg1w==}
+    peerDependencies:
+      react: ^16.3.0-0 || ^17.0.0-0 || ^18.0.0-0
+    dependencies:
+      '@types/lodash': 4.14.194
+      '@types/react': 18.2.0
+      classnames: 2.3.2
+      lodash: 4.17.21
+      prop-types: 15.8.1
+      react: 18.2.0
+      reduce-css-calc: 1.3.0
+    dev: false
 
   /@vitejs/plugin-react@3.1.0(vite@4.3.7):
     resolution: {integrity: sha512-AfgcRL8ZBhAlc3BFdigClmTUMISmmzHn7sB2h9U1odvc5U/MjWXsAaz18b/WoppUTDBzxOJwo2VdClfUcItu9g==}
@@ -4431,6 +4464,10 @@ packages:
       babel-plugin-jest-hoist: 29.5.0
       babel-preset-current-node-syntax: 1.0.1(@babel/core@7.21.5)
     dev: true
+
+  /balanced-match@0.4.2:
+    resolution: {integrity: sha512-STw03mQKnGUYtoNjmowo4F2cRmIIxYEGiMsjjwla/u5P1lxadj/05WkNaFjNiKTgJkj8KiXbgAiRTmcQRwQNtg==}
+    dev: false
 
   /balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -8240,6 +8277,10 @@ packages:
       object-visit: 1.0.1
     dev: false
 
+  /math-expression-evaluator@1.4.0:
+    resolution: {integrity: sha512-4vRUvPyxdO8cWULGTh9dZWL2tZK6LDBvj+OGHBER7poH9Qdt7kXEoj20wiz4lQUbUXQZFjPbe5mVDo9nutizCw==}
+    dev: false
+
   /md5-o-matic@0.1.1:
     resolution: {integrity: sha512-QBJSFpsedXUl/Lgs4ySdB2XCzUEcJ3ujpbagdZCkRaYIaC0kFnID8jhc84KEiVv6dNFtIrmW7bqow0lDxgJi6A==}
 
@@ -9935,6 +9976,21 @@ packages:
       react-is: 18.2.0
     dev: false
 
+  /react-spring-carousel@2.0.19(react-dom@18.2.0)(react-spring@9.7.1)(react@18.2.0):
+    resolution: {integrity: sha512-OiSTuxjLv0whsjLWnZFkhCZXfaNFgBOZHr8EmggZqVZ5z+78zB87C0gTwyBA86Vo/Uljlvez6ELwLszj8fDa9A==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+      react-spring: '^9.4.5-beta.0 '
+    dependencies:
+      '@use-gesture/react': 10.2.26(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-spring: 9.7.1(@react-three/fiber@8.13.0)(konva@9.0.2)(react-dom@18.2.0)(react-konva@18.2.8)(react-native@0.71.8)(react-zdog@1.0.11)(react@18.2.0)(three@0.152.2)(zdog@1.1.3)
+      rxjs: 7.8.1
+      screenfull: 5.2.0
+    dev: false
+
   /react-spring@9.7.1(@react-three/fiber@8.13.0)(konva@9.0.2)(react-dom@18.2.0)(react-konva@18.2.8)(react-native@0.71.8)(react-zdog@1.0.11)(react@18.2.0)(three@0.152.2)(zdog@1.1.3):
     resolution: {integrity: sha512-o2+r2DNQDVEuefiz33ZF76DPd/gLq3kbdObJmllGF2IUfv2W6x+ZP0gR97QYCSR4QLbmOl1mPKUBbI+FJdys2Q==}
     peerDependencies:
@@ -10135,6 +10191,20 @@ packages:
       indent-string: 4.0.0
       strip-indent: 3.0.0
     dev: true
+
+  /reduce-css-calc@1.3.0:
+    resolution: {integrity: sha512-0dVfwYVOlf/LBA2ec4OwQ6p3X9mYxn/wOl2xTcLwjnPYrkgEfPx3VI4eGCH3rQLlPISG5v9I9bkZosKsNRTRKA==}
+    dependencies:
+      balanced-match: 0.4.2
+      math-expression-evaluator: 1.4.0
+      reduce-function-call: 1.0.3
+    dev: false
+
+  /reduce-function-call@1.0.3:
+    resolution: {integrity: sha512-Hl/tuV2VDgWgCSEeWMLwxLZqX7OK59eU1guxXsRKTAyeYimivsKdtcV4fu3r710tpG5GmDKDhQ0HSZLExnNmyQ==}
+    dependencies:
+      balanced-match: 1.0.2
+    dev: false
 
   /refractor@3.6.0:
     resolution: {integrity: sha512-MY9W41IOWxxk31o+YvFCNyNzdkc9M20NoZK5vq6jkv4I/uh2zkWcfudj0Q1fovjUQJrNewS9NMzeTtqPf+n5EA==}

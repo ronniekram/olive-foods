@@ -1,5 +1,5 @@
 import Image from "next/image";
-import tw, { styled } from "twin.macro";
+import "twin.macro";
 
 import { Wrapper } from "@/style/base";
 import Hero from "@/components/home/hero";

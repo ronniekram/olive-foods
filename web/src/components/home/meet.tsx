@@ -1,11 +1,9 @@
 import Image from "next/image";
-import tw, { styled } from "twin.macro";
+import "twin.macro";
 
 import { Wrapper } from "@/style/base";
 import { LinkButton } from "../general/button";
 
-
-//! ----------> STYLES <----------
 //! ----------> COMPONENTS <----------
 const Meet = () => (
   <div tw="w-full bg-green-100 py-14">
