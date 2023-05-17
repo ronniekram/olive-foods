@@ -34,7 +34,7 @@ const Input = ({ label, register, error, ...rest }: Props) => {
   <label tw="w-full">
     <p tw="text-grey text-xs font-medium pl-2.5 md:(text-sm pl-3) xl:(text-base pl-4)">{label}</p>
     <Field
-      {...register}
+      // {...register}
       {...rest}
       css={[error && tw`border-0 outline-orange-300`]}
     />
