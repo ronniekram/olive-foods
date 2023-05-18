@@ -15,6 +15,8 @@ const Meet = () => (
           height={2049}
           alt="A person in an orange apron pulling apart slow cooked chicken with two forks in a metal bowl"
           style={{ objectFit: `cover`, objectPosition: `bottom` }}
+          quality={100}
+          loading="lazy"
         />
       </div>
 

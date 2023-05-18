@@ -43,7 +43,8 @@
     "react-spring-carousel": "^2.0.19",
     "react-use": "^17.4.0",
     "react-use-measure": "^2.1.1",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "use-next-blurhash": "^1.0.5"
   },
   "devDependencies": {
     "@actualsize/eslint-config": "^1.0.1",

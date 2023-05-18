@@ -91,6 +91,9 @@ dependencies:
   typescript:
     specifier: 5.0.4
     version: 5.0.4
+  use-next-blurhash:
+    specifier: ^1.0.5
+    version: 1.0.5(react@18.2.0)
 
 devDependencies:
   '@actualsize/eslint-config':
@@ -4507,6 +4510,10 @@ packages:
       buffer: 5.7.1
       inherits: 2.0.4
       readable-stream: 3.6.2
+
+  /blurhash@1.1.5:
+    resolution: {integrity: sha512-a+LO3A2DfxTaTztsmkbLYmUzUeApi0LZuKalwbNmqAHR6HhJGMt1qSV/R3wc+w4DL28holjqO3Bg74aUGavGjg==}
+    dev: false
 
   /bplist-parser@0.2.0:
     resolution: {integrity: sha512-z0M+byMThzQmD9NILRniCUXYsYpjwnlO8N5uCFaCqIOpqRsJCrQL9NK3JsD67CN5a08nF5oIL2bD6loTdHOuKw==}
@@ -11806,6 +11813,16 @@ packages:
         optional: true
     dependencies:
       '@types/react': 18.2.0
+      react: 18.2.0
+    dev: false
+
+  /use-next-blurhash@1.0.5(react@18.2.0):
+    resolution: {integrity: sha512-PMu7054Ic6zDKjjKT2PCsfJrMYmdcrfj6miUZzkfes+fxQ9YlwM44qmtbedQpRAncuzQJEW3fVK9jeNqUFgzvg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      blurhash: 1.1.5
       react: 18.2.0
     dev: false
 

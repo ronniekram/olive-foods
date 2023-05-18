@@ -1,12 +1,16 @@
+/* eslint-disable no-secrets/no-secrets */
 import Image from "next/image";
+import useNextBlurhash from "use-next-blurhash";
 import "twin.macro";
 
 import { Wrapper } from "@/style/base";
 import Hero from "@/components/home/hero";
 import Mission from "@/components/home/mission";
 import Meet from "@/components/home/meet";
+import Slides from "@/components/home/slide";
 
 const HomePage = () => {
+  const [blurURL] = useNextBlurhash(`LTOW7}Io.TZgyYnkr?XmMcM_WUxu`);
   return (
     <>
       <Hero />
@@ -16,11 +20,21 @@ const HomePage = () => {
         </Wrapper>
       </div>
       <section tw="w-full h-44 flex md:(h-[18.15625rem]) xl:(h-[36.3125rem])">
-        <Image src="/images/home/HOME-001.png" width={2048} height={1366} style={{ objectFit: `cover`, objectPosition: `bottom` }} alt="A woman in an orange apron preparing a charcuterie board" />
+        <Image
+          src="/images/home/HOME-001.png"
+          width={2048}
+          height={1366}
+          style={{ objectFit: `cover`, objectPosition: `bottom` }}
+          alt="A woman in an orange apron preparing a charcuterie board"
+          quality={100}
+          placeholder="blur"
+          blurDataURL={blurURL}
+        />
       </section>
 
       <Mission />
       <Meet />
+      <Slides />
     </>
   );
 };

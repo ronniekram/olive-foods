@@ -66,7 +66,7 @@ const NavBar = () => {
   const scroll = useScrollListener();
   const { width } = useWindowSize();
 
-  const springHeight = width < 768 ? -56 : width < 1280 ? -96 : -144;
+  const springHeight = width < 768 ? -80 : width < 1280 ? -96 : -144;
 
   const spring = useSpring({
     to: { top: show ? 0 : springHeight, zIndex: show ? 50 : 20 },
@@ -74,8 +74,8 @@ const NavBar = () => {
   });
 
   const mobileSpring = useSpring({
-    height: open ? bounds.height : 0,
-    zIndex: open ? 10 : -1,
+    height: open ? `100vh` : `0vh`,
+    zIndex: 10,
   });
 
   useEffect(() => {
@@ -105,7 +105,7 @@ const NavBar = () => {
             <h1 tw="text-2xl text-orange-200 font-display tracking-[1px] md:(hidden)">Olive Foods Co.</h1>
 
             {width < 768 ? (
-              <Burger toggled={open} toggle={setOpen} size={28} rounded label={open ? `Close menu` : `Open menu`} color="#E95C32" />
+              <Burger toggled={open} toggle={setOpen} size={24} rounded label={open ? `Close menu` : `Open menu`} color="#E95C32" />
             ) : (
               <ul tw="flex flex-col space-y-11 md:(flex-row items-center space-x-6 space-y-0) xl:(space-x-16)">
                 {items.map((item) => (
