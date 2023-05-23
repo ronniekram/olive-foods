@@ -13,13 +13,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
-    "baseUrl": ".",
-    "paths": {
-      "@studio/*": ["./*"]
-    }
+    "incremental": true
   },
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"],
-  "types": ["@types/node", "modules.d.ts"]
+  "exclude": ["node_modules"]
 }
