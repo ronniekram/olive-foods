@@ -4,6 +4,7 @@ import tw, { styled } from "twin.macro";
 import { Wrapper as W } from "@/style/base";
 import OurStory from "@/components/story/story";
 import TwoCol, { ContactCols} from "@/components/story/two-col";
+import JuliaChild from "@/components/story/julia";
 
 const Wrapper = styled(W)`
   ${tw`flex flex-col space-y-8`};
@@ -59,6 +60,7 @@ const Story = () => {
       img="/images/story/CARROT.png"
       alt="Minimalist flat line drawing of a carrot with an orange circle in the background"
     />
+    <JuliaChild />
     </>
   );
 };
