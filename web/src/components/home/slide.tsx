@@ -25,8 +25,8 @@ const slides: SlideData[] = [
   {
     img: {
       url: `/images/slides/SLIDE-001.png`,
-      width: 2048,
-      height: 1366,
+      width: 1560,
+      height: 1040,
       alt: `Person wearing a blue apron preparing carrots and tomatoes in a bright kitchen`,
     },
     label: `Event Catering`,
@@ -36,8 +36,8 @@ const slides: SlideData[] = [
   {
     img: {
       url: `/images/slides/SLIDE-002.png`,
-      width: 1366,
-      height: 2049,
+      width: 1040,
+      height: 1560,
       alt: `A charcuterie board with meats, cheeses, olives, pickles and bread on a white background`,
     },
     label: `Charcuterie Boards`,
@@ -47,8 +47,8 @@ const slides: SlideData[] = [
   {
     img: {
       url: `/images/slides/SLIDE-003.png`,
-      width: 1366,
-      height: 1913,
+      width: 1040,
+      height: 1456,
       alt: `Chef wearing a blue apron holding a black sheet tray filled with cut tomatoes and a white towel`,
     },
     label: `Chef Experiences`,
@@ -58,8 +58,8 @@ const slides: SlideData[] = [
   {
     img: {
       url: `/images/slides/SLIDE-004.png`,
-      width: 1366,
-      height: 2049,
+      width: 1040,
+      height: 1560,
       alt: `Many kinds of meals pre-prepared in individual servings`,
     },
     label: `Meal Services`,
