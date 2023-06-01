@@ -25,7 +25,7 @@ const text = tw`font-display leading-[1.25rem] tracking-[1px] md:(text-xl leadin
 const style = tw`transition duration-300 ease-in-out flex items-center space-x-1 rounded-[36px] w-[fit-content]`;
 
 const solid = tw`bg-orange-200 text-orange-100 hover:(bg-orange-300)`;
-const outlineStyle = tw`text-green-100 border-green-100 border hover:(outline-1 outline-green-100)`;
+const outlineStyle = tw`text-orange-200 border-orange-200 border hover:(outline-1 outline-orange-200)`;
 
 //! ----------> COMPONENTS <----------
 export const Button = ({ label, type = `button`, outline, icon, onClick }: ButtonProps) => {
