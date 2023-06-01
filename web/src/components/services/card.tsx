@@ -11,9 +11,9 @@ export type ServiceProps = {
 };
 
 const colors = {
-  green: tw`text-green-500 border-green-500 bg-green-100`,
-  blue: tw`text-blue-300 border-blue-300 bg-blue-100`,
-  orange: tw`text-orange-300 border-orange-300 bg-orange-100`,
+  green: tw`text-green-500 border-green-500`,
+  blue: tw`text-blue-300 border-blue-300`,
+  orange: tw`text-orange-300 border-orange-300`,
 };
 
 type Color = keyof typeof colors;
@@ -21,6 +21,7 @@ type Color = keyof typeof colors;
 //! ----------> STYLES <----------
 const Card = styled.div`
   ${tw`w-full min-h-[16.375rem] md:(min-h-[17.0625rem]) 2xl:(min-h-[25rem])`};
+  ${tw`bg-green-100`};
   ${tw`rounded-2xl border text-center`};
   ${tw`flex flex-col items-center`};
   ${tw`px-4 py-16 md:(py-12) lg:(py-16) xl:(px-6 py-20) 2xl:(py-28)`};

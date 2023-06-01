@@ -14,7 +14,7 @@ const backgrounds = {
   orange: tw`bg-orange-200`,
 };
 
-type Background = keyof typeof backgrounds;
+export type Background = keyof typeof backgrounds;
 
 //! ----------> HELPERS <----------
 export const prepCards: ServiceProps[] = [

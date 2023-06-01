@@ -22,10 +22,10 @@ export type LinkProps = Props & {
 const size = tw`px-7 py-1.5 md:(px-8) xl:(px-10 py-2)`;
 const text = tw`font-display leading-[1.25rem] tracking-[1px] md:(text-xl leading-[1.5rem]) xl:(text-2xl)`;
 
-const style = tw`transition duration-300 ease-in-out flex items-center space-x-1 rounded-[36px] w-[fit-content]`;
+const style = tw`transition duration-300 ease-in-out flex items-center rounded-[36px] w-[fit-content]`;
 
 const solid = tw`bg-orange-200 text-orange-100 hover:(bg-orange-300)`;
-const outlineStyle = tw`text-green-100 border-green-100 border hover:(outline-1 outline-green-100)`;
+const outlineStyle = tw`text-orange-200 border-orange-200 border-2 hover:(border-orange-300 text-orange-300)`;
 
 //! ----------> COMPONENTS <----------
 export const Button = ({ label, type = `button`, outline, icon, onClick }: ButtonProps) => {
@@ -34,7 +34,9 @@ export const Button = ({ label, type = `button`, outline, icon, onClick }: Butto
   return (
     <button type={type} css={styles} onClick={onClick}>
       {label}
-      {icon}
+      <span tw="ml-1.5 lg:(ml-2)">
+        {icon}
+      </span>
     </button>
   );
 };
