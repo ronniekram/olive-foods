@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import tw, { styled, TwStyle } from "twin.macro";
@@ -114,6 +114,7 @@ const Label = ({ text, stroke, font }: { text: string; stroke: number; font: num
 };
 
 const Slides = () => {
+  const [isHovered, setIsHovered] = useState<boolean>(false);
   const { width } = useWindowSize();
   const font = width < 376 ? 44 : width < 769 ? 70 : width < 1279 ? 96 : 128;
   const stroke = width < 376 ? 1 : width < 769 ? 1.5 : width < 1279 ? 2 : 2.5;
@@ -128,7 +129,7 @@ const Slides = () => {
     items: slides.map((slide) => ({
       id: slide.label,
       renderItem: (
-        <Container css={[slide.color]}>
+        <Container css={[slide.color]} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
           <Link href={slide.href} css={[tw`stroke-grey`]}>
             <>
               <ImageWrap>
@@ -153,8 +154,12 @@ const Slides = () => {
   useEffect(() => {
     const interval = setInterval(slideToNextItem, 4000);
 
+    if (isHovered) {
+      clearInterval(interval);
+    }
+
     return () => clearInterval(interval);
-  }, [slideToNextItem]);
+  }, [slideToNextItem, isHovered]);
 
   return (
     <section tw="relative w-screen h-[fit-content] overflow-hidden">

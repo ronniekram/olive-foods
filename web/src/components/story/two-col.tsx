@@ -38,6 +38,10 @@ const Content = styled.div`
     ${tw`md:(text-[40px]) xl:(text-7xl)`};
   }
 
+  a {
+    ${tw`transition duration-300 ease-in-out`};
+  }
+
   p {
     ${tw`font-sans text-sm lg:(text-base) xl:(text-xl) 2xl:(text-2xl)`};
   }

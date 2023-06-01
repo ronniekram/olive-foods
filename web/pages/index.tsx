@@ -19,7 +19,7 @@ const HomePage = () => {
           <h1 tw="text-orange-200 text-5xl font-display tracking-[1px] pb-10 md:(text-[56px] pb-12) lg:(text-6xl) xl:(text-8xl pb-20)">Olive Foods Catering Co.</h1>
         </Wrapper>
       </div>
-      <section tw="w-full h-44 flex md:(h-[18.15625rem]) xl:(h-[36.3125rem])">
+      <section tw="w-full h-44 flex bg-orange-200 md:(h-[18.15625rem]) xl:(h-[36.3125rem])">
         <Image
           src="/images/home/HOME-001.png"
           width={2048}
@@ -29,6 +29,7 @@ const HomePage = () => {
           quality={100}
           placeholder="blur"
           blurDataURL={blurURL}
+          tw="mx-auto"
         />
       </section>
 
