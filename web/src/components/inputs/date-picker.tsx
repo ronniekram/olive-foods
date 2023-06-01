@@ -25,8 +25,8 @@ const styles = css`
 
   input {
     ${tw`border border-grey rounded`};
-    ${tw`bg-green-100 font-sans`};
-    ${tw`px-2.5 py-1.5 md:(pl-3 pr-2.5 py-2) xl:(pl-4)`};
+    ${tw`bg-green-100 font-sans xl:(text-lg)`};
+    ${tw`px-2.5 py-1.5 md:(pl-3 pr-2.5 py-2) xl:(pl-4 py-2.5)`};
     ${tw`w-full`};
   }
 

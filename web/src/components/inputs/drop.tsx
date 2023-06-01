@@ -93,7 +93,7 @@ const Wrapper = styled.div`
   .select__control {
     ${tw`text-sm px-2.5 py-0`};
     ${tw`md:(text-base px-3 py-[2.5px])`};
-    ${tw`xl:(text-lg px-4 py-1)`};
+    ${tw`xl:(text-lg px-4 py-1.5)`};
   }
 `;
 
