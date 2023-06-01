@@ -25,7 +25,7 @@ export type SectionProps = {
 //! ----------> STYLES <----------
 const Title = styled(Wrapper)(({ open }: { open: boolean }) => [
   open ? tw`bg-orange-200 text-orange-100 md:(bg-green-100 text-orange-200)` : tw`bg-green-100 text-orange-200`,
-  tw`py-8 md:(pt-12 pb-0) lg:(pt-16)`,
+  tw`py-8 md:(pt-14 pb-0) lg:(pt-20)`,
   tw`flex items-center justify-between`,
   tw`transition duration-700 ease-in-out`,
   !open && tw`border-b border-orange-200`
@@ -162,8 +162,8 @@ export const gift: SectionProps = {
     </ImageWrap>
   ),
   col2: (
-    <div tw="flex flex-col space-y-6 lg:(pr-12 w-[58%])">
-      <Detail>
+    <div tw="flex flex-col space-y-6 lg:(pr-12 w-[58%]) xl:(pr-20)">
+      <Detail tw="lg:(text-xl) xl:(text-2xl)">
         Want to gift a meal to someone with a lot on their plate? Choose one of our feasts, a meal kit or inquire about a custom meal!
       </Detail>
       <LinkButton label="Contact Us" href="mailto:olivefoodsco@gmail.com" outline />

@@ -1,5 +1,6 @@
 import tw, { styled } from "twin.macro";
 
+import ServiceHero from "@/components/services/hero";
 import ServiceSection, { prepared, feasts, enhance, gift } from "@/components/services/service-section";
 
 //! ----------> TYPES/DATA <----------
@@ -9,6 +10,8 @@ import ServiceSection, { prepared, feasts, enhance, gift } from "@/components/se
 const MealServicesPage = () => {
   return (
     <>
+      <ServiceHero />
+
       <ServiceSection
         title={prepared.title}
         col1={prepared.col1}
