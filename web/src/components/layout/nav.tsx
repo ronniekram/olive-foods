@@ -20,7 +20,7 @@ export const items = [
     label: `Catering`,
   },
   {
-    href: `/services`,
+    href: `/meal-services`,
     label: `Meal Services`,
   },
   {

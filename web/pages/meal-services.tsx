@@ -1,7 +1,9 @@
-import tw, { styled } from "twin.macro";
+import { NextSeo } from "next-seo";
+import "twin.macro";
 
 import ServiceHero from "@/components/services/hero";
 import ServiceSection, { prepared, feasts, enhance, gift } from "@/components/services/service-section";
+import config from "../next-seo.config";
 
 //! ----------> TYPES/DATA <----------
 
@@ -10,6 +12,13 @@ import ServiceSection, { prepared, feasts, enhance, gift } from "@/components/se
 const MealServicesPage = () => {
   return (
     <>
+      <NextSeo
+        {...config}
+        title="Meal Services"
+        description="Weekly prepared meals, meal kits, meal enhancements and gifted meals from Olive Foods Catering Company"
+        canonical="https://olivefoodsco.com/meal-services"
+      />
+
       <ServiceHero />
 
       <ServiceSection

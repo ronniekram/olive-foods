@@ -31,12 +31,16 @@ const styles = css`
   }
 
   .react-datepicker__triangle { ${tw`hidden`}; }
-  .react-datepicker__header { ${tw`text-orange-200 text-2xl tracking-[1px] font-display`}; }
+  .react-datepicker__month-container { ${tw`w-[20.9375rem]`}; }
+  .react-datepicker__header { ${tw`bg-orange-100 text-2xl tracking-[2px]! font-display items-center`}; }
+  .react-datepicker__current-month { ${tw`text-orange-200 pt-1`}; }
   .react-datepicker__day { ${tw`transition duration-200 ease-in-out hover:(bg-orange-100 text-orange-300)`}; }
   .react-datepicker__day--selected { ${tw`bg-orange-200 text-orange-100 font-bold`}; }
-  .react-datepicker__day-names { ${tw`font-bold`}; }
+  .react-datepicker__month { ${tw`text-green-500 font-sans text-sm py-2.5`}; }
+  .react-datepicker__day-names { ${tw`w-full font-sans! text-sm font-medium text-green-500! flex! justify-between! px-7 pb-1`}; }
+  .react-datepicker__week { ${tw`w-full font-sans text-xs font-medium text-green-500! flex! justify-between px-7 py-1`}; }
   .react-datepicker__day-name { ${tw`font-bold`}; }
-  .react-datepicker__navigation-icon { ${tw`text-orange-200 text-2xl font-display`}; }
+  .react-datepicker__navigation-icon { ${tw`text-orange-200 text-2xl font-display before:(text-orange-200 text-2xl font-display)`}; }
 `;
 
 //! ----------> COMPONENTS <----------
