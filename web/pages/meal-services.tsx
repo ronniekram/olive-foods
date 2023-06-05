@@ -5,8 +5,6 @@ import ServiceHero from "@/components/services/hero";
 import ServiceSection, { prepared, feasts, enhance, gift } from "@/components/services/service-section";
 import config from "../next-seo.config";
 
-//! ----------> TYPES/DATA <----------
-
 //! ----------> STYLES <----------
 //! ----------> COMPONENTS <----------
 const MealServicesPage = () => {
