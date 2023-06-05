@@ -1,5 +1,6 @@
 /* eslint-disable no-secrets/no-secrets */
 import Image from "next/image";
+import { NextSeo } from "next-seo";
 import useNextBlurhash from "use-next-blurhash";
 import "twin.macro";
 
@@ -8,11 +9,18 @@ import Hero from "@/components/home/hero";
 import Mission from "@/components/home/mission";
 import Meet from "@/components/home/meet";
 import Slides from "@/components/home/slide";
+import config from "../next-seo.config";
 
 const HomePage = () => {
   const [blurURL] = useNextBlurhash(`LTOW7}Io.TZgyYnkr?XmMcM_WUxu`);
   return (
     <>
+    <NextSeo
+        {...config}
+        title="Olive Foods Catering Co."
+        description="Olive Foods Catering Company - Twin Cities, MN"
+        canonical="https://olivefoodsco.com"
+      />
       <Hero />
       <div tw="w-full bg-green-100">
         <Wrapper>
