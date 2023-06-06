@@ -8,21 +8,21 @@ import Breaker from "../general/breaker";
 const ImageWrap = styled.div`
   ${tw`flex rounded-2xl overflow-hidden`};
   ${tw`border border-grey`};
-  ${tw`h-[20.3125rem] xl:(w-[50%] h-[28.25rem])`};
+  ${tw`h-[20.3125rem] xl:(w-[50%] h-[24.25rem] [flex-shrink: 0])`};
 `;
 
 //! ----------> COMPONENTS <----------
 const ServiceHero = () => {
   return (
-    <div tw="w-full bg-green-100 py-12 md:(pt-16 pb-4) lg:(pt-20 pb-6) 2xl:(pt-24 pb-9)">
-      <Wrapper tw="flex flex-col space-y-8 xl:(space-y-10)">
+    <div tw="w-full bg-green-100 py-12 md:(pt-16) lg:(pt-20) 2xl:(pt-24)">
+      <Wrapper tw="flex flex-col space-y-8 md:(space-y-10) xl:(space-y-14)">
         <h1 tw="font-display text-orange-200 text-[56px] leading-[50px] md:(text-7xl) xl:(text-8xl)">Meal Services</h1>
-        <div tw="flex flex-col space-y-8 lg:(flex-row-reverse items-center)">
+        <div tw="flex flex-col space-y-8 lg:(flex-row-reverse space-y-0)">
           <div tw="lg:(pl-8) xl:(w-[50%])">
-            <p tw="text-grey text-base font-sans font-medium mb-2.5 md:(text-xl) lg:(mb-3) xl:(text-2xl) 2xl:(text-3xl font-normal mb-5)">
+            <p tw="text-grey text-base font-sans font-medium mb-2.5 md:(text-xl) lg:(mb-3) xl:(text-2xl) 2xl:(font-normal mb-5)">
               We understand that life can be hectic and meal planning can be overwhelming. We offer a variety of meal services to help you get delicious, high-quality meals on the table with ease.
             </p>
-            <p tw="text-grey text-base font-sans font-medium md:(text-xl) xl:(text-2xl) 2xl:(text-3xl font-normal)">
+            <p tw="text-grey text-base font-sans font-medium md:(text-xl) xl:(text-2xl) 2xl:(font-normal)">
               Let us take the stress out of mealtime.
             </p>
           </div>

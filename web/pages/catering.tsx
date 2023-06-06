@@ -124,6 +124,7 @@ const H2 = styled.h2`
   ${tw`md:(text-6xl) xl:(text-7xl)`};
   ${tw`mb-3 lg:(mb-10) xl:(mb-5)`};
 `;
+
 //! ----------> COMPONENTS <----------
 const CateringPage = () => {
   return (
@@ -136,7 +137,7 @@ const CateringPage = () => {
       />
       <CateringHero />
 
-        <Wrapper tw="md:(py-8) lg:(py-10) xl:(py-12)">
+        <Wrapper tw="md:(py-8) lg:(py-10) xl:(py-12)" id="events">
           <H2>Small Event Catering</H2>
           <CateringSection
             title={events.title}
@@ -147,7 +148,7 @@ const CateringPage = () => {
           />
         </Wrapper>
         <CateringCTA title={cta1.title} body={cta1.body} bg={cta1.bg} />
-        <Wrapper tw="md:(py-8) lg:(py-10) xl:(py-12)">
+        <Wrapper tw="md:(py-8) lg:(py-10) xl:(py-12)" id="chef">
           <H2>Chef Experiences</H2>
           <div tw="lg:(flex flex-col space-y-14)">
             <CateringSection
@@ -166,7 +167,7 @@ const CateringPage = () => {
           </div>
         </Wrapper>
         <CateringCTA title={cta2.title} body={cta2.body} bg={cta2.bg} />
-        <Wrapper tw="md:(py-8) lg:(py-10) xl:(py-12)">
+        <Wrapper tw="md:(py-8) lg:(py-10) xl:(py-12)" id="boards">
           <H2>Custom Charcuterie Boards</H2>
           <CateringSection
             title={boards.title}

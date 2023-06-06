@@ -19,8 +19,8 @@ export type LinkProps = Props & {
 };
 
 //! ----------> STYLES <----------
-const size = tw`px-7 py-1.5 md:(px-8) xl:(px-10 py-2)`;
-const text = tw`font-display leading-[1.25rem] tracking-[1px] md:(text-xl leading-[1.5rem]) xl:(text-2xl)`;
+const size = tw`px-7 py-1.5 md:(px-8) xl:(px-10)`;
+const text = tw`font-display leading-[1.25rem] tracking-[1px] md:(text-lg leading-[1.5rem]) xl:(text-xl)`;
 
 const style = tw`transition duration-300 ease-in-out flex items-center rounded-[36px] w-[fit-content]`;
 

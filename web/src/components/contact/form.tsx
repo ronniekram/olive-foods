@@ -26,7 +26,7 @@ const Wrapper = styled.section`
   ${tw`bg-green-100 border border-orange-300`};
   ${tw`rounded-lg`};
   ${tw`px-5 pt-8 pb-12`};
-  ${tw`md:(px-10 pt-14 pb-20) xl:(pt-14 pb-20)`};
+  ${tw`md:(px-10 pt-14 pb-20) xl:(px-14 pt-14 pb-20)`};
   box-shadow: 0px 4px 8px 0px rgba(31, 67, 40, 0.25);
 `;
 

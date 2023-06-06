@@ -33,17 +33,18 @@ const Title = styled(Wrapper)(({ open }: { open: boolean }) => [
 
 const H2 = tw.h2`text-3xl font-display md:(text-[56px] leading-[50px]) xl:(text-[64px] leading-[60px])`;
 
-const Sub = tw.p`text-2xs text-grey font-sans mb-5 md:(text-base mb-7) lg:(mb-8) xl:(text-lg mb-11)`;
+const Sub = tw.p`text-2xs text-grey font-sans mb-5 md:(text-base mb-7) lg:(mb-8) xl:(mb-11)`;
 
 const Toggle = styled(a.button)`${tw`w-11 h-11 flex items-center justify-center md:(hidden)`}`;
 
-const Detail = tw.p`text-base text-grey font-sans font-medium md:(text-lg) xl:(text-xl)`;
-const List = tw.ul`font-sans font-medium text-base text-grey list-outside list-disc ml-4 md:(text-lg) xl:(text-xl)`;
+const Detail = tw.p`text-base text-grey font-sans md:(text-lg)`;
+
+const List = tw.ul`font-sans font-medium text-base text-grey list-outside list-disc ml-4 md:(text-lg)`;
 
 const ImageWrap = styled.div`
   ${tw`flex rounded-2xl overflow-hidden`};
   ${tw`border border-grey`};
-  ${tw`h-[10.3125rem] md:(h-[20.9375rem]) lg:(w-[41%] h-[25rem]) xl:(h-[31.25rem])`};
+  ${tw`h-[10.3125rem] md:(h-[20.9375rem]) lg:(h-[25rem])`};
 `;
 
 export const prepared: SectionProps = {
@@ -52,7 +53,7 @@ export const prepared: SectionProps = {
   cards: prepCards,
   sub: `We do not use butter, but on occasion, we do use ghee. Additionally, we offer many gluten-free options each week.`,
   col1: (
-    <ImageWrap>
+    <ImageWrap tw="lg:(order-2)">
       <Image
         src="/images/services/SERVICES-002.png"
         alt="Individually packaged and pre-prepared meals"
@@ -65,7 +66,7 @@ export const prepared: SectionProps = {
     </ImageWrap>
   ),
   col2: (
-    <div tw="flex flex-col space-y-6 lg:(pr-12 w-[58%])">
+    <div tw="flex flex-col space-y-6 lg:(order-1)">
       <Detail>
         We are passionate about crafting nourishing and inventive comfort foods that prioritize your well-being. At our core, we emphasize the use of seasonal, locally sourced and whole ingredients that serve as fuel for both body and mind.
       </Detail>
@@ -102,7 +103,7 @@ export const feasts: SectionProps = {
     </ImageWrap>
   ),
   col2: (
-    <div tw="flex flex-col space-y-6 lg:(w-[58%])">
+    <div tw="flex flex-col space-y-6">
       <Detail>
         Life moves fast. We know that the idea of cooking can be daunting as your day comes to a close. Let us do the work so you can slow down and enjoy a meal with your loved ones. Pick up a prepared and ready-to eat meal for up to 6 people on your way home.
       </Detail>
@@ -124,14 +125,14 @@ export const enhance: SectionProps = {
   color: `green`,
   cards: mealCards,
   col1: (
-    <div tw="lg:(w-1/2)">
+    <div>
       <Detail>
         Liquorice wafer lollipop danish biscuit. Bear claw topping jelly donut sesame snaps tiramisu powder cake. Brownie gummi bears cotton candy tootsie roll jelly. Pastry chocolate gummies macaroon toffee caramels chocolate cake caramels tiramisu.
       </Detail>
     </div>
   ),
   col2: (
-    <div tw="lg:(w-1/2)">
+    <div>
       <Detail tw="font-bold">Options include:</Detail>
       <List>
         <li>Lasagna, Caesar Salad, Garlic Bread</li>
@@ -149,7 +150,7 @@ export const gift: SectionProps = {
   cards: giftCards,
   sub: `We do not use butter, but on occasion, we do use ghee. Additionally, we offer many gluten-free options each week.`,
   col1: (
-    <ImageWrap>
+    <ImageWrap tw="lg:(order-2)">
       <Image
         src="/images/services/SERVICES-004.png"
         alt="Individually packaged and pre-prepared meals"
@@ -162,8 +163,8 @@ export const gift: SectionProps = {
     </ImageWrap>
   ),
   col2: (
-    <div tw="flex flex-col space-y-6 lg:(pr-12 w-[58%]) xl:(pr-20)">
-      <Detail tw="lg:(text-xl) xl:(text-2xl)">
+    <div tw="flex flex-col space-y-6 lg:(order-1)">
+      <Detail tw="lg:(text-xl)">
         Want to gift a meal to someone with a lot on their plate? Choose one of our feasts, a meal kit or inquire about a custom meal!
       </Detail>
       <LinkButton label="Contact Us" href="mailto:olivefoodsco@gmail.com" outline />
@@ -206,7 +207,7 @@ const ServiceSection = ({ title, sub, col1, col2, imgRight, color, cards }: Sect
         <div ref={ref}>
           <Wrapper tw="py-8 md:(pt-4 pb-24)">
             <Sub>{sub}</Sub>
-            <div tw="flex flex-col space-y-5 md:(space-y-7) lg:(space-y-0 items-center)" css={[imgRight ? tw`lg:(flex-row-reverse)`: tw`lg:(flex-row space-x-12)`]}>
+            <div tw="grid grid-cols-1 gap-y-5 md:(gap-y-7) lg:(gap-y-0 gap-x-12)" css={[imgRight ? tw`lg:(grid-cols-[47%, 45%])`: tw`lg:(grid-cols-[45%, 47%])`]}>
               {col1}
               {col2}
             </div>

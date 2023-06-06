@@ -21,7 +21,7 @@ const ContactPage = () => {
           <h1 tw="text-orange-100 text-[28px] font-display pb-8 md:(text-5xl pb-12) xl:(text-7xl pb-20)">Thinking about us for your next event?</h1>
 
           <div tw="flex flex-col space-y-8 xl:(flex-row space-y-0 space-x-[9%])">
-            <div tw="w-full flex rounded-lg overflow-hidden h-[10.9375rem] md:(h-[17.1875rem]) xl:(h-[55.048125rem] w-[45%])">
+            <div tw="w-full flex rounded-lg border border-orange-300 overflow-hidden h-[10.9375rem] md:(h-[17.1875rem]) xl:(h-[55.048125rem] w-[45%])">
               <Image
                 src="/images/contact/CONTACT-001.png"
                 alt="Charcuterie board full of meats, cheeses, crackers and other accoutrment shwon from above on a white background"

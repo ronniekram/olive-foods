@@ -20,7 +20,7 @@ const P = styled.p`
 const CateringHero = () => {
   return (
     <div tw="w-full bg-green-100 py-12 md:(pt-16 pb-4) lg:(pt-20 pb-6) 2xl:(pt-24 pb-9)">
-      <Wrapper tw="flex flex-col space-y-8 md:(space-y-10) xl:(space-y-12)">
+      <Wrapper tw="flex flex-col space-y-8 md:(space-y-10 pb-4) xl:(space-y-14) 2xl:(space-y-16)">
         <h1 tw="font-display text-orange-200 text-[56px] leading-[50px] md:(text-7xl) xl:(text-8xl)">Catering</h1>
         <div tw="flex flex-col space-y-6 lg:(flex-row space-y-0 space-x-8) xl:(space-x-10) 2xl:(space-x-14)">
           <P>
