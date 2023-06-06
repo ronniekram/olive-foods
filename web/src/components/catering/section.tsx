@@ -21,7 +21,7 @@ type Props = {
 //! ----------> STYLES <----------
 const Container = styled.section(({ mediaLeft }: { mediaLeft?: boolean}) => [
   tw`grid grid-cols-1`,
-  mediaLeft ? tw`lg:(grid-cols-[50%, 45.5%])` : tw`lg:(grid-cols-[45.5%, 50%])`,
+  mediaLeft ? tw`lg:(grid-cols-[48%, 45.5%])` : tw`lg:(grid-cols-[45.5%, 48%])`,
   tw`gap-y-8 md:(gap-y-11) lg:(gap-y-0 gap-x-8) xl:(gap-x-12)`,
   tw`pt-5 md:(pt-10) lg:(py-4) xl:(py-10)`,
 ]);
