@@ -2,7 +2,7 @@
 import enhancement from "./helpers/enhancement";
 import option from "./helpers/option";
 import side from "./helpers/side";
-import section from "./helpers/catering-section";
+import section from "./helpers/section";
 import serving from "./helpers/servings";
 // REPEATERS
 import testimonial from "./testimonial";

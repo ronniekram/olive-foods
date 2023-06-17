@@ -74,7 +74,7 @@ export default {
         },
         {
           name: `sauces`,
-          title: `Sauces*`,
+          title: `Accoutrement*`,
           type: `array`,
           of: [{ type: `string` }],
           validation: (Rule: any) => Rule.required(),
