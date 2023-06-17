@@ -2,8 +2,11 @@ import type { DefaultDocumentNodeResolver, StructureBuilder, StructureResolverCo
 import type { SanityDocument } from "@sanity/client";
 import Iframe from "sanity-plugin-iframe-pane";
 
-import { FaRegNewspaper } from "react-icons/fa";
+import { FaRegNewspaper, FaHome } from "react-icons/fa";
 import { BiFoodMenu } from "react-icons/bi";
+import { BsFillCalendar2CheckFill, BsFillPersonLinesFill } from "react-icons/bs";
+import { MdFastfood } from "react-icons/md";
+import { GiAbstract042 } from "react-icons/gi";
 
 /** Actions an editor is able to take on a singleton document */
 export const actions = new Set([`publish`, `discardChanges`, `restore`]);
@@ -51,7 +54,7 @@ const singletonItems = (S: StructureBuilder) => {
     .title(`Pages`)
     .child(
       S.list().id(`main`).items([
-        singletonListItem(S, `home`, false, `Home`),
+        singletonListItem(S, `home`, false, `Home`).icon(FaHome),
         singletonListItem(S, `catering`, true, `Catering`),
         singletonListItem(S, `services`, false, `Meal Services`),
       ]),
@@ -61,10 +64,10 @@ const singletonItems = (S: StructureBuilder) => {
     .title(`Menus`)
     .child(
       S.list().id(`menu`).items([
-        singletonListItem(S, `boards`, true, `Charcuterie Boards`),
-        singletonListItem(S, `lunch`, true, `Lunch`),
-        singletonListItem(S, `family`, true, `Family Style`),
-        singletonListItem(S, `weekly`, true, `Weekly`),
+        singletonListItem(S, `boards`, true, `Charcuterie Boards`).icon(GiAbstract042),
+        singletonListItem(S, `lunch`, true, `Lunch`).icon(MdFastfood),
+        singletonListItem(S, `family`, true, `Family Style`).icon(BsFillPersonLinesFill),
+        singletonListItem(S, `weekly`, true, `Weekly`).icon(BsFillCalendar2CheckFill),
       ]),
     ).icon(BiFoodMenu),
   ];
@@ -85,7 +88,7 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (S: StructureBui
 const deskConfig = (S: StructureBuilder, context: StructureResolverContext) => S.list().title(`Content`).items([
   ...singletonItems(S),
   S.divider(),
-  ...S.documentTypeListItems().filter((listItem) => !singletons.has(listItem?.getId())),
+  ...S.documentTypeListItems().filter((listItem) => listItem.getId() ! === `testimonial`,)
 ]);
 
 export default deskConfig;

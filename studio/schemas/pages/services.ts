@@ -8,6 +8,7 @@ export default {
       title: `Testimonials`,
       type: `array`,
       of: [{ type: `reference`, to: [{ type: `testimonial` }] }],
+      validation: (Rule: any) => Rule.required().max(5),
     },
   ],
 };

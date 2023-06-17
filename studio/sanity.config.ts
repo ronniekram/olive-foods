@@ -19,10 +19,9 @@ export default defineConfig({
     }),
     visionTool(),
   ],
-
   schema: {
     types: schemaTypes,
-    templates: (templates) => templates.filter(({ schemaType }) => !singletons.has(schemaType)),
+    // templates: (templates) => templates.filter(({ schemaType }) => !singletons.has(schemaType)),
   },
   document: {
     /** Defines which actions can be taken on a document */
@@ -30,9 +29,9 @@ export default defineConfig({
     /** Creates a preview URL for specified content */
     productionUrl: async (prev, context) => {
       const { dataset, document } = context;
+      const previewURL = new URL(process.env.SANITY_STUDIO_BASE_URL);
 
       if (previews.has(document._type)) {
-        const previewURL = new URL(process.env.SANITY_STUDIO_BASE_URL);
         previewURL.pathname = `/api/preview`;
         previewURL.searchParams.append(`secret`, process.env.SANITY_STUDIO_API_TOKEN);
         document?.slug && previewURL.searchParams.append(`slug`, document?.slug?.current)

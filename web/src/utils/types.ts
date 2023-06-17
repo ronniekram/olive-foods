@@ -1,8 +1,11 @@
 
+import { Color } from "@/components/general/testimonial";
+
 // REPEATERS
 export type SanityTestimonal = {
   name: string;
   body: string;
+  color?: Color;
 };
 
 // HELPERS

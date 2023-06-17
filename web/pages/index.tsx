@@ -1,18 +1,33 @@
 /* eslint-disable no-secrets/no-secrets */
+import type { NextPage, GetStaticProps } from "next";
 import Image from "next/image";
 import { NextSeo } from "next-seo";
 import useNextBlurhash from "use-next-blurhash";
+import dynamic from "next/dynamic";
 import "twin.macro";
 
 import { Wrapper } from "@/style/base";
 import Hero from "@/components/home/hero";
 import Mission from "@/components/home/mission";
 import Meet from "@/components/home/meet";
-import Slides from "@/components/home/slide";
 import config from "../next-seo.config";
 
-const HomePage = () => {
+import { homeQuery } from "@/utils/queries";
+import { getClient } from "lib/sanity.client";
+import type { SanityTestimonal } from "@/utils/types";
+
+//! ----------> TYPES <----------
+type Props = {
+  testimonials: SanityTestimonal[];
+};
+
+//! ----------> COMPONENTS <----------
+const Testimonials = dynamic(() => import("../src/components/general/testimonial"));
+const Slides = dynamic(() => import("../src/components/home/slide"));
+
+const HomePage: NextPage<Props> = ({ testimonials }) => {
   const [blurURL] = useNextBlurhash(`LTOW7}Io.TZgyYnkr?XmMcM_WUxu`);
+  console.log(testimonials)
   return (
     <>
     <NextSeo
@@ -42,6 +57,7 @@ const HomePage = () => {
       </section>
 
       <Mission />
+      <Testimonials items={testimonials} />
       <Meet />
       <Slides />
     </>
@@ -49,3 +65,15 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+export const getStaticProps: GetStaticProps<Props> = async ({ preview = false }) => {
+  const client = getClient();
+  const page = await client.fetch(homeQuery);
+  console.log(page);
+
+  return {
+    props: {
+      testimonials: page[0].testimonials ?? [],
+    },
+  };
+};
