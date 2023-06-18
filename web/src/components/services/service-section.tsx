@@ -37,9 +37,11 @@ const Sub = tw.p`text-2xs text-grey font-sans mb-5 md:(text-base mb-7) lg:(mb-8)
 
 const Toggle = styled(a.button)`${tw`w-11 h-11 flex items-center justify-center md:(hidden)`}`;
 
-const Detail = tw.p`text-base text-grey font-sans md:(text-lg)`;
+const Detail = tw.p`text-lg text-grey font-sans font-medium md:(text-lg) xl:(text-xl)`;
 
 const List = tw.ul`font-sans font-medium text-base text-grey list-outside list-disc ml-4 md:(text-lg)`;
+
+const Subscribe = tw.a`font-bold text-orange-200 transition duration-300 ease-in-out`;
 
 const ImageWrap = styled.div`
   ${tw`flex rounded-2xl overflow-hidden`};
@@ -51,7 +53,6 @@ export const prepared: SectionProps = {
   title: `Weekly Prepared Meals`,
   color: `green`,
   cards: prepCards,
-  sub: `We do not use butter, but on occasion, we do use ghee. Additionally, we offer many gluten-free options each week.`,
   col1: (
     <ImageWrap tw="lg:(order-2)">
       <Image
@@ -66,27 +67,33 @@ export const prepared: SectionProps = {
     </ImageWrap>
   ),
   col2: (
-    <div tw="flex flex-col space-y-6 lg:(order-1)">
+    <div tw="flex flex-col space-y-6 lg:(order-1 space-y-3 justify-center)">
       <Detail>
-        We are passionate about crafting nourishing and inventive comfort foods that prioritize your well-being. At our core, we emphasize the use of seasonal, locally sourced and whole ingredients that serve as fuel for both body and mind.
+        These meals are individually packed and ready to eat!
       </Detail>
+      <div>
+        <Detail tw="font-bold mb-1">
+          We offer a rotating weekly menu with options like:
+        </Detail>
+        <List>
+          <li>Power bowl (with grains)</li>
+          <li>Power bowl (Paleo)</li>
+          <li>Breakfast</li>
+          <li>Pasta or noodles</li>
+          <li>Seasonal soup</li>
+          <li>Seasonal Entreé</li>
+        </List>
+      </div>
       <Detail>
-        We take pride in our cooking expertise and our ability to infuse creativity into every dish we prepare. Our ultimate goal is to provide your body with the nourishment it needs to thrive, setting us apart from the rest!
+        <Subscribe href="#subscribe">Subscribe</Subscribe> to our emails to get a menu straight to your inbox on Sunday mornings!
       </Detail>
-      <Button
-        label="Sample Menu"
-        icon={<FiDownload />}
-        type="button"
-        outline
-      />
     </div>
   ),
   imgRight: true,
 };
 
 export const feasts: SectionProps = {
-  title: `Family Feasts & Meal Kits`,
-  sub: `We do not use butter, but on occasion, we do use ghee. Additionally, we offer many gluten-free options each week.`,
+  title: `Family Feasts`,
   color: `blue`,
   cards: kitCards,
   col1: (
@@ -107,50 +114,60 @@ export const feasts: SectionProps = {
       <Detail>
         Life moves fast. We know that the idea of cooking can be daunting as your day comes to a close. Let us do the work so you can slow down and enjoy a meal with your loved ones. Pick up a prepared and ready-to eat meal for up to 6 people on your way home.
       </Detail>
+      <Detail>
+        Family feasts include protein, vegetables, starch/grain, sauce and garnishes.
+      </Detail>
       <div>
-        <Detail tw="font-bold">Options include:</Detail>
+        <Detail tw="font-bold mb-1">Pricing:</Detail>
         <List>
-          <li>Lasagna, Caesar Salad, Garlic Bread</li>
-          <li>12” Quiche, side salad</li>
-          <li>Seasonal Soup, Sourdough Loaf, Salad</li>
-          <li>Butternut Squash Curry, Rice</li>
+          <li>Vegetarian, soup or salad: $60+</li>
+          <li>Land proteins: $100+</li>
+          <li>Sea Proteins: $150+</li>
         </List>
       </div>
+      <Detail>
+        <Subscribe href="#subscribe">Subscribe</Subscribe> to our emails to get a menu straight to your inbox on Sunday mornings!
+      </Detail>
     </div>
   ),
 };
 
 export const enhance: SectionProps = {
-  title: `Meal Enhancements`,
+  title: `Provisions`,
   color: `green`,
   cards: mealCards,
   col1: (
-    <div>
-      <Detail>
-        Liquorice wafer lollipop danish biscuit. Bear claw topping jelly donut sesame snaps tiramisu powder cake. Brownie gummi bears cotton candy tootsie roll jelly. Pastry chocolate gummies macaroon toffee caramels chocolate cake caramels tiramisu.
+    <div tw="flex flex-col justify-center space-y-4 xl:(space-y-6)">
+      <Detail tw="md:(text-xl) xl:(text-2xl)">
+        We also offer an a là carte menu of sauces, breads, pickles and other meal enhancers.
+      </Detail>
+      <Detail tw="md:(text-xl) xl:(text-2xl)">
+        <Subscribe href="#subscribe">Subscribe</Subscribe> to our emails to get a menu straight to your inbox on Sunday mornings!
       </Detail>
     </div>
   ),
   col2: (
-    <div>
-      <Detail tw="font-bold">Options include:</Detail>
-      <List>
-        <li>Lasagna, Caesar Salad, Garlic Bread</li>
-        <li>12” Quiche, side salad</li>
-        <li>Seasonal Soup, Sourdough Loaf, Salad</li>
-        <li>Butternut Squash Curry, Rice</li>
-      </List>
-    </div>
+    <ImageWrap>
+      <Image
+        src="/images/services/provisions.png"
+        alt="A woman in a kitchen, leaning on a table to write a list"
+        width={715}
+        height={477}
+        style={{ objectFit: `cover`, objectPosition: `bottom` }}
+        loading="lazy"
+        quality={100}
+      />
+    </ImageWrap>
   ),
+  imgRight: true,
 };
 
 export const gift: SectionProps = {
   title: `Gift a Meal`,
   color: `blue`,
   cards: giftCards,
-  sub: `We do not use butter, but on occasion, we do use ghee. Additionally, we offer many gluten-free options each week.`,
   col1: (
-    <ImageWrap tw="lg:(order-2)">
+    <ImageWrap tw="lg:(order-[-1])">
       <Image
         src="/images/services/SERVICES-004.png"
         alt="Individually packaged and pre-prepared meals"
@@ -163,14 +180,14 @@ export const gift: SectionProps = {
     </ImageWrap>
   ),
   col2: (
-    <div tw="flex flex-col space-y-6 lg:(order-1)">
-      <Detail tw="lg:(text-xl)">
+    <div tw="flex flex-col space-y-6 justify-center lg:(order-1)">
+      <Detail tw="md:(text-xl) lg:(text-2xl) 2xl:(text-[28px] leading-[40px])">
         Want to gift a meal to someone with a lot on their plate? Choose one of our feasts, a meal kit or inquire about a custom meal!
       </Detail>
       <LinkButton label="Contact Us" href="mailto:olivefoodsco@gmail.com" outline />
     </div>
   ),
-  imgRight: true,
+  imgRight: false,
 };
 
 //! ----------> COMPONENTS <----------
@@ -207,7 +224,7 @@ const ServiceSection = ({ title, sub, col1, col2, imgRight, color, cards }: Sect
         <div ref={ref}>
           <Wrapper tw="py-8 md:(pt-4 pb-24)">
             <Sub>{sub}</Sub>
-            <div tw="grid grid-cols-1 gap-y-5 md:(gap-y-7) lg:(gap-y-0 gap-x-12)" css={[imgRight ? tw`lg:(grid-cols-[47%, 45%])`: tw`lg:(grid-cols-[45%, 47%])`]}>
+            <div tw="grid grid-cols-1 gap-y-5 md:(gap-y-7) lg:(gap-y-0 gap-x-12)" css={[imgRight ? tw`lg:(grid-cols-[47%, auto]) xl:(grid-cols-[45%, auto]) 2xl:(grid-cols-[41%, auto] gap-x-24)`: tw`lg:(grid-cols-[45%, auto]) xl:(grid-cols-[47%, auto]) 2xl:(grid-cols-[51%, auto] gap-x-20)`]}>
               {col1}
               {col2}
             </div>

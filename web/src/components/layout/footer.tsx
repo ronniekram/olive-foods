@@ -49,7 +49,7 @@ const SignUp = () => {
   };
 
   return (
-    <Newsletter onSubmit={handleSubmit}>
+    <Newsletter onSubmit={handleSubmit} id="subscribe">
       <label tw="sr-only" htmlFor="email">Email Address</label>
       <Input type="text" name="email" value={email} onChange={(e) => setEmail(e.currentTarget.value)} />
       <Submit type="submit">
