@@ -18,7 +18,14 @@ export const serviceQuery = groq`*[_type == "services"]{
   }
 }`;
 // ----------> CATERING
-export const cateringQuery = groq`*[_type == "catering"]`;
+export const cateringQuery = groq`*[_type == "catering"]{
+  ...,
+  testimonials[]->{
+    name,
+    body,
+    color
+  }
+}`;
 
 // MENU
 // ----------> FAMILY

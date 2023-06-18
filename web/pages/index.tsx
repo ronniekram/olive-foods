@@ -69,7 +69,6 @@ export default HomePage;
 export const getStaticProps: GetStaticProps<Props> = async ({ preview = false }) => {
   const client = getClient();
   const page = await client.fetch(homeQuery);
-  console.log(page);
 
   return {
     props: {

@@ -1,13 +1,25 @@
+import type { NextPage, GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
+import dynamic from "next/dynamic";
 import "twin.macro";
 
 import ServiceHero from "@/components/services/hero";
 import ServiceSection, { prepared, feasts, enhance, gift } from "@/components/services/service-section";
 import config from "../next-seo.config";
 
-//! ----------> STYLES <----------
+import { serviceQuery } from "@/utils/queries";
+import { getClient } from "lib/sanity.client";
+import type { SanityTestimonal } from "@/utils/types";
+
+//! ----------> TYPES <----------
+type Props = {
+  testimonials: SanityTestimonal[];
+};
+
 //! ----------> COMPONENTS <----------
-const MealServicesPage = () => {
+const Testimonials = dynamic(() => import("../src/components/general/testimonial"));
+
+const MealServicesPage: NextPage<Props> = ({ testimonials }) => {
   return (
     <>
       <NextSeo
@@ -58,8 +70,21 @@ const MealServicesPage = () => {
         color={gift.color}
         cards={gift.cards}
       />
+
+      <Testimonials items={testimonials} />
     </>
   );
 };
 
 export default MealServicesPage;
+
+export const getStaticProps: GetStaticProps<Props> = async ({ preview = false }) => {
+  const client = getClient();
+  const page = await client.fetch(serviceQuery);
+
+  return {
+    props: {
+      testimonials: page[0].testimonials ?? [],
+    },
+  };
+};
