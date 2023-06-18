@@ -35,6 +35,7 @@
     "next-sanity-image": "^6.0.0",
     "next-seo": "^6.0.0",
     "react": "18.2.0",
+    "react-anchor-link-smooth-scroll-v2": "^2.0.1",
     "react-date-picker": "^10.0.3",
     "react-datepicker": "^4.12.0",
     "react-dom": "18.2.0",

@@ -64,6 +64,9 @@ dependencies:
   react:
     specifier: 18.2.0
     version: 18.2.0
+  react-anchor-link-smooth-scroll-v2:
+    specifier: ^2.0.1
+    version: 2.0.1
   react-date-picker:
     specifier: ^10.0.3
     version: 10.0.3(react-dom@18.2.0)(react@18.2.0)
@@ -9689,6 +9692,10 @@ packages:
   /range-parser@1.2.1:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
     engines: {node: '>= 0.6'}
+    dev: false
+
+  /react-anchor-link-smooth-scroll-v2@2.0.1:
+    resolution: {integrity: sha512-Xx9/u2qPiG//GteW9tz8u6pNjPNzlP0vMjFPR1sVoPydmdJhGm/hFXGKIEnzeeKuqisKYw7CKrIZDUD7Wy4HHg==}
     dev: false
 
   /react-calendar@4.2.1(react-dom@18.2.0)(react@18.2.0):

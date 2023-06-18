@@ -5,6 +5,7 @@ import useMeasure from "react-use-measure";
 import { useWindowSize } from "react-use";
 import { useSpring, animated as a } from "react-spring";
 import { FiChevronDown, FiDownload } from "react-icons/fi";
+import AnchorLink from "react-anchor-link-smooth-scroll-v2";
 
 import type { ServiceProps } from "./card";
 import { Wrapper } from "@/style/base";
@@ -41,7 +42,7 @@ const Detail = tw.p`text-lg text-grey font-sans font-medium md:(text-lg) xl:(tex
 
 const List = tw.ul`font-sans font-medium text-base text-grey list-outside list-disc ml-4 md:(text-lg)`;
 
-const Subscribe = tw.a`font-bold text-orange-200 transition duration-300 ease-in-out`;
+const Subscribe = tw(AnchorLink)`font-bold text-orange-200 transition duration-300 ease-in-out hover:(text-orange-300)`;
 
 const ImageWrap = styled.div`
   ${tw`flex rounded-2xl overflow-hidden`};

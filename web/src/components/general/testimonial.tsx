@@ -9,12 +9,13 @@ import { Background } from "@/assets/svg/testimonial";
 //! ----------> TYPES <----------
 const colorStyles = {
   green: css`
-    ${tw`bg-green-100 text-green-500`};
-    p { ${tw`text-green-500`}; }
-    blockquote { ${tw`text-green-600`}; }
+    ${tw`bg-green-100 text-green-400`};
+    ${tw`border-y border-green-400`};
+    p { ${tw`text-green-400`}; }
+    blockquote { ${tw`text-green-500`}; }
     button {
       ${tw`w-4 h-4 rounded-full`};
-      ${tw`bg-green-500 border border-green-500`};
+      ${tw`bg-green-400 border border-green-400`};
     }
     .active {
       ${tw`bg-green-100`};
@@ -22,6 +23,7 @@ const colorStyles = {
   `,
   orange: css`
     ${tw`bg-orange-100 text-orange-200`};
+    ${tw`border-y border-orange-200`};
     p { ${tw`text-orange-200`}; }
     blockquote { ${tw`text-orange-300`}; }
     button {
@@ -34,6 +36,7 @@ const colorStyles = {
   `,
   blue: css`
     ${tw`bg-blue-100 text-blue-200`};
+    ${tw`border-y border-blue-200`};
     p { ${tw`text-blue-200`}; }
     blockquote { ${tw`text-blue-300`}; }
     button {
@@ -69,7 +72,7 @@ const Quote = styled.figure`
 
 const Slide = tw.div`transition duration-300 ease-in-out w-full relative overflow-x-hidden py-8 md:(py-12) lg:(py-16) xl:(py-24)`;
 
-const Thumb = tw.button`rounded-full overflow-visible w-4 h-4 mx-2 md:(w-5 h-5)`;
+const Thumb = tw.button`rounded-full overflow-visible w-2.5 h-2.5 mx-2 md:(w-5 h-5)`;
 
 //! ----------> COMPONENTS <----------
 const Testimonial = ({ name, body }: SanityTestimonal) => {
@@ -133,14 +136,14 @@ const Slider = ({ items }: { items: SanityTestimonal[] }) => {
 
   return (
     <Slide css={[colorStyles[items[activeSlide].color ?? `green`]]}>
-      <div tw="relative w-full z-10 flex flex-col items-center">
+      <div tw="relative w-full z-10 flex flex-col items-center space-y-1.5">
         {carouselFragment}
         <div tw="mx-auto">
           {thumbsFragment}
         </div>
       </div>
 
-      <div tw="absolute left-0 bottom-0 z-0 w-full md:(w-[65%]) lg:(w-[50%]) xl:(w-[46%])">
+      <div tw="absolute left-0 bottom-4 z-0 w-full md:(w-[65%] bottom-6) lg:(w-[50%]) xl:(w-[46%]) 2xl:(w-[42%] bottom-7)">
         <Background />
       </div>
     </Slide>
