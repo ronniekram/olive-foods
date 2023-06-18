@@ -51,6 +51,8 @@ export const lunchQuery = groq`*[_type == "lunch"]`;
 export const boardQuery = groq`*[_type == "boards"]`;
 // ----------> WEEKLY
 export const weeklyQuery = groq`*[_type == "weekly"]`;
+// ----------> HOR D'S
+export const horDQuery = groq`*[_type == "horD"]`;
 
 // OTHER
 // ----------> TESTIMONIALS

@@ -9,6 +9,14 @@ export type SanityTestimonal = {
 };
 
 // HELPERS
+export type SanityHDSection = {
+  name: number;
+  items: {
+    name: string;
+    subItems: string[];
+  }[];
+};
+
 export type SanityOption = {
   name: string;
   description: string;
@@ -44,6 +52,10 @@ export type SanityBoard = SanityMenuOption & {
     name: string;
     price: number;
   }[];
+};
+
+export type SanityHors = {
+  byPrice: SanityHDSection[];
 };
 
 export type SanityFamily = {
