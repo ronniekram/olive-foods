@@ -52,7 +52,13 @@ export const boardQuery = groq`*[_type == "boards"]`;
 // ----------> WEEKLY
 export const weeklyQuery = groq`*[_type == "weekly"]`;
 // ----------> HOR D'S
-export const horDQuery = groq`*[_type == "horD"]`;
+export const horDQuery = groq`*[_type == "horD"]{
+  _updatedAt,
+  byPrice[]{
+    name,
+    items[]->,
+  }
+}`;
 
 // OTHER
 // ----------> TESTIMONIALS
