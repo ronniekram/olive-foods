@@ -24,9 +24,9 @@ const Wrapper = styled(W)(({ bg } : { bg: string }) => [
 const CateringCTA = ({ title, body, bg }: Props) => {
   return (
     <div tw="w-full bg-blue-200">
-      <Wrapper bg={bg}>
+      <Wrapper bg={bg} css={[title === `Are you feeling hungry?` && tw`mb-0`]}>
         <h3 tw="font-display text-3xl md:(text-5xl) lg:(text-6xl)">{title}</h3>
-        <div tw="flex flex-col space-y-4 font-sans font-medium text-sm md:(text-lg w-10/12) lg:(text-xl w-3/4 space-y-5) xl:(text-2xl w-7/12 space-y-7)">
+        <div tw="flex flex-col space-y-4 font-sans font-medium text-sm md:(text-lg w-10/12) lg:(text-xl w-3/4 space-y-5) xl:(text-xl w-7/12 space-y-7)">
           {body.map((x, i) => (
             <div key={`body-${i}`}>
               {x}

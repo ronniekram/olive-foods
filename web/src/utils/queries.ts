@@ -19,7 +19,22 @@ export const serviceQuery = groq`*[_type == "services"]{
 }`;
 // ----------> CATERING
 export const cateringQuery = groq`*[_type == "catering"]{
-  ...,
+  events[]{
+    title,
+    body
+  },
+  interactive[]{
+    title,
+    body
+  },
+  atHome[]{
+    title,
+    body
+  },
+  boards[]{
+    title,
+    body
+  },
   testimonials[]->{
     name,
     body,

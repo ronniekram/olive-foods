@@ -6,7 +6,7 @@ import Breaker from "../general/breaker";
 //! ----------> TYPES <----------
 type ItemProps = {
   title: string;
-  detail: string;
+  body: string;
 };
 
 type Props = {
@@ -54,12 +54,12 @@ const Detail = styled.p`
 `;
 
 //! ----------> COMPONENTS <----------
-const Item = ({ title, detail }: ItemProps) => {
+const Item = ({ title, body }: ItemProps) => {
   return (
     <div tw="flex flex-col space-y-1.5 md:(space-y-2)">
       <H4>{title}</H4>
       <Detail>
-        {detail}
+        {body}
       </Detail>
     </div>
   );
@@ -77,7 +77,7 @@ const CateringSection = ({ title, detail, image, items, menu, mediaLeft }: Props
         <Breaker />
 
         {items.map((item) => (
-          <Item key={item.title} title={item.title} detail={item.detail} />
+          <Item key={item.title} title={item.title} body={item.body} />
         ))}
       </div>
       <ImageWrap css={[mediaLeft && tw`lg:(order-1)`]}>
