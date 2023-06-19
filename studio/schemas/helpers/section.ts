@@ -25,7 +25,7 @@ export default {
           { value: `lunch`, title: `Lunch` },
           { value: `family`, title: `Family Style` },
           { value: `boards`, title: `Boards & Platters` },
-          { value: `horD`, title: `Hors d'oeuvres` },
+          { value: `hor-doeuvres`, title: `Hors d'oeuvres` },
         ],
       },
     },

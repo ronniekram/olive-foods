@@ -60,6 +60,7 @@ export type SanityBoard = SanityMenuOption & {
 };
 
 export type SanityHors = {
+  _updatedAt: string;
   byPrice: SanityHDSection[];
 };
 

@@ -63,8 +63,11 @@ export const horDQuery = groq`*[_type == "horD"]{
   _updatedAt,
   byPrice[]{
     name,
-    items[]->,
-  }
+    items[]{
+      name,
+      subItems[],
+    },
+  },
 }`;
 
 // OTHER
