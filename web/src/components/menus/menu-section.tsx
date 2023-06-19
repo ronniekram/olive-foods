@@ -21,31 +21,26 @@ type Props = {
 };
 
 //! ----------> STYLES <----------
-const H3 = styled.h3`
+export const H3 = styled.h3`
   ${tw`font-display tracking-[1.5px] text-blue-200`};
   ${tw`text-2xl`};
   ${tw`md:(text-[1.875rem] leading-[2.25rem])`};
   ${tw`xl:(text-3xl)`};
 `;
 
-const H4 = styled.h4`
+export const H4 = styled.h4`
   ${tw`font-display tracking-[1.5px] text-blue-200`};
   ${tw`text-xl md:(text-2xl)`};
 `;
 
-const FlexList = styled.ul`
+export const FlexList = styled.ul`
   ${tw`font-sans text-grey`};
   ${tw`flex flex-col text-sm`};
 `;
 
-const GridList = styled.ul`
-  ${tw`font-sans text-grey`};
-  ${tw`grid auto-cols-auto gap-x-[7%]`};
-`;
+export const Heading = tw.div`mb-2 md:(flex space-x-4 items-end mb-4) lg:(mb-5) xl:(mb-6)`;
 
-const Heading = tw.div`mb-2 md:(flex space-x-4 items-end mb-4) lg:(mb-5) xl:(mb-6)`;
-
-const Items = styled.div(({ full }: { full?: boolean}) => [
+export const Items = styled.div(({ full }: { full?: boolean}) => [
   tw`grid grid-cols-1 gap-y-3`,
   tw`md:(grid-cols-2 gap-x-6 gap-y-5)`,
   tw`lg:(gap-x-10)`,
@@ -62,7 +57,7 @@ export const renderServings = (servings: string | { low: number; high?: number})
 const MenuItem = ({ name, price, servings, description, subList, options }: MenuItem) => {
   return (
     <div tw="text-grey font-sans">
-      <div tw="flex justify-between md:(w-[87%]) lg:(text-lg w-[90%])">
+      <div tw="flex justify-between md:(w-[87%]) lg:(text-lg w-[90%]) xl:(text-xl)">
         <h5 tw="font-bold md:(mb-0.5)">
           {name}
         </h5>

@@ -15,5 +15,19 @@ export default {
       type: `text`,
       validation: (Rule: any) => Rule.required(),
     },
+    {
+      name: `menu`,
+      title: `Associated Menu`,
+      type: `string`,
+      description: `If you would like a see menu/menu download option for this catering section, select the appropriate option from the list.`,
+      options: {
+        list: [
+          { value: `lunch`, title: `Lunch` },
+          { value: `family`, title: `Family Style` },
+          { value: `boards`, title: `Boards & Platters` },
+          { value: `horD`, title: `Hors d'oeuvres` },
+        ],
+      },
+    },
   ],
 };

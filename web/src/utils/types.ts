@@ -9,6 +9,11 @@ export type SanityTestimonal = {
 };
 
 // HELPERS
+export type SanityDiet = {
+  name: string;
+  allergens: string[]
+};
+
 export type SanityHDSection = {
   name: number;
   items: {
@@ -59,6 +64,7 @@ export type SanityHors = {
 };
 
 export type SanityFamily = {
+  _updatedAt: string;
   mains: {
     name: string;
     price: number;
@@ -71,7 +77,7 @@ export type SanityFamily = {
   veg: {
     options: string[];
     sauces: string[];
-  }[];
+  };
   starches: {
     name: string;
     options: string[];

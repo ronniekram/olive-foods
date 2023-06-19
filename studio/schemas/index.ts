@@ -1,4 +1,5 @@
 // HELPERS
+import diet from "./helpers/diet";
 import enhancement from "./helpers/enhancement";
 import hdSection from "./helpers/hd-section";
 import option from "./helpers/option";
@@ -20,6 +21,7 @@ import weekly from "./menus/weekly";
 
 export const schemaTypes = [
   // HELPERS
+  diet,
   enhancement,
   hdSection,
   option,
