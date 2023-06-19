@@ -79,8 +79,9 @@ export type SanityFamily = {
 };
 
 export type SanityLunch = {
-  speciality: SanityOption[];
-  standards: SanityOption[];
+  _updatedAt: string;
+  specialty: SanityMenuOption[];
+  standard: SanityMenuOption[];
   sides: SanitySide[];
 };
 

@@ -24,7 +24,7 @@ const Container = styled.header`
     ${tw`tracking-[1.5px]`};
     ${tw`text-[1.75rem] leading-[2.1875rem]`};
     ${tw`md:(text-[2.5rem] leading-[2.75rem])`};
-    ${tw`xl:(text-[4rem] leading-[4.375])`};
+    ${tw`xl:(text-[4rem] leading-[4.375rem])`};
   }
 `;
 
@@ -48,8 +48,10 @@ const MenuHeader = ({ title, subtitle }: Props) => (
       />
     </Logo>
     <div>
-      <h1>{subtitle ?? title}</h1>
+      <h1>{title}</h1>
       <h2>{subtitle}</h2>
     </div>
   </Container>
 );
+
+export default MenuHeader;

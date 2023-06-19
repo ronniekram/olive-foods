@@ -46,7 +46,14 @@ export const cateringQuery = groq`*[_type == "catering"]{
 // ----------> FAMILY
 export const familyQuery = groq`*[_type == "family"]`;
 // ----------> LUNCH
-export const lunchQuery = groq`*[_type == "lunch"]`;
+export const lunchQuery = groq`*[_type == "lunch"]{
+  _updatedAt,
+  lunchMenu{
+    sides[],
+    standard[],
+    specialty[]
+  }
+}`;
 // ----------> BOARDS
 export const boardQuery = groq`*[_type == "boards"]`;
 // ----------> WEEKLY

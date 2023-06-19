@@ -1,25 +1,30 @@
 import tw, { styled } from "twin.macro";
 
 //! ----------> TYPES <----------
-type MenuItem = {
+export type MenuItem = {
   name: string;
-  price?: string;
-  servings?: string;
+  price?: number | string;
+  servings?: string | { low: number; high?: number};
   description?: string;
   subList?: string[];
+  options?: {
+    numChoices: number;
+    choices: string[];
+  };
 };
 
 type Props = {
   heading: string;
   subHeading?: string;
   items: MenuItem[];
+  full?: boolean;
 };
 
 //! ----------> STYLES <----------
 const H3 = styled.h3`
   ${tw`font-display tracking-[1.5px] text-blue-200`};
   ${tw`text-2xl`};
-  ${tw`md:(text-[2.5rem] leading-[2.75rem])`};
+  ${tw`md:(text-[1.875rem] leading-[2.25rem])`};
   ${tw`xl:(text-3xl)`};
 `;
 
@@ -38,18 +43,33 @@ const GridList = styled.ul`
   ${tw`grid auto-cols-auto gap-x-[7%]`};
 `;
 
+const Heading = tw.div`mb-2 md:(flex space-x-4 items-end mb-4) lg:(mb-5) xl:(mb-6)`;
+
+const Items = styled.div(({ full }: { full?: boolean}) => [
+  tw`grid grid-cols-1 gap-y-3`,
+  tw`md:(grid-cols-2 gap-x-6 gap-y-5)`,
+  tw`lg:(gap-x-10)`,
+  full ? tw`xl:(gap-x-8 gap-y-6 grid-cols-3) 2xl:(gap-y-8)` : tw`xl:(gap-x-6 gap-y-6) 2xl:(gap-x-8 gap-y-8)`,
+]);
+
+export const renderServings = (servings: string | { low: number; high?: number}) => {
+  if (typeof servings === `string`) return `(${servings} people)`;
+  if (servings.high) return `(${servings.low}-${servings.high} people)`;
+  return `(Up to ${servings.low} people)`;
+};
+
 //! ----------> COMPONENTS <----------
-const MenuItem = ({ name, price, servings, description, subList }: MenuItem) => {
+const MenuItem = ({ name, price, servings, description, subList, options }: MenuItem) => {
   return (
     <div tw="text-grey font-sans">
-      <div tw="flex space-x-1">
-        <h5 tw="font-bold">
+      <div tw="flex justify-between md:(w-[87%]) lg:(text-lg w-[90%])">
+        <h5 tw="font-bold md:(mb-0.5)">
           {name}
         </h5>
-        <p tw="font-bold">{price}</p>
-        <p>{servings}</p>
+        <p tw="font-bold">{price && `$${price}`}</p>
       </div>
-      <p tw="text-sm">{description}</p>
+      <p tw="py-0.5 text-sm font-medium">{servings && renderServings(servings)}</p>
+      <p tw="text-sm lg:(text-base) xl:(text-sm) 2xl:(text-base)">{description}</p>
       {subList && (
         <FlexList>
           {subList.map((x, i) => (
@@ -57,6 +77,34 @@ const MenuItem = ({ name, price, servings, description, subList }: MenuItem) => 
           ))}
         </FlexList>
       )}
+      {options && (
+        <div tw="py-1.5 xl:(py-2) 2xl:(py-2.5)">
+          <h5 tw="font-bold mb-1">
+            Choice of {options.numChoices}:
+          </h5>
+          <FlexList>
+            {options.choices.map((choice, i) => (
+              <li key={`${name}-choices-${i}`} tw="xl:(text-base)">{choice}</li>
+            ))}
+          </FlexList>
+        </div>
+      )}
     </div>
   );
 };
+
+const MenuSection = ({ heading, subHeading, items, full }: Props) => {
+  return (
+    <div tw="w-full">
+      <Heading>
+        <H3>{heading}</H3>
+        <H4>{subHeading}</H4>
+      </Heading>
+      <Items full={full}>
+        {items.map((item, i) => <MenuItem {...item} key={`${heading}=${i}`} />)}
+      </Items>
+    </div>
+  );
+};
+
+export default MenuSection;
