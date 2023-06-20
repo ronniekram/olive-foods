@@ -52,10 +52,13 @@ export type SanitySide = SanityMenuOption & {
 };
 
 // MENUS
-export type SanityBoard = SanityMenuOption & {
+export type SanityBoard = {
+  _updatedAt: string;
   options: {
     name: string;
     price: number;
+    servings: string;
+    description: string;
   }[];
 };
 

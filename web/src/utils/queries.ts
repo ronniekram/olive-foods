@@ -55,7 +55,15 @@ export const lunchQuery = groq`*[_type == "lunch"]{
   }
 }`;
 // ----------> BOARDS
-export const boardQuery = groq`*[_type == "boards"]`;
+export const boardQuery = groq`*[_type == "boards"]{
+  _updatedAt,
+  options[]{
+    name,
+    price,
+    description,
+    servings,
+  },
+}`;
 // ----------> WEEKLY
 export const weeklyQuery = groq`*[_type == "weekly"]`;
 // ----------> HOR D'S

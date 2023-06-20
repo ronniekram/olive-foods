@@ -54,7 +54,7 @@ export const renderServings = (servings: string | { low: number; high?: number})
 };
 
 //! ----------> COMPONENTS <----------
-const MenuItem = ({ name, price, servings, description, subList, options }: MenuItem) => {
+export const MenuItem = ({ name, price, servings, description, subList, options }: MenuItem) => {
   return (
     <div tw="text-grey font-sans">
       <div tw="flex justify-between md:(w-[87%]) lg:(text-lg w-[90%]) xl:(text-xl)">
