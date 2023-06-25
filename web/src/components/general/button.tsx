@@ -6,7 +6,7 @@ import { Menu, menus } from "@/components/catering/section";
 
 //! ----------> TYPES <----------
 type Props = {
-  label: string;
+  label: string | JSX.Element;
   outline?: boolean;
   icon?: JSX.Element;
 };

@@ -1,26 +1,24 @@
 import { NextApiRequest, NextApiResponse, NextApiHandler } from "next";
-import Mailjet from "node-mailjet";
-
-
-const mj = new Mailjet.Client({
-  apiKey: process.env.MJ_APIKEY_PUBLIC,
-  apiSecret: process.env.MJ_APIKEY_PRIVATE,
-});
+const Brevo = require('sib-api-v3-sdk');
 
 const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const body = req?.body;
 
   const { email } = body;
 
-  try {
-    const response = await mj.post(`send`, { version: `v3.1` }).request({
-      IsExcludedFromCampaigns: false,
-      Email: email,
-      Name: email.split("@")[0],
-      Action: `addnoforce`
-    }).then((resp) => console.log(resp));
+  Brevo.ApiClient.instance.authentications['api-key'].apiKey = process.env.BREVO_API_KEY;
 
-    return res.json({ message: `Successfully sent request` })
+  try {
+    const client = new Brevo.ContactsApi();
+    const createContact = new Brevo.CreateContact();
+    createContact.email = email;
+    createContact.listIds = [1];
+
+    const response = await client.createContact(createContact)
+    .then((resp: any) => resp.json())
+    .catch((error: any) => error.json());
+
+    return res.json(response)
   } catch (error) {
     return res.json(error);
   }
