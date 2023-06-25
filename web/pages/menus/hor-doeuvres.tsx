@@ -1,10 +1,7 @@
 import type { NextPage, GetStaticProps } from "next";
-import { NextSeo } from "next-seo";
 import format from "date-fns/format";
 import { useWindowSize } from "react-use";
 import tw, { styled } from "twin.macro";
-
-import config from "next-seo.config";
 
 import { horDQuery } from "@/utils/queries";
 import { getClient } from "lib/sanity.client";

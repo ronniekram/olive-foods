@@ -1,5 +1,8 @@
+import { useState } from "react";
 import tw, { styled } from "twin.macro";
-import { useForm, Controller } from "react-hook-form";
+import axios from "axios";
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
+import { stringify } from "flatted";
 
 import Input, { TextArea } from "../inputs/text";
 import SelectMenu, { Option } from "../inputs/drop";
@@ -8,7 +11,7 @@ import Breaker from "../general/breaker";
 import { Button } from "../general/button";
 
 //! ----------> TYPES <----------
-type FormValues = {
+export type FormValues = {
   firstName: string;
   lastName: string;
   email: string;
@@ -21,7 +24,7 @@ type FormValues = {
 const Wrapper = styled.section`
   ${tw`xl:(w-[55%])`};
   ${tw`flex flex-col space-y-7`};
-  ${tw`text-green-500 text-sm font-sans`};
+  ${tw`text-grey text-sm font-sans`};
   ${tw`md:(text-xl)`};
   ${tw`bg-green-100 border border-orange-300`};
   ${tw`rounded-lg`};
@@ -43,17 +46,34 @@ const eventOptions: Option[] = [
 
 //! ----------> COMPONENTS <----------
 const ContactForm = () => {
-  const { register, handleSubmit, control, formState: { errors, isSubmitting, isSubmitSuccessful } } = useForm<FormValues>({
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [isSuccessful, setIsSuccessful] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+
+  const { register, handleSubmit, control, reset, formState: { errors } } = useForm<FormValues>({
     mode: `onSubmit`,
   });
 
-  const onSubmit = (data: FormValues) => {
-    console.table(data);
+  const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
+    setIsSubmitting(true);
+
+    try {
+      const resp = await axios.post(`/api/event-request`, { ...data });
+      setIsSubmitting(false);
+      setIsError(false);
+      setIsSuccessful(true);
+      console.log(resp.data);
+      reset();
+    } catch (error) {
+      console.log(error);
+      setIsSubmitting(false);
+      setIsError(true);
+    }
   };
 
   return (
     <Wrapper>
-      {isSubmitSuccessful ? (
+      {isSuccessful ? (
         <div tw="font-sans text-green-500 text-center flex flex-col space-y-4">
           <h2 tw="text-xl">Thanks for reaching out!</h2>
           <Breaker width="82.3%" />
@@ -62,87 +82,92 @@ const ContactForm = () => {
           </p>
         </div>
       ) : (
-        <form tw="flex flex-col space-y-7 md:(space-y-8)" onSubmit={handleSubmit(onSubmit)}>
-          <p>We're thrilled that you're interested in working with us! Please share a few details about what you're looking for, and we'll work together to create an experience that perfectly meets your needs.</p>
+        <div tw="flex flex-col space-y-7 md:(space-y-8)">
+          <p tw="text-sm md:(text-base) xl:(text-lg)">We're thrilled that you're interested in working with us! Please share a few details about what you're looking for, and we'll work together to create an experience that perfectly meets your needs.</p>
 
-          <div tw="grid grid-cols-1 gap-y-7 md:(grid-cols-2 gap-x-5) xl:(gap-y-5)">
-            <Input
-              type="text"
-              label="First Name*"
-              register={{
-                ...register(`firstName`, {
+          {isError && <p tw="font-sans font-medium text-sm text-orange-200">Something went wrong! Try again or drop us a line at <a href="mailto:olivefoodsco@gmail.com" tw="underline">olivefoodsco@gmail.com</a>.</p>}
+
+          <form tw="flex flex-col space-y-7 md:(space-y-8)" onSubmit={handleSubmit(onSubmit)}>
+            <div tw="grid grid-cols-1 gap-y-7 md:(grid-cols-2 gap-x-5) xl:(gap-y-5)">
+              <Input
+                type="text"
+                label="First Name*"
+                register={{
+                  ...register(`firstName`, {
+                    required: `Required`,
+                  })
+                }}
+                error={errors?.firstName?.message}
+              />
+              <Input
+                type="text"
+                label="Last Name*"
+                register={{
+                  ...register(`lastName`, {
+                    required: `Required`,
+                  })
+                }}
+                error={errors?.lastName?.message}
+              />
+              <Input
+                type="email"
+                label="Email*"
+                register={{
+                  ...register(`email`, {
+                    required: `Required`,
+                  })
+                }}
+                error={errors?.email?.message}
+              />
+
+              <Controller
+                control={control}
+                name="eventType"
+                rules={{
                   required: `Required`,
+                }}
+                render={({  field: { onChange, value }, fieldState: { error } }) => (
+                  <SelectMenu
+                    label="Event Type*"
+                    placeholder="Select an event type"
+                    value={value}
+                    options={eventOptions}
+                    onChange={onChange}
+                    error={error?.message}
+                  />
+                )}
+              />
+
+              <Controller
+                control={control}
+                name="eventDate"
+                render={({ field: { onChange, value } }) => (
+                  <Calendar
+                    label="Event Date*"
+                    error={errors?.eventDate?.message}
+                    // startDate={null}
+                    onChange={onChange}
+                    value={value}
+                  />
+                )}
+                rules={{ required: `Required` }}
+              />
+            </div>
+
+            <TextArea
+              label="Details*"
+              rows={4}
+              register={{
+                ...register(`detail`, {
+                  required: `Required`
                 })
               }}
-              error={errors?.firstName?.message}
-            />
-            <Input
-              type="text"
-              label="Last Name*"
-              register={{
-                ...register(`lastName`, {
-                  required: `Required`,
-                })
-              }}
-              error={errors?.lastName?.message}
-            />
-            <Input
-              type="email"
-              label="Email*"
-              register={{
-                ...register(`email`, {
-                  required: `Required`,
-                })
-              }}
-              error={errors?.email?.message}
+              error={errors?.detail?.message}
             />
 
-            <Controller
-              control={control}
-              name="eventType"
-              rules={{
-                required: `Required`,
-              }}
-              render={({  field: { onChange, value }, fieldState: { error } }) => (
-                <SelectMenu
-                  label="Event Type*"
-                  placeholder="Select an event type"
-                  value={value}
-                  options={eventOptions}
-                  onChange={onChange}
-                  error={error?.message}
-                />
-              )}
-            />
-
-            <Controller
-              control={control}
-              name="eventDate"
-              render={({ field: { onChange, value } }) => (
-                <Calendar
-                  label="Event Date*"
-                  error={errors?.eventDate?.message}
-                  startDate={null}
-                  onChange={onChange}
-                />
-              )}
-              rules={{ required: `Required` }}
-            />
-          </div>
-
-          <TextArea
-            label="Details*"
-            rows={4}
-            register={{
-              ...register(`detail`, {
-                required: `Required`
-              })
-            }}
-            error={errors?.detail?.message}
-          />
-
-          <Button label="Submit" type="submit" />
-        </form>
+            <Button label="Submit" type="submit" />
+          </form>
+        </div>
       )}
     </Wrapper>
   );

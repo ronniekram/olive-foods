@@ -30,6 +30,7 @@ const ContactPage = () => {
                 loading="eager"
                 quality={100}
                 style={{ objectFit: `cover`, objectPosition: `center` }}
+                priority
               />
             </div>
             <ContactForm />

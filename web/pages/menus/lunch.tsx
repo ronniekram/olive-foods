@@ -1,9 +1,6 @@
 import type { NextPage, GetStaticProps } from "next";
-import { NextSeo } from "next-seo";
 import format from "date-fns/format";
 import tw, { styled } from "twin.macro";
-
-import config from "next-seo.config";
 
 import { lunchQuery } from "@/utils/queries";
 import { getClient } from "lib/sanity.client";

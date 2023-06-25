@@ -93,7 +93,7 @@ const CateringSection = ({ title, detail, image, items, menu, mediaLeft }: Props
   return (
     <Container>
       <div tw="flex flex-col space-y-6 xl:(space-y-8 w-[92.5%]) 2xl:(w-[95%])" css={[mediaLeft && tw`lg:(order-2)`]}>
-        <div>
+        <div tw="flex flex-col space-y-1">
           <H3>{title}</H3>
           <Heading>{detail}</Heading>
           {menu && <MenuButton menu={menu} label="Download Menu" />}
