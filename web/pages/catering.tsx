@@ -81,6 +81,7 @@ const CateringPage: NextPage<SanityCatering> = ({ events, interactive, atHome, b
             title={boardHeading.title}
             detail={boardHeading.detail}
             image={boardHeading.image}
+            menu="boards"
             items={boards}
           />
         </Wrapper>

@@ -21,7 +21,8 @@ export const serviceQuery = groq`*[_type == "services"]{
 export const cateringQuery = groq`*[_type == "catering"]{
   events[]{
     title,
-    body
+    body,
+    menu,
   },
   interactive[]{
     title,

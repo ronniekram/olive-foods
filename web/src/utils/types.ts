@@ -1,5 +1,6 @@
 
 import { Color } from "@/components/general/testimonial";
+import { Menu } from "@/components/catering/section";
 
 // REPEATERS
 export type SanityTestimonal = {
@@ -35,6 +36,7 @@ export type SanityServing = {
 export type SanitySection = {
   title: string;
   body: string;
+  menu?: Menu;
 };
 
 export type SanityMenuOption = {
