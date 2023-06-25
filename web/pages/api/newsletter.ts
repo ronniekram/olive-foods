@@ -7,13 +7,18 @@ const mj = new Mailjet.Client({
   apiSecret: process.env.MJ_APIKEY_PRIVATE,
 });
 
-const handler: NextApiHandler = async (req, res) => {
+const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const body = req?.body;
 
   const { email } = body;
 
   try {
-    const response = await mj.post(`send`, { version: `v3.1` }).request({ isExcludedFromCampaigns: false, Email: email, Name: email.split("@")[0] }).then((resp) => console.log(resp));
+    const response = await mj.post(`send`, { version: `v3.1` }).request({
+      IsExcludedFromCampaigns: false,
+      Email: email,
+      Name: email.split("@")[0],
+      Action: `addnoforce`
+    }).then((resp) => console.log(resp));
 
     return res.json({ message: `Successfully sent request` })
   } catch (error) {

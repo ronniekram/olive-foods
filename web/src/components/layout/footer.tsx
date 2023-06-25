@@ -43,9 +43,9 @@ const SignUp = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    if (email.trim().length < 0) {
+    if (email.trim().length > 0) {
       try {
-        const resp = await axios.post(`https://api.mailjet.com/v3/REST/contactslist/10323456/managecontact`, { email, action: `addnoforce` });
+        const resp = await axios.post(`/api/newsletter`, { email });
         console.log(resp);
         setEmail(``);
       } catch (error) {
