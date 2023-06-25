@@ -1,10 +1,23 @@
-import type { DefaultDocumentNodeResolver, StructureBuilder, StructureResolverContext } from "sanity/desk";
+import type {
+  DefaultDocumentNodeResolver,
+  StructureBuilder,
+  StructureResolverContext
+} from "sanity/desk";
 import type { SanityDocument } from "@sanity/client";
 import Iframe from "sanity-plugin-iframe-pane";
 
-import { FaRegNewspaper, FaHome } from "react-icons/fa";
+import {
+  FaRegNewspaper,
+  FaHome,
+  FaHandHoldingHeart
+} from "react-icons/fa";
 import { BiFoodMenu } from "react-icons/bi";
-import { BsFillCalendar2CheckFill, BsFillPersonLinesFill } from "react-icons/bs";
+import {
+  BsFillCalendar2CheckFill,
+  BsFillPersonLinesFill,
+  BsUiRadiosGrid,
+  BsFillBagHeartFill
+} from "react-icons/bs";
 import { MdFastfood } from "react-icons/md";
 import { GiAbstract042 } from "react-icons/gi";
 
@@ -17,6 +30,7 @@ export const singletons = new Set([
   `home`,
   `services`,
   `boards`,
+  `horD`,
   `lunch`,
   `family`,
   `weekly`,
@@ -25,6 +39,7 @@ export const singletons = new Set([
 export const previews = new Set([
   `catering`,
   `boards`,
+  `horD`,
   `lunch`,
   `family`,
   `weekly`,
@@ -55,8 +70,8 @@ const singletonItems = (S: StructureBuilder) => {
     .child(
       S.list().id(`main`).items([
         singletonListItem(S, `home`, false, `Home`).icon(FaHome),
-        singletonListItem(S, `catering`, true, `Catering`),
-        singletonListItem(S, `services`, false, `Meal Services`),
+        singletonListItem(S, `catering`, true, `Catering`).icon(BsFillBagHeartFill),
+        singletonListItem(S, `services`, false, `Meal Services`).icon(FaHandHoldingHeart),
       ]),
     ).icon(FaRegNewspaper),
     S.divider(),
@@ -65,6 +80,7 @@ const singletonItems = (S: StructureBuilder) => {
     .child(
       S.list().id(`menu`).items([
         singletonListItem(S, `boards`, true, `Charcuterie Boards`).icon(GiAbstract042),
+        singletonListItem(S, `horD`, true, `Hors d'oeuvres`).icon(BsUiRadiosGrid),
         singletonListItem(S, `lunch`, true, `Lunch`).icon(MdFastfood),
         singletonListItem(S, `family`, true, `Family Style`).icon(BsFillPersonLinesFill),
         singletonListItem(S, `weekly`, true, `Weekly`).icon(BsFillCalendar2CheckFill),

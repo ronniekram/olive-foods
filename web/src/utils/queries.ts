@@ -19,7 +19,23 @@ export const serviceQuery = groq`*[_type == "services"]{
 }`;
 // ----------> CATERING
 export const cateringQuery = groq`*[_type == "catering"]{
-  ...,
+  events[]{
+    title,
+    body,
+    menu,
+  },
+  interactive[]{
+    title,
+    body
+  },
+  atHome[]{
+    title,
+    body
+  },
+  boards[]{
+    title,
+    body
+  },
   testimonials[]->{
     name,
     body,
@@ -31,11 +47,37 @@ export const cateringQuery = groq`*[_type == "catering"]{
 // ----------> FAMILY
 export const familyQuery = groq`*[_type == "family"]`;
 // ----------> LUNCH
-export const lunchQuery = groq`*[_type == "lunch"]`;
+export const lunchQuery = groq`*[_type == "lunch"]{
+  _updatedAt,
+  lunchMenu{
+    sides[],
+    standard[],
+    specialty[]
+  }
+}`;
 // ----------> BOARDS
-export const boardQuery = groq`*[_type == "boards"]`;
+export const boardQuery = groq`*[_type == "boards"]{
+  _updatedAt,
+  options[]{
+    name,
+    price,
+    description,
+    servings,
+  },
+}`;
 // ----------> WEEKLY
 export const weeklyQuery = groq`*[_type == "weekly"]`;
+// ----------> HOR D'S
+export const horDQuery = groq`*[_type == "horD"]{
+  _updatedAt,
+  byPrice[]{
+    name,
+    items[]{
+      name,
+      subItems[],
+    },
+  },
+}`;
 
 // OTHER
 // ----------> TESTIMONIALS

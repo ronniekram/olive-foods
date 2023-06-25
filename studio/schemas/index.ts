@@ -1,5 +1,7 @@
 // HELPERS
+import diet from "./helpers/diet";
 import enhancement from "./helpers/enhancement";
+import hdSection from "./helpers/hd-section";
 import option from "./helpers/option";
 import side from "./helpers/side";
 import section from "./helpers/section";
@@ -12,13 +14,16 @@ import home from "./pages/home";
 import services from "./pages/services";
 // MENUS
 import boards from "./menus/boards";
+import horD from "./menus/hor-d";
 import lunch from "./menus/lunch";
 import family from "./menus/family";
 import weekly from "./menus/weekly";
 
 export const schemaTypes = [
   // HELPERS
+  diet,
   enhancement,
+  hdSection,
   option,
   side,
   section,
@@ -31,6 +36,7 @@ export const schemaTypes = [
   services,
   // MENUS
   boards,
+  horD,
   lunch,
   family,
   weekly,

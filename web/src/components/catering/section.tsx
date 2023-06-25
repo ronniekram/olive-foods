@@ -2,11 +2,34 @@ import Image from "next/image";
 import tw, { styled } from "twin.macro";
 
 import Breaker from "../general/breaker";
+import { MenuButton } from "../general/button";
 
 //! ----------> TYPES <----------
+export const menus = {
+  lunch: {
+    href: `menus/lunch`,
+    filename: `lunch-menu`,
+  },
+  family: {
+    href: `menus/family`,
+    filename: `family-style`,
+  },
+  boards: {
+    href: `menus/boards`,
+    filename: `boards-platters`,
+  },
+  "hor-doeuvres": {
+    href: `menus/hor-doeuvres`,
+    filename: `hor-doeuvres`,
+  },
+};
+
+export type Menu = keyof typeof menus;
+
 type ItemProps = {
   title: string;
-  detail: string;
+  body: string;
+  menu?: Menu;
 };
 
 type Props = {
@@ -14,7 +37,7 @@ type Props = {
   detail: string;
   image: string;
   items: ItemProps[];
-  menu?: string;
+  menu?: Menu;
   mediaLeft?: boolean;
 };
 
@@ -54,13 +77,14 @@ const Detail = styled.p`
 `;
 
 //! ----------> COMPONENTS <----------
-const Item = ({ title, detail }: ItemProps) => {
+const Item = ({ title, body, menu }: ItemProps) => {
   return (
     <div tw="flex flex-col space-y-1.5 md:(space-y-2)">
       <H4>{title}</H4>
       <Detail>
-        {detail}
+        {body}
       </Detail>
+      {menu && <MenuButton menu={menu} label="Download Menu" />}
     </div>
   );
 };
@@ -69,15 +93,16 @@ const CateringSection = ({ title, detail, image, items, menu, mediaLeft }: Props
   return (
     <Container>
       <div tw="flex flex-col space-y-6 xl:(space-y-8 w-[92.5%]) 2xl:(w-[95%])" css={[mediaLeft && tw`lg:(order-2)`]}>
-        <div>
+        <div tw="flex flex-col space-y-1">
           <H3>{title}</H3>
           <Heading>{detail}</Heading>
+          {menu && <MenuButton menu={menu} label="Download Menu" />}
         </div>
 
         <Breaker />
 
         {items.map((item) => (
-          <Item key={item.title} title={item.title} detail={item.detail} />
+          <Item key={item.title} title={item.title} body={item.body} menu={item.menu} />
         ))}
       </div>
       <ImageWrap css={[mediaLeft && tw`lg:(order-1)`]}>
@@ -96,4 +121,3 @@ const CateringSection = ({ title, detail, image, items, menu, mediaLeft }: Props
 };
 
 export default CateringSection;
-

@@ -1,5 +1,6 @@
 
 import { Color } from "@/components/general/testimonial";
+import { Menu } from "@/components/catering/section";
 
 // REPEATERS
 export type SanityTestimonal = {
@@ -9,6 +10,19 @@ export type SanityTestimonal = {
 };
 
 // HELPERS
+export type SanityDiet = {
+  name: string;
+  allergens: string[]
+};
+
+export type SanityHDSection = {
+  name: number;
+  items: {
+    name: string;
+    subItems: string[];
+  }[];
+};
+
 export type SanityOption = {
   name: string;
   description: string;
@@ -22,6 +36,7 @@ export type SanityServing = {
 export type SanitySection = {
   title: string;
   body: string;
+  menu?: Menu;
 };
 
 export type SanityMenuOption = {
@@ -39,14 +54,23 @@ export type SanitySide = SanityMenuOption & {
 };
 
 // MENUS
-export type SanityBoard = SanityMenuOption & {
+export type SanityBoard = {
+  _updatedAt: string;
   options: {
     name: string;
     price: number;
+    servings: string;
+    description: string;
   }[];
 };
 
+export type SanityHors = {
+  _updatedAt: string;
+  byPrice: SanityHDSection[];
+};
+
 export type SanityFamily = {
+  _updatedAt: string;
   mains: {
     name: string;
     price: number;
@@ -59,7 +83,7 @@ export type SanityFamily = {
   veg: {
     options: string[];
     sauces: string[];
-  }[];
+  };
   starches: {
     name: string;
     options: string[];
@@ -67,8 +91,9 @@ export type SanityFamily = {
 };
 
 export type SanityLunch = {
-  speciality: SanityOption[];
-  standards: SanityOption[];
+  _updatedAt: string;
+  specialty: SanityMenuOption[];
+  standard: SanityMenuOption[];
   sides: SanitySide[];
 };
 

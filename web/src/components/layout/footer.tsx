@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import tw, { styled } from "twin.macro";
 import { BsTiktok, BsInstagram, BsEnvelopeHeart } from "react-icons/bs";
+import axios from "axios";
 
 import { Wrapper } from "@/style/base";
 
@@ -39,14 +40,23 @@ const Social = styled.a`
 const SignUp = () => {
   const [email, setEmail] = useState<string>(``);
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    if (email.trim().length < 0) {
-      console.log(email);
-      setEmail(``);
+    if (email.trim().length > 0) {
+      try {
+        const resp = await axios.post(`/api/newsletter`, { email });
+        console.log(resp);
+        setEmail(``);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
+
+  useEffect(() => {
+    console.log(email);
+  }, [email]);
 
   return (
     <Newsletter onSubmit={handleSubmit} id="subscribe">

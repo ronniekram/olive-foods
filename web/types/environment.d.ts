@@ -5,6 +5,9 @@ declare global {
       NEXT_PUBLIC_MARKER_ENV: string;
       NEXT_PUBLIC_SANITY_PROJECT_ID: string;
       NEXT_PUBLIC_SANITY_DATASET: string;
+      MJ_APIKEY_PUBLIC: string;
+      MJ_APIKEY_PRIVATE: string;
+      MJ_API_TOKEN: string;
     }
   }
 }

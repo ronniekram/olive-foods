@@ -22,7 +22,7 @@ const CateringHero = () => {
     <div tw="w-full bg-green-100 py-12 md:(pt-16 pb-4) lg:(pt-20 pb-6) 2xl:(pt-24 pb-9)">
       <Wrapper tw="flex flex-col space-y-8 md:(space-y-10 pb-4) xl:(space-y-14) 2xl:(space-y-16)">
         <h1 tw="font-display text-orange-200 text-[56px] leading-[50px] md:(text-7xl) xl:(text-8xl)">Catering</h1>
-        <div tw="flex flex-col space-y-6 lg:(flex-row space-y-0 space-x-8) xl:(space-x-10) 2xl:(space-x-14)">
+        <div tw="flex flex-col space-y-6  lg:(flex-row space-y-0 space-x-8 items-center) xl:(space-x-10) 2xl:(space-x-14)">
           <P>
             We take a collaborative and customizable approach to your event, ensuring that every detail is tailored to your needs. Whether you have specific dietary restrictions or prefer a full creative menu, we've got you covered.
           </P>
