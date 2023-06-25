@@ -65,7 +65,7 @@ const BoardMenu: NextPage<SanityBoard> = ({ _updatedAt, options }) => {
     <Container>
       <MenuHeader title="Boards & Platters" />
 
-      <div tw="flex flex-col space-y-8 w-full max-w-[93.5rem] mx-auto md:(px-5) lg:(px-8 space-y-10) xl:(px-12) 2xl:(space-y-12)">
+      <div tw="flex flex-col space-y-8 w-full max-w-[93.5rem] mx-auto px-5 lg:(px-8 space-y-10) xl:(px-12) 2xl:(space-y-12)">
         <div tw="text-grey font-sans flex justify-end">
           <p tw="lg:(text-lg) xl:(text-xl)">
             <span tw="font-bold">Last updated: </span>

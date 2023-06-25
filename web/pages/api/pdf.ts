@@ -16,7 +16,6 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse
   const pdf = await page.pdf({
     path: `${path}.pdf`,
     printBackground: true,
-    format: `A4`,
   });
 
   res.send(pdf);

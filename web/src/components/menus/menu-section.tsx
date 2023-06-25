@@ -41,10 +41,9 @@ export const FlexList = styled.ul`
 export const Heading = tw.div`mb-2 md:(flex space-x-4 items-end mb-4) lg:(mb-5) xl:(mb-6)`;
 
 export const Items = styled.div(({ full }: { full?: boolean}) => [
-  tw`grid grid-cols-1 gap-y-3`,
-  tw`md:(grid-cols-2 gap-x-6 gap-y-5)`,
+  tw`grid grid-cols-2 gap-x-6 gap-y-5`,
   tw`lg:(gap-x-10)`,
-  full ? tw`xl:(gap-x-8 gap-y-6 grid-cols-3) 2xl:(gap-y-8)` : tw`xl:(gap-x-6 gap-y-6) 2xl:(gap-x-8 gap-y-8)`,
+  full ? tw`gap-x-10 xl:(gap-x-8 gap-y-6 grid-cols-3) 2xl:(gap-y-8)` : tw`xl:(gap-x-6 gap-y-6) 2xl:(gap-x-8 gap-y-8)`,
 ]);
 
 export const renderServings = (servings: string | { low: number; high?: number}) => {
