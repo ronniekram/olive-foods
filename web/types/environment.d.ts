@@ -8,6 +8,8 @@ declare global {
       MJ_APIKEY_PUBLIC: string;
       MJ_APIKEY_PRIVATE: string;
       MJ_API_TOKEN: string;
+      BREVO_SMTP_KEY: string;
+      BREVO_API_KEY: string;
     }
   }
 }

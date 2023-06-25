@@ -46,17 +46,12 @@ const SignUp = () => {
     if (email.trim().length > 0) {
       try {
         const resp = await axios.post(`/api/newsletter`, { email });
-        console.log(resp);
-        setEmail(``);
+        setEmail(`Thanks!`);
       } catch (error) {
         console.log(error);
       }
     }
   };
-
-  useEffect(() => {
-    console.log(email);
-  }, [email]);
 
   return (
     <Newsletter onSubmit={handleSubmit} id="subscribe">

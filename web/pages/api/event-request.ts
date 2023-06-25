@@ -1,11 +1,5 @@
 import { NextApiRequest, NextApiResponse, NextApiHandler } from "next";
-import Mailjet from "node-mailjet";
-
-
-const mj = new Mailjet.Client({
-  apiKey: process.env.MJ_APIKEY_PUBLIC,
-  apiSecret: process.env.MJ_APIKEY_PRIVATE,
-});
+const Brevo = require('sib-api-v3-sdk');
 
 import type { FormValues } from "@/components/contact/form";
 
@@ -14,41 +8,46 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse
 
   const { firstName, lastName, email, eventType, eventDate, detail } = body;
 
-  const data = {
-    Messages: [
-      {
-        From: {
-          Email: email,
-          Name: `${firstName} ${lastName}`,
-        },
-        To: [
-          {
-            Email: "me+olive@ronniebee.dev",
-          },
-        ],
-        Subject: `Olive Foods Event Request`,
-        HTMLPart: `
-          <p><strong>Name</strong>: ${firstName} ${lastName}</p>
-          <p><strong>Emaill</strong>: ${email}</p>
-          <p><strong>Event Type</strong>: ${eventType}</p>
-          <p><strong>Event Date</strong>: ${eventDate}</p>
-          <p><strong>Details</strong>: ${detail}</p>
-        `,
-        TextPart: `
-          Name: ${firstName} ${lastName}
-          Email: ${email}
-          Event Type: ${eventType}
-          Event Date: ${eventDate}
-          Details: ${detail}
-        `,
-      },
-    ],
-  };
+  Brevo.ApiClient.instance.authentications['api-key'].apiKey = process.env.BREVO_API_KEY;
 
   try {
-    const response = await mj.post(`send`, { version: `v3.1` }).request(data).then((resp) => console.log(resp));
-
-    return res.json({ message: `Successfully sent request` })
+    const response = await new Brevo.TransactionalEmailsApi().sendTransacEmail(
+      {
+        subject: `Olive Foods Event Request`,
+        sender: {
+          email: email,
+          name: `${firstName} ${lastName}`,
+        },
+        replyTo: {
+          email: email,
+          name: `${firstName} ${lastName}`,
+        },
+        to: [
+          {
+            email: `me+olive@ronniebee.dev`,
+            name: `Ronnie Bee`,
+          }
+        ],
+        htmlContent:`
+          <html>
+            <body>
+              <h1>Website Event Request</h1>
+              <p><strong>Name</strong>: ${firstName} ${lastName}</p>
+              <p><strong>Emaill</strong>: ${email}</p>
+              <p><strong>Event Type</strong>: ${eventType.label}</p>
+              <p><strong>Event Date</strong>: ${eventDate}</p>
+              <p><strong>Details</strong>: ${detail}</p>
+            </body>
+          </html>
+        `,
+        params: {
+          bodyMessage: `Sent to you from olivefoodscompany.com`,
+        },
+      }
+    )
+    .then((resp: any) => resp.json())
+    .catch((error: any) => error.json());
+    return res.json(response);
   } catch (error) {
     return res.json(error);
   }

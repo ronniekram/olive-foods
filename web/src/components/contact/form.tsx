@@ -2,13 +2,13 @@ import { useState } from "react";
 import tw, { styled } from "twin.macro";
 import axios from "axios";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import { stringify } from "flatted";
 
 import Input, { TextArea } from "../inputs/text";
 import SelectMenu, { Option } from "../inputs/drop";
 import Calendar from "../inputs/date-picker";
 import Breaker from "../general/breaker";
 import { Button } from "../general/button";
+import LoadingDots from "../general/loading";
 
 //! ----------> TYPES <----------
 export type FormValues = {
@@ -165,7 +165,7 @@ const ContactForm = () => {
               error={errors?.detail?.message}
             />
 
-            <Button label="Submit" type="submit" />
+            <Button label={isSubmitting ? <LoadingDots /> : `Submit`} type="submit" />
           </form>
         </div>
       )}
