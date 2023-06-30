@@ -1,30 +1,13 @@
 import type { NextPage, GetStaticProps } from "next";
 import format from "date-fns/format";
-import tw, { styled } from "twin.macro";
+import "twin.macro";
 
 import { lunchQuery } from "@/utils/queries";
 import { getClient } from "lib/sanity.client";
 import type { SanityLunch } from "@/utils/types";
 
-import MenuHeader from "@/components/menus/header";
-import MenuSection from "@/components/menus/menu-section";
-import Dietary from "@/components/menus/dietary";
+import MenuTemplate, { Section, ItemProps } from "@/components/menus/template";
 import Breaker from "@/components/general/breaker";
-
-//! ----------> STYLES <----------
-const Container = styled.article`
-  ${tw`w-screen min-h-screen h-full`};
-  ${tw`flex flex-col space-y-5`};
-  ${tw`px-5 pt-5 pb-16 xl:(pb-20 space-y-8)`};
-`;
-
-const Wrapper = styled.section`
-  ${tw`w-full`};
-  ${tw`grid grid-cols-1 gap-y-6`};
-  ${tw`md:(gap-y-6)`};
-  ${tw`xl:(grid-cols-2 gap-x-8 gap-y-8)`};
-  ${tw`2xl:(gap-x-14 gap-y-10)`};
-`;
 
 //! ----------> COMPONENTS <----------
 const LunchMenu: NextPage<SanityLunch> = ({
@@ -33,37 +16,45 @@ const LunchMenu: NextPage<SanityLunch> = ({
   standard,
   sides
 }) => {
+  const boxes: ItemProps[] = [
+    {
+      name: `Standard Sandwich`,
+      price: 17,
+      description: `Includes 6" sandwich, house chips, crudite & drip and a cookie`,
+    },
+    {
+      name: `Specialty Sandwich`,
+      price: 20,
+      description: `Includes 6" sandwich, house chips, crudite & drip and a cookie`,
+    },
+  ];
 
   return (
-    <Container>
-      <MenuHeader subtitle="Event Catering" title="Lunch" />
-      <div tw="flex flex-col space-y-8 w-full max-w-[93.5rem] mx-auto px-5">
-        <div tw="text-grey font-sans flex flex-row space-y-0 items-start justify-between">
-          <div>
-            <p tw="lg:(text-lg) xl:(text-xl)">Recommended 1-2 half portions per person.</p>
-            <p tw="text-sm font-bold lg:(text-base) xl:(text-lg)">Minimum order: 10 sandwiches</p>
-          </div>
-
-          <p tw="lg:(text-lg) xl:(text-xl)"><span tw="font-bold">Last updated:</span> {format(new Date(_updatedAt), `MMM d, y`)}</p>
-        </div>
-
+    <>
+      <MenuTemplate
+        title="Lunch"
+        subtitle="Event Catering"
+        minimum="10 sandwiches"
+        lastUpdated={format(new Date(_updatedAt), `MMM d, y`)}
+      >
+        <Section title="Specialty Sandwiches" price={15} items={specialty} />
         <Breaker />
-        <Wrapper>
-          <MenuSection heading="8” Specialty Sandwiches" subHeading="$15 each" items={specialty} />
-          <MenuSection heading="8” Standard Sandwiches" subHeading="$12 each" items={standard} />
-        </Wrapper>
-        <div tw="h-36 w-full" />
+        <Section title="Standard Sandwiches" price={12} items={standard} />
         <Breaker />
-        <div tw="h-20 w-full" />
-        <Wrapper tw="xl:(grid-cols-1)">
-          <MenuSection heading="Sides" items={sides} full />
-        </Wrapper>
-        <div tw="h-32 w-full" />
+        <Section title="Box Lunches" items={boxes} />
+      </MenuTemplate>
+      <MenuTemplate
+        title="Lunch"
+        subtitle="Event Catering"
+        minimum="10 sandwiches"
+        lastUpdated={format(new Date(_updatedAt), `MMM d, y`)}
+      >
         <Breaker />
-        <Dietary />
-      </div>
-    </Container>
-  );
+        <Section title="Sides" items={sides} />
+        <Breaker />
+      </MenuTemplate>
+    </>
+  )
 };
 
 export default LunchMenu;

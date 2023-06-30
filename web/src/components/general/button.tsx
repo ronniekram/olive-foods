@@ -1,4 +1,5 @@
 import Link from "next/link";
+import format from "date-fns/format";
 import tw, { styled } from "twin.macro";
 import { FiDownload } from "react-icons/fi";
 
@@ -30,7 +31,7 @@ const style = tw`transition duration-300 ease-in-out flex items-center rounded-[
 const solid = tw`bg-orange-200 text-orange-100 hover:(bg-orange-300)`;
 const outlineStyle = tw`text-orange-200 border-orange-200 border-2 hover:(border-orange-300 text-orange-300)`;
 
-const Download = styled(Link)`
+const Download = styled.a`
   ${tw`transition duration-300 ease-in-out`};
   ${tw`w-fit`};
   ${tw`flex items-center space-x-1`};
@@ -74,7 +75,7 @@ export const MenuButton = ({ menu, label }: { menu: Menu, label: string }) => {
   const href = `/api/pdf?href=${menus[menu].href}&filename=${menus[menu].filename}`;
 
   return (
-    <Download href={href} download={`${menus[menu].filename}.pdf`}>
+    <Download href={href} download={`${menus[menu].filename}-${format(new Date(), `MMddyyy`)}.pdf`}>
       <FiDownload tw="mr-1" size={16} />
       {label}
     </Download>
