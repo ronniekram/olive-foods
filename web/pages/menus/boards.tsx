@@ -15,7 +15,7 @@ const BoardMenu: NextPage<SanityBoard> = ({ _updatedAt, options }) => {
   return (
     <MenuTemplate
       title="Boards & Platters"
-      lastUpdated={format(new Date(_updatedAt), `MMM d, y`)}
+      lastUpdated={format(new Date(_updatedAt), `MMMM d, y`)}
     >
       <Breaker />
       <section tw="grid grid-cols-2 gap-x-10 gap-y-4">

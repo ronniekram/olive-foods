@@ -72,7 +72,7 @@ const HorDMenu: NextPage<SanityHors> = ({ _updatedAt, byPrice }) => {
     <MenuTemplate
       title="Hor d'oeuvres"
       minimum="1 dozen per item"
-      lastUpdated={format(new Date(_updatedAt), `MMM d, y`)}
+      lastUpdated={format(new Date(_updatedAt), `MMMM d, y`)}
       info={[`All items are priced per person`]}
     >
       <Breaker />

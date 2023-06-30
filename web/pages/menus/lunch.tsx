@@ -35,7 +35,7 @@ const LunchMenu: NextPage<SanityLunch> = ({
         title="Lunch"
         subtitle="Event Catering"
         minimum="10 sandwiches"
-        lastUpdated={format(new Date(_updatedAt), `MMM d, y`)}
+        lastUpdated={format(new Date(_updatedAt), `MMMM d, y`)}
       >
         <Section title="Specialty Sandwiches" price={15} items={specialty} />
         <Breaker />

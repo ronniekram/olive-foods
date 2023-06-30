@@ -52,7 +52,7 @@ const FamilyMenu: NextPage<SanityFamily> = ({ _updatedAt, mains, salads, veg, st
       <MenuTemplate
         title="Family Style"
         subtitle="Event Catering"
-        lastUpdated={format(new Date(_updatedAt), `MMM d, y`)}
+        lastUpdated={format(new Date(_updatedAt), `MMMM d, y`)}
         minimum="20 people"
         info={[
           `Family-style meals include a main, salad, one vegetable and one starch and are priced per person.`,
