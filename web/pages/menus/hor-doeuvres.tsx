@@ -1,43 +1,25 @@
 import type { NextPage, GetStaticProps } from "next";
 import format from "date-fns/format";
-import { useWindowSize } from "react-use";
 import tw, { styled } from "twin.macro";
 
 import { horDQuery } from "@/utils/queries";
 import { getClient } from "lib/sanity.client";
 import type { SanityHors, SanityHDSection } from "@/utils/types";
 
-import MenuHeader from "@/components/menus/header";
-import { H3, H4, Heading } from "@/components/menus/menu-section";
-import Dietary from "@/components/menus/dietary";
+import MenuTemplate from "@/components/menus/template";
 import Breaker from "@/components/general/breaker";
 
 //! ----------> STYLES <----------
-const Container = styled.article`
-  ${tw`w-screen min-h-screen`};
-  ${tw`flex flex-col space-y-5`};
-  ${tw`px-5 pt-5 pb-16 xl:(pb-20 space-y-8)`};
-`;
-
-const Wrapper = styled.section`
-  ${tw`w-full pb-2`};
-  ${tw`grid grid-cols-1 gap-y-4 gap-x-4`};
-  ${tw`md:(grid-cols-2 gap-x-4 gap-y-6)`};
-  ${tw`lg:(gap-x-10)`};
-  ${tw`xl:(gap-x-14 gap-y-8)`};
-  ${tw`2xl:(gap-x-24)`};
-`;
-
 const UL = styled.ul`
-  ${tw`flex flex-col space-y-3 lg:(space-y-4)`};
-  ${tw`font-sans font-medium text-grey text-xs lg:(text-lg) xl:(text-xl) 2xl:(text-2xl)`};
+  ${tw`flex flex-col space-y-0.5`};
+  ${tw`font-sans font-medium text-grey`};
+  ${tw`text-xs`};
 `;
 
 const SubUL = styled.ul`
-  ${tw`flex flex-col space-y-1 lg:(space-y-2)`};
-  ${tw`list-disc list-outside ml-4`};
-  ${tw`text-2xs lg:(text-base) xl:(text-lg) 2xl:(text-xl)`};
-  ${tw`pt-1`};
+  ${tw`text-2xs leading-[1.25rem]`};
+  ${tw`list-disc list-inside`};
+  ${tw`ml-1`};
 `;
 
 //! ----------> HELPERS <----------
@@ -62,10 +44,8 @@ const subItem = (item: string) => {
 //! ----------> COMPONENTS <----------
 const Section = ({ section }: { section: SanityHDSection }) => {
   return (
-    <div tw="w-full h-[33vh] pt-11 pb-5">
-      <Heading>
-        <H3 tw="2xl:(text-4xl)">{priceString(section.name)} each</H3>
-      </Heading>
+    <div tw="flex flex-col space-y-2">
+      <h3>{priceString(section.name)} each</h3>
       <UL>
         {section.items.map((item, i) => (
           <li key={`${section.name}-${i}`}>
@@ -87,46 +67,31 @@ const Section = ({ section }: { section: SanityHDSection }) => {
 };
 
 const HorDMenu: NextPage<SanityHors> = ({ _updatedAt, byPrice }) => {
-  const { width } = useWindowSize();
 
   return (
-    <Container>
-      <MenuHeader title="Hor D'oeuvres" />
-      <div tw="flex flex-col space-y-8 w-full max-w-[93.5rem] mx-auto px-5 lg:(px-8 space-y-10) xl:(px-12) 2xl:(space-y-12)">
-        <div tw="text-grey font-sans flex items-start justify-between">
-          <div>
-            <p tw="lg:(text-lg) xl:(text-xl)">
-              Items priced per person
-            </p>
-            <p tw="font-medium lg:(text-lg) xl:(text-xl)">
-              Minimum order: 1 dozen per item
-            </p>
-          </div>
-
-          <p tw="lg:(text-lg) xl:(text-xl)"><span tw="font-bold">Last updated:</span> {format(new Date(_updatedAt), `MMM d, y`)}</p>
-        </div>
-        <Breaker />
-
-        <Wrapper>
-          {byPrice.map((section, i) => {
-            return (
-              <>
-                <Section section={section} />
-                {width < 768 && <Breaker />}
-                {width >= 768 && i % 2 !== 0 && (
-                  <div tw="col-span-2">
-                    <Breaker />
-                  </div>
-                )}
-              </>
-            );
-          })}
-        </Wrapper>
-        <div tw="h-72" />
-        <Dietary />
-        <div tw="h-24" />
-      </div>
-    </Container>
+    <MenuTemplate
+      title="Hor d'oeuvres"
+      minimum="1 dozen per item"
+      lastUpdated={format(new Date(_updatedAt), `MMMM d, y`)}
+      info={[`All items are priced per person`]}
+    >
+      <Breaker />
+      <section tw="grid grid-cols-2 gap-x-4 gap-y-6">
+        {byPrice.map((section, i) => (
+        <>
+          <Section
+            section={section}
+            key={section.name}
+          />
+          {i % 2 !== 0 && (
+            <div tw="col-span-2">
+              <Breaker />
+            </div>
+          )}
+        </>
+      ))}
+      </section>
+    </MenuTemplate>
   );
 };
 
