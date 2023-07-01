@@ -1,23 +1,22 @@
 import { NextApiRequest, NextApiResponse, NextApiHandler } from "next";
-import chromium from "chrome-aws-lambda";
-import playwright from "playwright-core";
+import chromium from "@sparticuz/chromium";
+import puppeteer from "puppeteer-core";
+
+const LOCAL_CHROME_EXECUTABLE = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
 const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const query = req?.query;
   const { href } = query;
 
   try {
-    console.log(await chromium.executablePath);
+    const executablePath = chromium.executablePath || LOCAL_CHROME_EXECUTABLE;
+    console.log(executablePath);
 
-    const browser = await playwright.chromium.launch({
+    const browser = await puppeteer.launch({
       args: chromium.args,
-      // executablePath: process.env.NODE_END === `production` ? await chromium.executablePath : `/usr/local/bin/chromium`,
-      executablePath: await chromium.executablePath,
-      headless: process.env.NODE_ENV === `production` ? chromium.headless : true,
     });
 
-    const context = await browser.newContext();
-    const page = await context.newPage();
+    const page = await browser.newPage();
 
     const pdfUrl = process.env.NEXT_PUBLIC_SITE_URL + href;
 
