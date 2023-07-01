@@ -1,5 +1,6 @@
 import tw, { css } from "twin.macro";
 import { FiCalendar } from "react-icons/fi";
+import isValid from "date-fns/isValid";
 import ReactDatePicker, { ReactDatePickerProps } from "react-datepicker";
 import addDays from "date-fns/addDays";
 import "react-datepicker/dist/react-datepicker.css";
@@ -10,7 +11,7 @@ export type Props = ReactDatePickerProps & {
   onChange: (date: Date | null) => void;
   placeholder?: string;
   error?: string;
-  startDate?: Date | null;
+  startDate?: Date;
 };
 
 //! ----------> STYLES <----------
@@ -30,31 +31,63 @@ const styles = css`
     ${tw`w-full`};
   }
 
-  .react-datepicker__triangle { ${tw`hidden`}; }
-  .react-datepicker__month-container { ${tw`w-[20.9375rem]`}; }
-  .react-datepicker__header { ${tw`bg-orange-100 text-2xl tracking-[2px]! font-display items-center`}; }
-  .react-datepicker__current-month { ${tw`text-orange-200 pt-1`}; }
-  .react-datepicker__day { ${tw`transition duration-200 ease-in-out hover:(bg-orange-100 text-orange-300)`}; }
-  .react-datepicker__day--selected { ${tw`bg-orange-200 text-orange-100 font-bold`}; }
-  .react-datepicker__month { ${tw`text-green-500 font-sans text-sm py-2.5`}; }
-  .react-datepicker__day-names { ${tw`w-full font-sans! text-sm font-medium text-green-500! flex! justify-between! px-7 pb-1`}; }
-  .react-datepicker__week { ${tw`w-full font-sans text-xs font-medium text-green-500! flex! justify-between px-7 py-1`}; }
-  .react-datepicker__day-name { ${tw`font-bold`}; }
-  .react-datepicker__navigation-icon { ${tw`text-orange-200 text-2xl font-display before:(text-orange-200 text-2xl font-display)`}; }
+  .react-datepicker__triangle {
+    ${tw`hidden`};
+  }
+  .react-datepicker__month-container {
+    ${tw`w-[20.9375rem]`};
+  }
+  .react-datepicker__header {
+    ${tw`bg-orange-200 text-2xl font-display items-center`};
+  }
+  .react-datepicker__current-month {
+    ${tw`text-orange-100 pt-2 pb-1 tracking-[2px]!`};
+  }
+  .react-datepicker__day {
+    ${tw`transition duration-200 ease-in-out hover:(bg-orange-100 text-orange-300)`};
+  }
+  .react-datepicker__day--selected {
+    ${tw`bg-orange-200 text-orange-100 font-bold`};
+  }
+  .react-datepicker__month {
+    ${tw`text-green-500 font-sans text-sm pt-4 pb-5`};
+  }
+  .react-datepicker__day-names {
+    ${tw`w-full font-sans! text-sm font-medium flex! justify-between! px-7 pb-1`};
+  }
+  .react-datepicker__week {
+    ${tw`w-full font-sans text-xs font-medium flex! justify-between px-7 py-1`};
+  }
+  .react-datepicker__day-name {
+    ${tw`font-bold text-orange-100`};
+  }
+  .react-datepicker__navigation {
+    ${tw`mt-4 mx-1`};
+  }
+  .react-datepicker__navigation-icon--next,
+  .react-datepicker__navigation-icon--previous {
+    ${tw`before:(text-orange-100 border-orange-100!)`};
+  }
+  .react-datepicker__day--keyboard-selected {
+    ${tw`bg-orange-300 text-orange-100`};
+  }
+  .react-datepicker__day--disabled {
+    ${tw`text-green-500/50`};
+  }
 `;
 
 //! ----------> COMPONENTS <----------
 const Calendar = ({ label, startDate, onChange, error, placeholder, ...rest }: Props) => {
+  const date = isValid(startDate) ? startDate : null;
   return (
     <label tw="w-full" css={styles}>
       <p tw="pl-2.5 md:(pl-3) xl:(pl-4)">{label}</p>
       <ReactDatePicker
         {...rest}
-        selected={startDate}
+        selected={date}
         onChange={onChange}
         minDate={addDays(new Date(), 3)}
-        placeholderText={placeholder}
-        dateFormat="MM-DD-YYYY"
+        dateFormat="MMM dd, yyyy"
       />
       <p tw="text-2xs font-bold text-orange-300 pl-2.5 md:(text-xs pl-3) xl:(pl-4)">{error}</p>
     </label>
