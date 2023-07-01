@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-import path from "node:path";
+const path = require("node:path");
 const withTwin = require("./with-twin");
 
 const nextConfig = {
