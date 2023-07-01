@@ -76,7 +76,7 @@ const CateringPage: NextPage<SanityCatering> = ({ events, interactive, atHome, b
         </Wrapper>
         <CateringCTA title={cta2.title} body={cta2.body} bg={cta2.bg} />
         <Wrapper tw="md:(py-8) lg:(py-10) xl:(py-12)" id="boards">
-          <H2>Custom Charcuterie Boards</H2>
+          <H2>Boards & Platters</H2>
           <CateringSection
             title={boardHeading.title}
             detail={boardHeading.detail}
