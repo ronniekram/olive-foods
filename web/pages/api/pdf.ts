@@ -2,18 +2,14 @@ import { NextApiRequest, NextApiResponse, NextApiHandler } from "next";
 import chromium from "@sparticuz/chromium";
 import puppeteer from "puppeteer-core";
 
-const LOCAL_CHROME_EXECUTABLE = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-
 const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const query = req?.query;
   const { href } = query;
 
   try {
-    const executablePath = chromium.executablePath || LOCAL_CHROME_EXECUTABLE;
-    console.log(executablePath);
-
     const browser = await puppeteer.launch({
       args: chromium.args,
+      executablePath: await chromium.executablePath(process.env.DO_CHROMIUM_URL),
     });
 
     const page = await browser.newPage();
