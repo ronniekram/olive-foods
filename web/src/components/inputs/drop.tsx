@@ -26,9 +26,7 @@ const dropStyle: StylesConfig = {
   clearIndicator: (styles) => ({ ...styles, color: `#1F4328` }),
   option: (styles, state) => ({
     ...styles,
-    color: state.isSelected
-      ? `#FDF0ED`
-      : `#132A19`,
+    color: state.isSelected ? `#FDF0ED` : `#132A19`,
     background: state.isSelected ? `#E95C32` : `#FBF5EB`,
     fontFamily: `Micro Grotesk`,
     fontWeight: 400,
@@ -74,7 +72,7 @@ const dropStyle: StylesConfig = {
   valueContainer: (styles) => ({
     ...styles,
     padding: `0px`,
-  })
+  }),
 };
 
 const Wrapper = styled.div`
@@ -98,10 +96,20 @@ const Wrapper = styled.div`
 `;
 
 //! ----------> COMPONENTS <----------
-const SelectMenu = ({ label, options, placeholder, value, defaultValue, onChange, error }: Props) => {
+const SelectMenu = ({
+  label,
+  options,
+  placeholder,
+  value,
+  defaultValue,
+  onChange,
+  error,
+}: Props) => {
   return (
     <label>
-      <p tw="text-green-500 text-sm font-medium pl-2.5 md:(text-base pl-3) xl:(text-lg pl-4)">{label}</p>
+      <p tw="text-green-500 text-sm font-medium pl-2.5 md:(text-base pl-3) xl:(text-lg pl-4)">
+        {label}
+      </p>
       <Wrapper>
         <Select
           styles={dropStyle}

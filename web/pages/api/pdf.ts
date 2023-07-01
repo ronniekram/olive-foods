@@ -25,12 +25,12 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse
     const pdf = await page.pdf({
       path: `/tmp/menu.pdf`,
       printBackground: true,
+      format: `letter`
     });
 
     res.send(pdf);
 
     await browser.close();
-    // return res.status(200).json({ pdf });
   } catch (error: any) {
     console.log(error);
     return res.status(error.statusCode || 500).json({ error: error.message })

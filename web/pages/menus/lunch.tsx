@@ -10,12 +10,7 @@ import MenuTemplate, { Section, ItemProps } from "@/components/menus/template";
 import Breaker from "@/components/general/breaker";
 
 //! ----------> COMPONENTS <----------
-const LunchMenu: NextPage<SanityLunch> = ({
-  _updatedAt,
-  specialty,
-  standard,
-  sides
-}) => {
+const LunchMenu: NextPage<SanityLunch> = ({ _updatedAt, specialty, standard, sides }) => {
   const boxes: ItemProps[] = [
     {
       name: `Standard Sandwich`,
@@ -37,6 +32,7 @@ const LunchMenu: NextPage<SanityLunch> = ({
         minimum="10 sandwiches"
         lastUpdated={format(new Date(_updatedAt), `MMMM d, y`)}
       >
+        <Breaker />
         <Section title="Specialty Sandwiches" price={15} items={specialty} />
         <Breaker />
         <Section title="Standard Sandwiches" price={12} items={standard} />
@@ -54,14 +50,14 @@ const LunchMenu: NextPage<SanityLunch> = ({
         <Breaker />
       </MenuTemplate>
     </>
-  )
+  );
 };
 
 export default LunchMenu;
 
 export const getStaticProps: GetStaticProps<SanityLunch> = async ({ preview = false }) => {
   const client = getClient();
-  const page: { _updatedAt: string, lunchMenu: SanityLunch }[] = await client.fetch(lunchQuery);
+  const page: { _updatedAt: string; lunchMenu: SanityLunch }[] = await client.fetch(lunchQuery);
 
   const { lunchMenu } = page[0];
 

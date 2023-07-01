@@ -50,7 +50,13 @@ const ContactForm = () => {
   const [isSuccessful, setIsSuccessful] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
 
-  const { register, handleSubmit, control, reset, formState: { errors } } = useForm<FormValues>({
+  const {
+    register,
+    handleSubmit,
+    control,
+    reset,
+    formState: { errors },
+  } = useForm<FormValues>({
     mode: `onSubmit`,
   });
 
@@ -78,14 +84,27 @@ const ContactForm = () => {
           <h2 tw="text-xl">Thanks for reaching out!</h2>
           <Breaker width="82.3%" />
           <p tw="text-xs">
-            We'll get back to you as soon as we can. We can't wait to help make your next event one to remember.
+            We'll get back to you as soon as we can. We can't wait to help make your next event one
+            to remember.
           </p>
         </div>
       ) : (
         <div tw="flex flex-col space-y-7 md:(space-y-8)">
-          <p tw="text-sm md:(text-base) xl:(text-lg)">We're thrilled that you're interested in working with us! Please share a few details about what you're looking for, and we'll work together to create an experience that perfectly meets your needs.</p>
+          <p tw="text-sm md:(text-base) xl:(text-lg)">
+            We're thrilled that you're interested in working with us! Please share a few details
+            about what you're looking for, and we'll work together to create an experience that
+            perfectly meets your needs.
+          </p>
 
-          {isError && <p tw="font-sans font-medium text-sm text-orange-200">Something went wrong! Try again or drop us a line at <a href="mailto:olivefoodsco@gmail.com" tw="underline">olivefoodsco@gmail.com</a>.</p>}
+          {isError && (
+            <p tw="font-sans font-medium text-sm text-orange-200">
+              Something went wrong! Try again or drop us a line at{" "}
+              <a href="mailto:olivefoodsco@gmail.com" tw="underline">
+                olivefoodsco@gmail.com
+              </a>
+              .
+            </p>
+          )}
 
           <form tw="flex flex-col space-y-7 md:(space-y-8)" onSubmit={handleSubmit(onSubmit)}>
             <div tw="grid grid-cols-1 gap-y-7 md:(grid-cols-2 gap-x-5) xl:(gap-y-5)">
@@ -95,7 +114,7 @@ const ContactForm = () => {
                 register={{
                   ...register(`firstName`, {
                     required: `Required`,
-                  })
+                  }),
                 }}
                 error={errors?.firstName?.message}
               />
@@ -105,7 +124,7 @@ const ContactForm = () => {
                 register={{
                   ...register(`lastName`, {
                     required: `Required`,
-                  })
+                  }),
                 }}
                 error={errors?.lastName?.message}
               />
@@ -115,7 +134,7 @@ const ContactForm = () => {
                 register={{
                   ...register(`email`, {
                     required: `Required`,
-                  })
+                  }),
                 }}
                 error={errors?.email?.message}
               />
@@ -126,7 +145,7 @@ const ContactForm = () => {
                 rules={{
                   required: `Required`,
                 }}
-                render={({  field: { onChange, value }, fieldState: { error } }) => (
+                render={({ field: { onChange, value }, fieldState: { error } }) => (
                   <SelectMenu
                     label="Event Type*"
                     placeholder="Select an event type"
@@ -145,7 +164,7 @@ const ContactForm = () => {
                   <Calendar
                     label="Event Date*"
                     error={errors?.eventDate?.message}
-                    // startDate={null}
+                    startDate={new Date(value)}
                     onChange={onChange}
                     value={value}
                   />
@@ -159,8 +178,8 @@ const ContactForm = () => {
               rows={4}
               register={{
                 ...register(`detail`, {
-                  required: `Required`
-                })
+                  required: `Required`,
+                }),
               }}
               error={errors?.detail?.message}
             />

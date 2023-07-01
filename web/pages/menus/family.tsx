@@ -28,10 +28,10 @@ const List = styled.ul`
   }
 `;
 
-const Starches = tw.div`grid grid-cols-3 gap-x-4`;
+const Starches = tw.div`grid grid-cols-[auto, 25%, auto] gap-x-5`;
 
 const StarchList = styled.ul`
-  ${tw`text-2xs leading-[1rem]`};
+  ${tw`text-sm`};
   ${tw`list-disc list-inside ml-1`};
 `;
 
@@ -59,6 +59,7 @@ const FamilyMenu: NextPage<SanityFamily> = ({ _updatedAt, mains, salads, veg, st
           `Each additional side costs +$5 per person.`,
         ]}
       >
+        <Breaker />
         <section tw="flex flex-col space-y-4">
           <h3>Mains</h3>
           <Starches tw="gap-y-4">
@@ -66,7 +67,6 @@ const FamilyMenu: NextPage<SanityFamily> = ({ _updatedAt, mains, salads, veg, st
               <Item key={main.name} {...main} />
             ))}
           </Starches>
-
         </section>
         <Breaker />
         <section tw="flex flex-col space-y-4">
@@ -81,7 +81,7 @@ const FamilyMenu: NextPage<SanityFamily> = ({ _updatedAt, mains, salads, veg, st
               </List>
             </div>
             <div>
-              <h5>Accompaniment</h5>
+              <h5>Accoutrements</h5>
               <List>
                 {veg.sauces.map((opt) => (
                   <li key={opt}>{opt}</li>
@@ -90,7 +90,6 @@ const FamilyMenu: NextPage<SanityFamily> = ({ _updatedAt, mains, salads, veg, st
             </div>
           </div>
         </section>
-        <Breaker />
       </MenuTemplate>
       <MenuTemplate
         title="Family Style"
@@ -102,7 +101,7 @@ const FamilyMenu: NextPage<SanityFamily> = ({ _updatedAt, mains, salads, veg, st
           `Each additional side costs +$5 per person.`,
         ]}
       >
-
+        <Breaker />
         <Section title="Salads" items={saladsForComponent} />
         <Breaker />
         <div tw="flex flex-col space-y-4">
@@ -113,9 +112,7 @@ const FamilyMenu: NextPage<SanityFamily> = ({ _updatedAt, mains, salads, veg, st
                 <p tw="text-sm font-bold">{starch.name}</p>
                 <StarchList>
                   {starch.sauces.map((sauce) => (
-                    <li key={sauce}>
-                      {sauce}
-                    </li>
+                    <li key={sauce}>{sauce}</li>
                   ))}
                 </StarchList>
               </div>

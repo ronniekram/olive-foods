@@ -23,11 +23,19 @@ const Hero = () => {
         <div tw="flex flex-col space-y-3 xl:(space-y-8) 2xl:(space-y-10)">
           <H3>We love food.</H3>
           <H3>You love food.</H3>
-          <H3 tw="text-5xl lg:(text-5xl) xl:(text-[72px]) 2xl:(text-[80px])">We <span tw="text-orange-200">olive</span> food.</H3>
+          <H3 tw="text-5xl lg:(text-5xl) xl:(text-[72px]) 2xl:(text-[80px])">
+            We <span tw="text-orange-200">olive</span> food.
+          </H3>
         </div>
         <div tw="text-grey font-sans md:(w-[46%])">
-          <h2 tw="font-bold mb-2 text-base md:(mb-3) lg:(text-xl) xl:(text-[28px]) 2xl:(text-3xl mb-8)">A premier Twin Cities boutique caterer</h2>
-          <p tw="text-sm lg:(text-base) xl:(text-xl) 2xl:(text-2xl)">We're passionate about crafting exceptional food and memorable experiences. From the planning stages to event day decor, <span tw="font-bold text-orange-200">let us help make your next event a success</span>.</p>
+          <h2 tw="font-bold mb-2 text-base md:(mb-3) lg:(text-xl) xl:(text-[28px]) 2xl:(text-3xl)">
+            A premier Twin Cities boutique caterer
+          </h2>
+          <p tw="text-sm lg:(text-base) xl:(text-xl) 2xl:(text-2xl)">
+            We're passionate about crafting exceptional food and memorable experiences. From the
+            planning stages to event day decor,{" "}
+            <span tw="font-bold text-orange-200">let us help make your next event a success</span>.
+          </p>
         </div>
       </Wrapper>
     </div>
