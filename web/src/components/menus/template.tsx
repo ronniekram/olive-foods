@@ -19,7 +19,7 @@ export type ItemProps = {
   servings?: string | SanityServing;
   sauces?: string[];
   options?: {
-    numChoices: number;
+    numChoices?: number;
     choices: string[];
   };
 };
@@ -100,7 +100,7 @@ export const Item = ({ name, price, description, sauces, servings, options }: It
 
       {options && (
         <div>
-          <p tw="font-bold text-2xs">Choice of {options.numChoices}</p>
+          <p tw="font-bold text-2xs">{options.numChoices && `Choice of ${options.numChoices}`}</p>
           <List>
             {options.choices.map((x) => (
               <li key={x}>

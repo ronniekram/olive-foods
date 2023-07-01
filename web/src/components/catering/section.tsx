@@ -58,7 +58,6 @@ const ImageWrap = styled.div`
 const H3 = styled.h3`
   ${tw`text-orange-200 text-3xl font-display`};
   ${tw`md:(text-[40px]) xl:(text-5xl)`};
-  ${tw`mb-2 md:(mb-4)`};
 `;
 
 const H4 = styled.h4`
@@ -94,8 +93,10 @@ const CateringSection = ({ title, detail, image, items, menu, mediaLeft }: Props
     <Container>
       <div tw="flex flex-col space-y-6 xl:(space-y-8 w-[92.5%]) 2xl:(w-[95%])" css={[mediaLeft && tw`lg:(order-2)`]}>
         <div tw="flex flex-col space-y-1">
-          <H3>{title}</H3>
-          <Heading>{detail}</Heading>
+          {title !== `` && <H3>{title}</H3>}
+          <Heading css={[menu && tw`mb-1.5`]}>
+            {detail}
+          </Heading>
           {menu && <MenuButton menu={menu} label="Download Menu" />}
         </div>
 

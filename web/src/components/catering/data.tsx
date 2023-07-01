@@ -3,26 +3,26 @@ import "twin.macro";
 
 export const eventHeading = {
   title: `Special Events`,
-  detail: `Bacon ipsum dolor amet picanha do voluptate tenderloin chuck, irure incididunt bresaola ham hock porchetta flank ham meatloaf officia spare ribs. Tenderloin cillum in incididunt, salami ribeye ut in. Ut ex jowl strip steak pancetta. Porchetta jowl duis eiusmod. Spare ribs kielbasa salami, esse shank prosciutto swine exercitation.`,
+  detail: `Whether you're planning an intimate birthday celebration, a joyous family gathering, a corporate luncheon, or any other milestone moment, we're here to make it extraordinary. From the initial consultation to the final bite, we are dedicated to making your event truly yours.`,
   image: `/images/catering/CATERING-002.png`,
   mediaLeft: true,
 };
 
 export const interactiveHeading = {
   title: `Interactive Meals`,
-  detail: `Bacon ipsum dolor amet picanha do voluptate tenderloin chuck, irure incididunt bresaola ham hock porchetta flank ham meatloaf officia spare ribs. Tenderloin cillum in incididunt, salami ribeye ut in. Ut ex jowl strip steak pancetta. Porchetta jowl duis eiusmod. Spare ribs kielbasa salami, esse shank prosciutto swine exercitation.`,
+  detail: `Interactive meals foster engagement and interaction among your guests, breaking the ice and providing a sense of camaraderie. Whether it's team members collaborating on a cooking challenge or guests bonding over shared experiences, our interactive dining options create a vibrant and social atmosphere that will leave a lasting impression.`,
   image: `/images/catering/CATERING-003.png`,
 };
 
 export const homeHeading = {
   title: `At Home`,
-  detail: `Bacon ipsum dolor amet picanha do voluptate tenderloin chuck, irure incididunt bresaola ham hock porchetta flank ham meatloaf officia spare ribs. Tenderloin cillum in incididunt, salami ribeye ut in. Ut ex jowl strip steak pancetta.`,
+  detail: `Imagine the joy of hosting a memorable dining experience right in the comfort of your own home. Now imagine it without the stress of cooking and cleaning. Sounds good, right? The heart of any home is the dining table. We're here to make sure that you get to enjoy every moment of it.`,
   image: `/images/catering/CATERING-004.png`,
 };
 
 export const boardHeading = {
-  title: `Characuterie Boards`,
-  detail: `Bacon ipsum dolor amet picanha do voluptate tenderloin chuck, irure incididunt bresaola ham hock porchetta flank ham meatloaf officia spare ribs. Tenderloin cillum in incididunt, salami ribeye ut in. Ut ex jowl strip steak pancetta. Porchetta jowl duis eiusmod. Spare ribs kielbasa salami, esse shank prosciutto swine exercitation.`,
+  title: ``,
+  detail: `Get ready to indulge in the art of grazing. Our boards, platters and tables are a vibrant showcase of colors, flavors, and textures. Our boards are designed to be shared and savored, creating an atmosphere that invites your guests to mingle, explore, and experience the art of grazing`,
   image: `/images/catering/CATERING-005.png`,
 };
 
