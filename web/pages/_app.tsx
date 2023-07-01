@@ -13,24 +13,28 @@ import config from "../next-seo.config";
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const isMenu = router.asPath.includes(`menus`);
+  const isLegal = router.asPath.includes(`legal`);
 
   return (
     <>
       <DefaultSeo {...config} />
       <GlobalStyles />
-      <div className={`${gentle.variable} ${micro.variable}`} tw="antialiased flex flex-col min-h-screen bg-green-100">
-        {isMenu ? (
+      <div
+        className={`${gentle.variable} ${micro.variable}`}
+        tw="antialiased flex flex-col min-h-screen bg-green-100"
+      >
+        {isMenu || isLegal ? (
           <Component {...pageProps} />
         ) : (
           <>
-          <NavBar />
-          <main tw="mt-20 md:(mt-24) xl:(mt-[120.79px])">
-            <Component {...pageProps} />
-          </main>
-          <Footer />
+            <NavBar />
+            <main tw="mt-20 md:(mt-24) xl:(mt-[120.79px])">
+              <Component {...pageProps} />
+            </main>
+            <Footer />
           </>
         )}
       </div>
     </>
   );
-};
+}
