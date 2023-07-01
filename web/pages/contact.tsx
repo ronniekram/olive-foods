@@ -18,7 +18,9 @@ const ContactPage = () => {
       />
       <div tw="w-screen min-h-screen bg-orange-200 pt-16 pb-20 md:(pt-20 pb-36) xl:(pt-28 pb-48)">
         <Wrapper>
-          <h1 tw="text-orange-100 text-[28px] font-display pb-8 md:(text-5xl pb-12) xl:(text-7xl pb-20)">Thinking about us for your next event?</h1>
+          <h1 tw="text-green-100 text-[28px] font-display pb-8 md:(text-5xl pb-12) xl:(text-7xl pb-20)">
+            Thinking about us for your next event?
+          </h1>
 
           <div tw="flex flex-col space-y-8 xl:(flex-row space-y-0 space-x-[9%])">
             <div tw="w-full flex rounded-lg border border-orange-300 overflow-hidden h-[10.9375rem] md:(h-[17.1875rem]) xl:(h-[55.048125rem] w-[45%])">
