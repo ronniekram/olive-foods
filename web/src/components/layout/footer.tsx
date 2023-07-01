@@ -24,7 +24,7 @@ const Input = styled.input`
 
 const Submit = styled.button`
   ${tw`w-[fit-content]`};
-  ${tw`bg-orange-200 text-orange-100`};
+  ${tw`bg-orange-200 text-green-100`};
   ${tw`font-display tracking-[1px] text-base leading-[auto]`};
   ${tw`h-full px-5 py-1.5 flex items-center justify-center`};
   ${tw`xl:(text-xl px-6 py-1.5)`};
@@ -55,15 +55,15 @@ const SignUp = () => {
 
   return (
     <Newsletter onSubmit={handleSubmit} id="subscribe">
-      <label tw="sr-only" htmlFor="email">
-        Email Address
+      <label tw="w-full">
+        <span tw="sr-only">Email</span>
+        <Input
+          type="text"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.currentTarget.value)}
+        />
       </label>
-      <Input
-        type="text"
-        name="email"
-        value={email}
-        onChange={(e) => setEmail(e.currentTarget.value)}
-      />
       <Submit type="submit">Subscribe</Submit>
     </Newsletter>
   );
