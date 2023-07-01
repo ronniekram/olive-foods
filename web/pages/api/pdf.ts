@@ -1,30 +1,11 @@
 import { NextApiRequest, NextApiResponse, NextApiHandler } from "next";
-import format from "date-fns/format";
 import chromium from "chrome-aws-lambda";
 import playwright from "playwright-core";
 
-const puppeteer = require("puppeteer");
-
 const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const query = req?.query;
-  const { href, filename } = query;
-  const path = `${filename}-${format(new Date(), `ddMMy`)}.pdf`;
+  const { href } = query;
 
-  // const browser = await puppeteer.launch();
-  // const page = await browser.newPage();
-
-  // await page.goto(process.env.NEXT_PUBLIC_SITE_URL + href, { waitUntil: `networkidle0` });
-  // await page.emulateMediaType(`screen`);
-
-  // const pdf = await page.pdf({
-  //   path: `${path}.pdf`,
-  //   printBackground: true,
-  //   filename: `${filename}-${format(new Date(), `ddMMy`)}.pdf`,
-  // });
-
-  // res.send(pdf);
-
-  // await browser.close();
   try {
     console.log(await chromium.executablePath);
 
