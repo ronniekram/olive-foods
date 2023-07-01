@@ -4,7 +4,7 @@ import puppeteer from "puppeteer-core";
 
 const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const query = req?.query;
-  const { href } = query;
+  const { href, filename } = query;
 
   try {
     const browser = await puppeteer.launch({
@@ -15,19 +15,22 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse
     const page = await browser.newPage();
 
     const pdfUrl = process.env.NEXT_PUBLIC_SITE_URL + href;
-    console.log(pdfUrl);
 
     await page.goto(pdfUrl, {
       waitUntil: `networkidle0`,
     });
 
+    await page.emulateMediaType(`screen`);
+
     const pdf = await page.pdf({
-      path: `/tmp/awesome.pdf`,
+      path: `/tmp/menu.pdf`,
       printBackground: true,
     });
 
+    res.send(pdf);
+
     await browser.close();
-    return res.status(200).json({ pdf });
+    // return res.status(200).json({ pdf });
   } catch (error: any) {
     console.log(error);
     return res.status(error.statusCode || 500).json({ error: error.message })
