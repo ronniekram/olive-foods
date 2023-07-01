@@ -1,6 +1,7 @@
 import type { NextPage, GetStaticProps } from "next";
 import format from "date-fns/format";
 import tw, { styled } from "twin.macro";
+import _chunk from "lodash/chunk";
 
 import { horDQuery } from "@/utils/queries";
 import { getClient } from "lib/sanity.client";
@@ -11,13 +12,13 @@ import Breaker from "@/components/general/breaker";
 
 //! ----------> STYLES <----------
 const UL = styled.ul`
-  ${tw`flex flex-col space-y-0.5`};
-  ${tw`font-sans font-medium text-grey`};
-  ${tw`text-xs`};
+  ${tw`flex flex-col space-y-1`};
+  ${tw`font-sans text-grey`};
+  ${tw`text-base`};
 `;
 
 const SubUL = styled.ul`
-  ${tw`text-2xs leading-[1.25rem]`};
+  ${tw`text-sm leading-[1.25rem]`};
   ${tw`list-disc list-inside`};
   ${tw`ml-1`};
 `;
@@ -44,7 +45,7 @@ const subItem = (item: string) => {
 //! ----------> COMPONENTS <----------
 const Section = ({ section }: { section: SanityHDSection }) => {
   return (
-    <div tw="flex flex-col space-y-2">
+    <div tw="flex flex-col space-y-2 py-2">
       <h3>{priceString(section.name)} each</h3>
       <UL>
         {section.items.map((item, i) => (
@@ -53,9 +54,7 @@ const Section = ({ section }: { section: SanityHDSection }) => {
             {item.subItems && (
               <SubUL>
                 {item.subItems.map((sub, i) => (
-                  <li key={`${item.name}-${i}`}>
-                    {subItem(sub)}
-                  </li>
+                  <li key={`${item.name}-${i}`}>{subItem(sub)}</li>
                 ))}
               </SubUL>
             )}
@@ -67,31 +66,34 @@ const Section = ({ section }: { section: SanityHDSection }) => {
 };
 
 const HorDMenu: NextPage<SanityHors> = ({ _updatedAt, byPrice }) => {
+  const chunks = _chunk(byPrice, 4);
 
   return (
-    <MenuTemplate
-      title="Hor d'oeuvres"
-      minimum="1 dozen per item"
-      lastUpdated={format(new Date(_updatedAt), `MMMM d, y`)}
-      info={[`All items are priced per person`]}
-    >
-      <Breaker />
-      <section tw="grid grid-cols-2 gap-x-4 gap-y-6">
-        {byPrice.map((section, i) => (
-        <>
-          <Section
-            section={section}
-            key={section.name}
-          />
-          {i % 2 !== 0 && (
-            <div tw="col-span-2">
-              <Breaker />
-            </div>
-          )}
-        </>
+    <>
+      {chunks.map((chunk, i) => (
+        <MenuTemplate
+          key={i}
+          title="Hor d'oeuvres"
+          minimum="1 dozen per item"
+          lastUpdated={format(new Date(_updatedAt), `MMMM d, y`)}
+          info={[`All items are priced per person`]}
+        >
+          <Breaker />
+          <section tw="grid grid-cols-2 gap-x-4 gap-y-6">
+            {chunk.map((section, i) => (
+              <>
+                <Section section={section} key={section.name} />
+                {i % 2 !== 0 && (
+                  <div tw="col-span-2">
+                    <Breaker />
+                  </div>
+                )}
+              </>
+            ))}
+          </section>
+        </MenuTemplate>
       ))}
-      </section>
-    </MenuTemplate>
+    </>
   );
 };
 

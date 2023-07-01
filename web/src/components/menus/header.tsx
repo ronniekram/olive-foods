@@ -37,27 +37,27 @@ const Logo = styled.div`
 
 const A4Wrapper = styled.header`
   ${tw`w-full mx-auto`};
-  ${tw`px-5 py-6 mb-2.5`};
+  ${tw`px-8 py-6 mb-2.5`};
   ${tw`bg-blue-200 text-blue-100`};
   ${tw`font-display`};
-  ${tw`flex items-center space-x-5`};
+  ${tw`flex items-center space-x-8`};
 
   h2 {
-    ${tw`tracking-[1.5px] text-xl`};
+    ${tw`tracking-[1.5px] text-2xl`};
   }
 
   h1 {
-    ${tw`tracking-[1.5px] text-[1.75rem] leading-[2.1875rem]`};
+    ${tw`tracking-[1.5px] text-3xl`};
   }
 `;
 
 const A4Logo = styled.div`
   ${tw`flex items-center justify-center`};
-  ${tw`w-[4.6875rem] h-[4.6875rem]`};
+  ${tw`w-[6.25rem] h-[6.25rem]`};
 `;
 
 //! ----------> COMPONENTS <----------
-export const A4Header = ({ title, subtitle }: Props ) => (
+export const A4Header = ({ title, subtitle }: Props) => (
   <A4Wrapper>
     <A4Logo>
       <Image
