@@ -10,6 +10,7 @@ declare global {
       MJ_API_TOKEN: string;
       BREVO_SMTP_KEY: string;
       BREVO_API_KEY: string;
+      DO_CHROMIUM_URL: string;
     }
   }
 }

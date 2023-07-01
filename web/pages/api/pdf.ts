@@ -1,27 +1,37 @@
 import { NextApiRequest, NextApiResponse, NextApiHandler } from "next";
-import format from "date-fns/format";
-const puppeteer = require("puppeteer");
+import chromium from "@sparticuz/chromium-min";
+import puppeteer from "puppeteer-core";
 
 const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const query = req?.query;
-  const { href, filename } = query;
-  const path = `${filename}-${format(new Date(), `ddMMy`)}.pdf`;
+  const { href } = query;
 
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
+  try {
+    const browser = await puppeteer.launch({
+      args: chromium.args,
+      executablePath: await chromium.executablePath(process.env.DO_CHROMIUM_URL),
+    });
 
-  await page.goto(process.env.NEXT_PUBLIC_SITE_URL + href, { waitUntil: `networkidle0` });
-  await page.emulateMediaType(`screen`);
+    const page = await browser.newPage();
 
-  const pdf = await page.pdf({
-    path: `${path}.pdf`,
-    printBackground: true,
-    filename: `${filename}-${format(new Date(), `ddMMy`)}.pdf`,
-  });
+    const pdfUrl = process.env.NEXT_PUBLIC_SITE_URL + href;
+    console.log(pdfUrl);
 
-  res.send(pdf);
+    await page.goto(pdfUrl, {
+      waitUntil: `networkidle0`,
+    });
 
-  await browser.close();
+    const pdf = await page.pdf({
+      path: `/tmp/awesome.pdf`,
+      printBackground: true,
+    });
+
+    await browser.close();
+    return res.status(200).json({ pdf });
+  } catch (error: any) {
+    console.log(error);
+    return res.status(error.statusCode || 500).json({ error: error.message })
+  }
 };
 
 export default handler;
