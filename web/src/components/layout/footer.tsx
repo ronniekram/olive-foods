@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import tw, { styled } from "twin.macro";
@@ -55,11 +55,16 @@ const SignUp = () => {
 
   return (
     <Newsletter onSubmit={handleSubmit} id="subscribe">
-      <label tw="sr-only" htmlFor="email">Email Address</label>
-      <Input type="text" name="email" value={email} onChange={(e) => setEmail(e.currentTarget.value)} />
-      <Submit type="submit">
-        Subscribe
-      </Submit>
+      <label tw="sr-only" htmlFor="email">
+        Email Address
+      </label>
+      <Input
+        type="text"
+        name="email"
+        value={email}
+        onChange={(e) => setEmail(e.currentTarget.value)}
+      />
+      <Submit type="submit">Subscribe</Submit>
     </Newsletter>
   );
 };
@@ -70,34 +75,68 @@ const Footer = () => {
       <Wrapper tw="pt-10 pb-8 md:(py-9) xl:(pt-16 pb-12)">
         <div tw="flex flex-col space-y-5 md:(flex-row space-y-0 justify-between items-center)">
           <div tw="flex flex-col space-y-5 w-full md:(w-[50.75%] space-y-4) xl:(w-[41%] space-y-6) 2xl:(w-[33.6%])">
-            <h2 tw="text-orange-200 font-display text-[22px] md:(text-2xl) xl:(text-3xl)">Hungry for more? Join our list</h2>
+            <h2 tw="text-orange-200 font-display text-[22px] md:(text-2xl) xl:(text-3xl)">
+              Hungry for more? Join our list
+            </h2>
             <SignUp />
             <ul tw="flex items-center space-x-3 md:(space-x-4) xl:(space-x-8) text-orange-200">
               <li>
-                <Social href="https://tiktok.com/@olivefoodsco" target="_blank" rel="noreferrer" aria-label="TikTok">
+                <Social
+                  href="https://tiktok.com/@olivefoodsco"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="TikTok"
+                >
                   <BsTiktok />
                 </Social>
               </li>
               <li>
-                <Social href="https://instagram.com/olivefoodsco" target="_blank" rel="noreferrer" aria-label="Instagram">
+                <Social
+                  href="https://instagram.com/olivefoodsco"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Instagram"
+                >
                   <BsInstagram />
                 </Social>
               </li>
               <li>
-                <Social href="mailto:olivefoodsco@gmail.com" target="_blank" rel="noreferrer" aria-label="Email" tw="text-3xl xl:(text-4xl)">
+                <Social
+                  href="mailto:olivefoodsco@gmail.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Email"
+                  tw="text-3xl xl:(text-4xl)"
+                >
                   <BsEnvelopeHeart />
                 </Social>
               </li>
             </ul>
           </div>
-          <Link href="/" prefetch={false} tw="mx-auto w-40 h-[125px] md:(w-[188.57px] h-[150px] mr-0) xl:(w-[251.43px] h-[200px])" aria-label="Home">
+          <Link
+            href="/"
+            prefetch={false}
+            tw="mx-auto w-40 h-[125px] md:(w-[188.57px] h-[150px] mr-0) xl:(w-[251.43px] h-[200px])"
+            aria-label="Home"
+          >
             <Image src="/logo-foot.png" width={321} height={247} alt="Olive Foods logo" />
           </Link>
         </div>
-        <p tw="text-orange-200 text-xs font-sans mt-2 md:(mt-8) xl:(text-base mt-10)">All rights reserved, Olive Foods Company, LLC {new Date().getFullYear()}</p>
+        <div tw="flex flex-col space-y-1.5 text-orange-200 text-xs font-sans mt-3 sm:(flex-row-reverse items-center justify-between space-y-0) md:(mt-8) lg:(text-base mt-10)">
+          <p>All rights reserved, Olive Foods Company, LLC {new Date().getFullYear()}</p>
+          <p tw="font-medium">
+            Made with ♥ by{" "}
+            <a href="https://ronniebee.dev" target="_blank" rel="noreferrer" tw="underline">
+              ronnie bee
+            </a>
+            .
+          </p>
+        </div>
       </Wrapper>
     </footer>
   );
 };
 
 export default Footer;
+
+// ♥
