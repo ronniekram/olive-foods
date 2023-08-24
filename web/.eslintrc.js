@@ -20,7 +20,8 @@ module.exports = {
 		"unicorn/prefer-optional-catch-binding": "off",
 		"unicorn/explicit-length-check": "off",
 		"unicorn/no-negated-condition": "off",
-		"import-quotes/import-quotes": [1, "double"]
+		"import-quotes/import-quotes": [1, "double"],
+		"no-secrets/no-secret": "off",
 	},
 	parserOptions: {
 		project: "./tsconfig.json",
