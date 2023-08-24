@@ -1,3 +1,4 @@
+/* eslint-disable no-secrets/no-secrets */
 import { DefaultSeoProps } from "next-seo";
 
 const config: DefaultSeoProps = {
@@ -14,7 +15,7 @@ const config: DefaultSeoProps = {
     description: `Minneapolis - St. Paul Catering & Meal Services`,
     images: [
       {
-        url: `https://github.com/ronniekram/olive-foods/blob/dev/web/public/opengraph.png`,
+        url: `https://ronnie.nyc3.cdn.digitaloceanspaces.com/OPENGRAPH-OLIVE.webp`,
         width: 1200,
         height: 630,
         alt: `Olive Foods Catering Company`,
