@@ -310,17 +310,26 @@ export const Service = ({ section, detailColumn }: Props) => {
       </Title>
       <a.div tw="w-full bg-green-100 overflow-hidden" style={heightSpring}>
         <div ref={ref}>
-          <Wrapper tw="py-8 md:(pt-6 pb-24) lg:(pt-8)">
+          <Wrapper tw="py-12 md:(pt-6 pb-24) lg:(pt-8)">
             <div
-              tw="grid grid-cols-1 gap-y-5 md:(gap-y-7) lg:(gap-y-0 gap-x-12)"
+              tw="grid grid-cols-1 gap-y-5 md:(gap-y-7) lg:(gap-y-0 gap-x-12) xl:(gap-x-16)"
               css={[
                 imgRight
-                  ? tw`lg:(grid-cols-[47%, auto]) xl:(grid-cols-[45%, auto]) 2xl:(grid-cols-[41%, auto] gap-x-24)`
-                  : tw`lg:(grid-cols-[45%, auto]) xl:(grid-cols-[47%, auto]) 2xl:(grid-cols-[51%, auto] gap-x-20)`,
+                  ? tw`lg:(grid-cols-[auto, 47%]) xl:(grid-cols-[auto, 45%]) 2xl:(grid-cols-[auto, 45%] gap-x-28)`
+                  : tw`lg:(grid-cols-[47%, auto]) xl:(grid-cols-[45%, auto]) 2xl:(grid-cols-[45%, auto] gap-x-28)`,
               ]}
             >
-              {image}
-              {detailColumn}
+              {imgRight ? (
+                <>
+                  {detailColumn}
+                  {image}
+                </>
+              ) : (
+                <>
+                  {image}
+                  {detailColumn}
+                </>
+              )}
             </div>
           </Wrapper>
 

@@ -43,7 +43,7 @@ const HowItWorks = ({ howItWorks, hero }: HowItWorks) => {
     <Wrapper tw="pt-6">
       <Breaker />
       <HowContainer>
-        <div tw="font-sans font-medium text-grey flex flex-col justify-center items-end space-y-4 md:(space-y-2.5) lg:(text-xl space-y-6) xl:(text-2xl)">
+        <div tw="font-sans font-medium text-grey flex flex-col justify-center items-end space-y-4 md:(space-y-2.5) lg:(text-xl space-y-6) xl:(text-2xl) 2xl:(text-3xl)">
           {hero.map((text, i) => (
             <p key={`hero-${i}`} tw="self-start">
               {text}

@@ -55,7 +55,8 @@ export type Feasts = {
 const ImageWrap = styled.div`
   ${tw`flex rounded-2xl overflow-hidden`};
   ${tw`border border-grey`};
-  ${tw`h-[10.3125rem] md:(h-[20.9375rem]) lg:(h-[25rem])`};
+  ${tw`w-full`};
+  ${tw`h-[12rem] sm:(h-[16.9375rem]) lg:(h-[31.3125rem])`};
 `;
 
 export const Detail = tw.p`text-lg text-grey font-sans font-medium md:(text-lg) xl:(text-xl)`;
@@ -64,7 +65,7 @@ const Subscribe = tw(
   AnchorLink
 )`font-bold text-orange-200 transition duration-300 ease-in-out hover:(text-blue-200)`;
 
-const List = tw.ul`font-sans font-medium text-base text-grey list-outside list-disc ml-4 md:(text-lg)`;
+const List = tw.ul`font-sans font-medium text-base text-grey list-outside list-disc ml-4 md:(text-lg) 2xl:(text-xl ml-8)`;
 
 //! ----------> DATA <----------
 export const cards: Record<ServiceSection, ServiceCard[]> = {
@@ -166,7 +167,7 @@ export const sectionDetails: Record<ServiceSection, SectionDetail> = {
     title: `Family Feasts`,
     color: `blue`,
     image: (
-      <ImageWrap>
+      <ImageWrap tw="lg:(order-[-1])">
         <Image
           src="/images/services/SERVICES-003.webp"
           alt="Individually packaged and pre-prepared meals"
@@ -218,16 +219,19 @@ export const sectionDetails: Record<ServiceSection, SectionDetail> = {
 
 //! ----------> COMPONENTS <----------
 export const WeeklySection = ({ description, options }: Weekly) => (
-  <div tw="flex flex-col space-y-6 lg:(order-1 space-y-3 justify-center)">
-    <Detail tw="font-bold mb-1">{description}</Detail>
+  <div tw="flex flex-col space-y-6 lg:(order-1 space-y-6 justify-center) 2xl:(pr-0)">
+    <Detail tw="2xl:(text-2xl)">{description}</Detail>
     <div>
+      <Detail tw="font-semi mb-1.5">We offer a rotating weekly menu with options like:</Detail>
       <List>
         {options.map((opt) => (
-          <li key={opt}>{opt}</li>
+          <li key={opt} tw="font-normal">
+            {opt}
+          </li>
         ))}
       </List>
     </div>
-    <Detail>
+    <Detail tw="text-sm md:(text-base) lg:(text-lg) xl:(text-xl)">
       <Subscribe href="#subscribe">Subscribe</Subscribe> to our emails to get a menu straight to
       your inbox on Sunday mornings!
     </Detail>
@@ -235,7 +239,7 @@ export const WeeklySection = ({ description, options }: Weekly) => (
 );
 
 export const FeastsSection = ({ description, pricing }: Feasts) => (
-  <div tw="flex flex-col space-y-6">
+  <div tw="flex flex-col space-y-6 lg:(order-2)">
     {description.map((x) => (
       <Detail key={x}>{x}</Detail>
     ))}
@@ -249,7 +253,7 @@ export const FeastsSection = ({ description, pricing }: Feasts) => (
         ))}
       </List>
     </div>
-    <Detail>
+    <Detail tw="text-sm md:(text-base) lg:(text-lg) xl:(text-xl)">
       <Subscribe href="#subscribe">Subscribe</Subscribe> to our emails to get a menu straight to
       your inbox on Sunday mornings!
     </Detail>
@@ -257,9 +261,9 @@ export const FeastsSection = ({ description, pricing }: Feasts) => (
 );
 
 export const ProvisionsSection = ({ provisions }: { provisions: string }) => (
-  <div tw="flex flex-col justify-center space-y-4 xl:(space-y-6)">
-    <Detail tw="md:(text-xl) xl:(text-2xl)">{provisions}</Detail>
-    <Detail tw="md:(text-xl) xl:(text-2xl)">
+  <div tw="flex flex-col justify-center space-y-4 lg:(order-1) xl:(space-y-12)">
+    <Detail tw="md:(text-xl) xl:(text-2xl) 2xl:(text-3xl)">{provisions}</Detail>
+    <Detail tw="text-sm md:(text-base) lg:(text-lg) xl:(text-xl)">
       <Subscribe href="#subscribe">Subscribe</Subscribe> to our emails to get a menu straight to
       your inbox on Sunday mornings!
     </Detail>

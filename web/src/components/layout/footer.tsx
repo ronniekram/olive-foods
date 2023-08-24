@@ -124,9 +124,14 @@ const Footer = () => {
         </div>
         <div tw="flex flex-col space-y-1.5 text-orange-200 text-xs font-sans mt-3 sm:(flex-row-reverse items-center justify-between space-y-0) md:(mt-8) lg:(text-base mt-10)">
           <p>All rights reserved, Olive Foods Company, LLC {new Date().getFullYear()}</p>
-          <p tw="font-medium">
+          <p tw="font-bold">
             Made with ♥ by{" "}
-            <a href="https://ronniebee.dev" target="_blank" rel="noreferrer" tw="underline">
+            <a
+              href="https://ronniebee.dev"
+              target="_blank"
+              rel="noreferrer"
+              tw="underline transition duration-300 ease-in-out hover:(text-blue-200)"
+            >
               ronnie bee
             </a>
             .
@@ -138,5 +143,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-// ♥
