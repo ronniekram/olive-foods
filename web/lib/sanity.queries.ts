@@ -1,5 +1,7 @@
 import { groq } from "next-sanity";
 
+import type { Color } from "@/components/general/testimonial";
+
 //! ----------> QUERIES <----------
 // ----------> HELPERS
 const testimonial = groq`
@@ -60,6 +62,7 @@ const servicePageQuery = groq`*[_type == "services"]{
 
 // ----------> MENUS
 const boardMenuQuery = groq`*[_type == "boards"]{
+  _updatedAt,
   options[]{
     name,
     description,
@@ -69,6 +72,7 @@ const boardMenuQuery = groq`*[_type == "boards"]{
 }`;
 
 const familyMenuQuery = groq`*[_type == "family"]{
+  _updatedAt,
   mains[]{
     name,
     sauces,
@@ -89,6 +93,7 @@ const familyMenuQuery = groq`*[_type == "family"]{
 }`;
 
 const horDMenuQuery = groq`*[_type == "horD"]{
+  _updatedAt,
   byPrice[]{
     name,
     items[]{
@@ -99,6 +104,7 @@ const horDMenuQuery = groq`*[_type == "horD"]{
 }`;
 
 const lunchMenuQuery = groq`*[_type == "lunch"]{
+  _updatedAt,
   lunchMenu{
     standard[]{
       name,
@@ -165,10 +171,10 @@ type MenuSide = {
 
 
 // ----------> REPEATERS
-type Testimonial = {
+export type Testimonial = {
   name: string;
   body: string;
-  color?: `green` | `orange` | `blue`;
+  color?: Color;
 };
 
 // ----------> PAGES
@@ -213,18 +219,20 @@ export type ServicesPage = {
 
 // ----------> MENUS
 export type BoardMenu = {
+  _updatedAt: string;
   options: {
     name: string;
-    price: string;
+    price: number;
     servings: string;
     description: string;
   }[];
 };
 
 export type FamilyMenu = {
+  _updatedAt: string;
   mains: {
     name: string;
-    price: string;
+    price: number;
     sauces: string[];
   }[];
   salads: {
@@ -242,6 +250,7 @@ export type FamilyMenu = {
 };
 
 export type HorDMenu = {
+  _updatedAt: string;
   byPrice: {
     name: number;
     items: {
@@ -252,6 +261,7 @@ export type HorDMenu = {
 };
 
 export type LunchMenu = {
+  _updatedAt: string;
   lunchMenu: {
     specialty: MenuOption[];
     standard: MenuOption[];

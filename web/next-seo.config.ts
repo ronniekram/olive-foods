@@ -3,16 +3,16 @@ import { DefaultSeoProps } from "next-seo";
 
 const config: DefaultSeoProps = {
   titleTemplate: `%s @ Olive Foods Catering Co.`,
-  title: `We olive food`,
-  description: `Minneapolis - St. Paul Catering & Meal Services`,
-  canonical: `https://olivefoodsco.com`,
+  title: `Olive Foods Catering Co.`,
+  description: `Olive Foods Catering Co is a premier Twin Cities boutique caterer, passionate about crafting exceptional food, and memorable experiences.`,
+  canonical: `https://olivefoodscompany.com/`,
   openGraph: {
     type: `website`,
     locale: `en_US`,
-    url: `https://olivefoodsco.com`,
-    title: `We olive food`,
+    url: `https://olivefoodscompany.com/`,
+    title: `Olive Foods Catering Co.`,
     siteName: `Olive Foods Catering Company`,
-    description: `Minneapolis - St. Paul Catering & Meal Services`,
+    description: `Olive Foods Catering Co is a premier Twin Cities boutique caterer, passionate about crafting exceptional food, and memorable experiences.`,
     images: [
       {
         url: `https://ronnie.nyc3.cdn.digitaloceanspaces.com/OPENGRAPH-OLIVE.webp`,

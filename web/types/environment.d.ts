@@ -11,6 +11,7 @@ declare global {
       BREVO_SMTP_KEY: string;
       BREVO_API_KEY: string;
       DO_CHROMIUM_URL: string;
+      SECRET_TOKEN: string;
     }
   }
 }

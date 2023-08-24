@@ -41,8 +41,8 @@ const CateringPage: NextPage<PageProps> = ({
       <NextSeo
         {...config}
         title="Catering"
-        description="Event catering, dinner parties, charcuterie boards from Olive Foods Catering Company"
-        canonical="https://olivefoodsco.com/catering"
+        description="We take a collaborative and customizable approach to your event, ensuring that every detail is tailored to your needs. Whether you have specific dietary restrictions or prefer a full creative menu, we've got you covered."
+        canonical="https://olivefoodscompany.com/catering"
       />
       <CateringHero />
       <Wrapper tw="md:(py-8) lg:(py-10) xl:(py-12)" id="events">

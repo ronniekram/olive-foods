@@ -26,8 +26,8 @@ const MealServicesPage: NextPage<PageProps> = (props) => {
       <NextSeo
         {...config}
         title="Meal Services"
-        description="Weekly prepared meals, meal kits, meal enhancements and gifted meals from Olive Foods Catering Company"
-        canonical="https://olivefoodsco.com/meal-services"
+        description="We understand that life can be hectic and meal planning can be overwhelming. We offer a variety of meal services to help you get delicious, high-quality meals on the table with ease."
+        canonical="https://olivefoodscompany.com/meal-services"
       />
 
       <ServiceHero header={props.header} hero={props.hero} howItWorks={props.howItWorks} />

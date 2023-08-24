@@ -2,9 +2,8 @@ import type { NextPage, GetStaticProps } from "next";
 import format from "date-fns/format";
 import tw, { styled } from "twin.macro";
 
-import { familyQuery } from "@/utils/queries";
-import { getClient } from "lib/sanity.client";
-import type { SanityFamily } from "@/utils/types";
+import { getFamilyMenu } from "lib/sanity.client";
+import { FamilyMenu as PageProps } from "lib/sanity.queries";
 
 import MenuTemplate, { Section, Item } from "@/components/menus/template";
 import Breaker from "@/components/general/breaker";
@@ -36,7 +35,7 @@ const StarchList = styled.ul`
 `;
 
 //! ----------> COMPONENTS <----------
-const FamilyMenu: NextPage<SanityFamily> = ({ _updatedAt, mains, salads, veg, starches }) => {
+const FamilyMenu: NextPage<PageProps> = ({ _updatedAt, mains, salads, veg, starches }) => {
   const saladsForComponent = salads.map((salad) => ({
     name: salad.name,
     description: salad.ingredients.join(`, `),
@@ -127,11 +126,9 @@ const FamilyMenu: NextPage<SanityFamily> = ({ _updatedAt, mains, salads, veg, st
 
 export default FamilyMenu;
 
-export const getStaticProps: GetStaticProps<SanityFamily> = async ({ preview = false }) => {
-  const client = getClient();
-  const page: SanityFamily[] = await client.fetch(familyQuery);
-
-  const { _updatedAt, mains, salads, veg, starches } = page[0];
+export const getStaticProps: GetStaticProps<PageProps> = async ({ preview = false }) => {
+  const data = await getFamilyMenu();
+  const { _updatedAt, mains, salads, starches, veg } = data[0];
 
   return {
     props: {

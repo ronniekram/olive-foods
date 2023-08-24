@@ -26,8 +26,8 @@ const HomePage: NextPage<InferGetStaticPropsType<keyof typeof getStaticProps>> =
       <NextSeo
         {...config}
         title="Olive Foods Catering Co."
-        description="Olive Foods Catering Company - Twin Cities, MN"
-        canonical="https://olivefoodsco.com"
+        description="Olive Foods Catering Co is a premier Twin Cities boutique caterer, passionate about crafting exceptional food, and memorable experiences."
+        canonical="https://olivefoodscompany.com"
       />
       <Hero />
       <div tw="w-full bg-green-100">

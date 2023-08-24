@@ -24,8 +24,8 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse
         },
         to: [
           {
-            email: `me+olive@ronniebee.dev`,
-            name: `Ronnie Bee`,
+            email: `olivefoodsco@gmail.com`,
+            name: `Olive Foods Catering Co.`,
           }
         ],
         htmlContent:`
