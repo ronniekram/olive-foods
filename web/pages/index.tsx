@@ -2,7 +2,6 @@
 import type { NextPage, GetStaticProps } from "next";
 import Image from "next/image";
 import { NextSeo } from "next-seo";
-import useNextBlurhash from "use-next-blurhash";
 import dynamic from "next/dynamic";
 import "twin.macro";
 
@@ -26,11 +25,9 @@ const Testimonials = dynamic(() => import("../src/components/general/testimonial
 const Slides = dynamic(() => import("../src/components/home/slide"));
 
 const HomePage: NextPage<Props> = ({ testimonials }) => {
-  const [blurURL] = useNextBlurhash(`LTOW7}Io.TZgyYnkr?XmMcM_WUxu`);
-  console.log(testimonials)
   return (
     <>
-    <NextSeo
+      <NextSeo
         {...config}
         title="Olive Foods Catering Co."
         description="Olive Foods Catering Company - Twin Cities, MN"
@@ -39,19 +36,21 @@ const HomePage: NextPage<Props> = ({ testimonials }) => {
       <Hero />
       <div tw="w-full bg-green-100">
         <Wrapper>
-          <h1 tw="text-orange-200 text-5xl font-display tracking-[1px] pb-10 md:(text-[56px] pb-12) lg:(text-6xl) xl:(text-8xl pb-20)">Olive Foods Catering Co.</h1>
+          <h1 tw="text-orange-200 text-5xl font-display tracking-[1px] pb-10 md:(text-[56px] pb-12) lg:(text-6xl) xl:(text-8xl pb-20)">
+            Olive Foods Catering Co.
+          </h1>
         </Wrapper>
       </div>
       <section tw="w-full h-44 flex bg-orange-200 md:(h-[18.15625rem]) xl:(h-[36.3125rem])">
         <Image
-          src="/images/home/HOME-001.png"
+          src="/images/home/HOME-001.webp"
           width={2048}
           height={1366}
+          placeholder="blur"
+          blurDataURL="LTOMmVIo.TZgyYn*r?b^McM_WUxu"
           style={{ objectFit: `cover`, objectPosition: `bottom` }}
           alt="A woman in an orange apron preparing a charcuterie board"
           quality={100}
-          placeholder="blur"
-          blurDataURL={blurURL}
           tw="mx-auto"
         />
       </section>

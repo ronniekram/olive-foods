@@ -1,3 +1,4 @@
+/* eslint-disable no-secrets/no-secrets */
 import Image from "next/image";
 import tw, { styled } from "twin.macro";
 
@@ -23,17 +24,33 @@ const Container = styled.div`
   }
 `;
 
-const Bio = ({ name, img, detail }: { name: string; img: string; detail: string }) => (
+const Bio = ({
+  name,
+  img,
+  detail,
+  blurHash,
+}: {
+  name: string;
+  img: string;
+  detail: string;
+  blurHash: string;
+}) => (
   <div tw="md:(flex space-x-8)">
     <div>
-      <h3 tw="text-green-300 font-display text-2xl md:(text-3xl mb-2.5) lg:(text-5xl) xl:(text-3xl)">{name}</h3>
-      <p tw="text-green-100 font-sans text-sm mt-1 mb-3 md:(text-lg) lg:(text-xl) xl:(text-lg)">{detail}</p>
+      <h3 tw="text-green-300 font-display text-2xl md:(text-3xl mb-2.5) lg:(text-5xl) xl:(text-3xl)">
+        {name}
+      </h3>
+      <p tw="text-green-100 font-sans text-sm mt-1 mb-3 md:(text-lg) lg:(text-xl) xl:(text-lg)">
+        {detail}
+      </p>
     </div>
     <div tw="flex rounded-2xl overflow-hidden h-[15.625rem] md:(h-[13.8125rem])">
       <Image
         src={img}
         width={910}
         height={851}
+        placeholder="blur"
+        blurDataURL={blurHash}
         alt={name}
         quality={100}
         loading="lazy"
@@ -49,16 +66,22 @@ const OurStory = () => {
       <Wrapper tw="md:(pt-10)">
         <h1 tw="font-display text-6xl md:(text-7xl) lg:(text-8xl)">Our Story</h1>
         <div tw="flex flex-col space-y-2.5 pt-10 md:(space-y-4 pt-20) lg:(space-y-6) xl:(mb-10)">
-          <h2 tw="text-[28px] text-green-300 font-display md:(text-6xl)">We are Phillip & Lauren</h2>
-          <p tw="text-base text-green-100 font-sans md:(text-xl) lg:(text-2xl)">Meet the bread and butter of Olive Foods Catering Company, the husband and wife duo.</p>
+          <h2 tw="text-[28px] text-green-300 font-display md:(text-6xl)">
+            We are Phillip & Lauren
+          </h2>
+          <p tw="text-base text-green-100 font-sans md:(text-xl) lg:(text-2xl)">
+            Meet the bread and butter of Olive Foods Catering Company, the husband and wife duo.
+          </p>
         </div>
 
         <div tw="grid grid-cols-1 gap-y-8 pt-4 md:(gap-y-12) lg:(gap-y-16) xl:(w-full grid-cols-[44%, 52.5%] gap-y-0 gap-x-10 items-end) 2xl:(grid-cols-[44%, 53%])">
           <div tw="flex w-full rounded-2xl overflow-hidden h-[15.625rem] md:(h-[30.1875rem]) xl:(h-[38.3125rem])">
             <Image
-              src="/images/story/STORY-001.png"
+              src="/images/story/STORY-001.webp"
               width={1024}
               height={927}
+              placeholder="blur"
+              blurDataURL="LgNS~VOE.S#l?^wcxaN_%MRkM|jY"
               alt="Husband and wife wearing aprons and smiling brightly"
               quality={100}
               loading="eager"
@@ -67,11 +90,23 @@ const OurStory = () => {
           </div>
 
           <div tw="flex flex-col space-y-8 md:(space-y-12) xl:(space-y-10)">
-            <Bio name="Phillip" img="/images/story/STORY-002.png" detail="Phillip is a classically trained chef with an exceptional eye for detail. After over 7 years as an executive chef, he transitioned to teaching his craft at Cooks of Crocus Hill." />
+            <Bio
+              name="Phillip"
+              img="/images/story/STORY-002.webp"
+              detail="Phillip is a classically trained chef with an exceptional eye for detail. After over 7 years as an executive chef, he transitioned to teaching his craft at Cooks of Crocus Hill."
+              blurHash="LfN0J0MI~VoL}?oeIokWIUo#V?ad"
+            />
 
-            <h3 tw="text-green-100 text-xl font-display md:(text-4xl)">Bringing people together through food is at the heart of what we do.</h3>
+            <h3 tw="text-green-100 text-xl font-display md:(text-4xl)">
+              Bringing people together through food is at the heart of what we do.
+            </h3>
 
-            <Bio name="Lauren" img="/images/story/STORY-003.png" detail="Lauren is a service industry veteran whose passion for cooking stems from her family's long lineage of skilled cooks. She has been perfecting her craft since 2010." />
+            <Bio
+              name="Lauren"
+              img="/images/story/STORY-003.webp"
+              detail="Lauren is a service industry veteran whose passion for cooking stems from her family's long lineage of skilled cooks. She has been perfecting her craft since 2010."
+              blurHash="LLP;}X-p_N0~-QI;D*id;LRjXmyD"
+            />
           </div>
         </div>
       </Wrapper>

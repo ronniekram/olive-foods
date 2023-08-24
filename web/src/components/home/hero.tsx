@@ -1,5 +1,4 @@
 import tw, { styled } from "twin.macro";
-import { useTrail, animated as a } from "react-spring";
 
 import { Wrapper as W } from "@/style/base";
 

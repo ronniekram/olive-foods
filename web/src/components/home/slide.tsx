@@ -1,3 +1,4 @@
+/* eslint-disable no-secrets/no-secrets */
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,6 +16,7 @@ export type SlideData = {
     width: number;
     height: number;
     alt: string;
+    blurHash: string;
   };
   label: string;
   href: string;
@@ -24,10 +26,11 @@ export type SlideData = {
 const slides: SlideData[] = [
   {
     img: {
-      url: `/images/slides/SLIDE-001.png`,
+      url: `/images/slides/SLIDE-001.webp`,
       width: 1560,
       height: 1040,
       alt: `Person wearing a blue apron preparing carrots and tomatoes in a bright kitchen`,
+      blurHash: `LSL4Nbtm.8R5pK~WaeEOroM|Rjoz`,
     },
     label: `Event Catering`,
     href: `/catering#events`,
@@ -35,10 +38,11 @@ const slides: SlideData[] = [
   },
   {
     img: {
-      url: `/images/slides/SLIDE-002.png`,
+      url: `/images/slides/SLIDE-002.webp`,
       width: 1040,
       height: 1560,
       alt: `A charcuterie board with meats, cheeses, olives, pickles and bread on a white background`,
+      blurHash: `LhOpY_of.9tQ%0ogf,oy?wf5MxWB`,
     },
     label: `Charcuterie Boards`,
     href: `/catering#boards`,
@@ -46,10 +50,11 @@ const slides: SlideData[] = [
   },
   {
     img: {
-      url: `/images/slides/SLIDE-003.png`,
+      url: `/images/slides/SLIDE-003.webp`,
       width: 1040,
       height: 1456,
       alt: `Chef wearing a blue apron holding a black sheet tray filled with cut tomatoes and a white towel`,
+      blurHash: `LJHd{h9v~qEM%Lb^=^NHYQ-p-;IA`,
     },
     label: `Chef Experiences`,
     href: `/catering#chef`,
@@ -57,10 +62,11 @@ const slides: SlideData[] = [
   },
   {
     img: {
-      url: `/images/slides/SLIDE-004.png`,
+      url: `/images/slides/SLIDE-004.webp`,
       width: 1040,
       height: 1560,
       alt: `Many kinds of meals pre-prepared in individual servings`,
+      blurHash: `LOJaipM|tk%2S5M}oNM_~oNFadX9`,
     },
     label: `Meal Services`,
     href: `/services`,
@@ -88,6 +94,7 @@ const ImageWrap = styled.div`
   ${tw`w-[15.625rem] md:(w-[25rem]) lg:(w-[32rem]) xl:(w-[43.75rem])`};
   ${tw`h-[13.5625rem] md:(h-[17.875rem]) lg:(h-[22rem]) xl:(h-[28rem])`};
   ${tw`flex rounded-2xl overflow-hidden`};
+  ${tw`border-grey border`};
 `;
 
 const navStyle = tw`h-full flex items-center absolute z-10 text-green-100 text-[24px] md:(text-[40px]) xl:(text-[48px])`;
@@ -97,18 +104,21 @@ const Label = ({ text, stroke, font }: { text: string; stroke: number; font: num
   const words = text.split(` `);
 
   return (
-    <div className={gentle.className} tw="-mt-5 -ml-1.5 md:(-mt-[2.5rem] -ml-10) lg:(-mt-14 -ml-12) xl:(-mt-[5rem] -ml-24)">
-    {words.map((word) => (
-      <TextWrap key={word}>
-        <Text
-          verticalAnchor="start"
-          style={{ fontSize: font, fontFamily: `var(--display)` }}
-          strokeWidth={stroke}
-        >
-          {word}
-        </Text>
-      </TextWrap>
-    ))}
+    <div
+      className={gentle.className}
+      tw="-mt-5 -ml-1.5 md:(-mt-[2.5rem] -ml-10) lg:(-mt-14 -ml-12) xl:(-mt-[5rem] -ml-24)"
+    >
+      {words.map((word) => (
+        <TextWrap key={word}>
+          <Text
+            verticalAnchor="start"
+            style={{ fontSize: font, fontFamily: `var(--display)` }}
+            strokeWidth={stroke}
+          >
+            {word}
+          </Text>
+        </TextWrap>
+      ))}
     </div>
   );
 };
@@ -120,16 +130,16 @@ const Slides = () => {
   const stroke = width < 376 ? 1 : width < 769 ? 1.5 : width < 1279 ? 2 : 2.5;
   const btnStroke = width < 376 ? 1 : width < 769 ? 1.25 : width < 1279 ? 1.5 : 1.75;
 
-  const {
-    carouselFragment,
-    slideToPrevItem,
-    slideToNextItem
-  } = useSpringCarousel({
+  const { carouselFragment, slideToPrevItem, slideToNextItem } = useSpringCarousel({
     withLoop: true,
     items: slides.map((slide) => ({
       id: slide.label,
       renderItem: (
-        <Container css={[slide.color]} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+        <Container
+          css={[slide.color]}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           <Link href={slide.href} css={[tw`stroke-grey`]}>
             <>
               <ImageWrap>
@@ -137,9 +147,12 @@ const Slides = () => {
                   src={slide.img.url}
                   width={slide.img.width}
                   height={slide.img.height}
+                  placeholder="blur"
+                  blurDataURL={slide.img.blurHash}
                   alt={slide.img.alt}
                   style={{ objectFit: `cover`, objectPosition: `center` }}
                   quality={100}
+                  priority
                 />
               </ImageWrap>
               <Label text={slide.label} stroke={stroke} font={font} />
@@ -148,7 +161,7 @@ const Slides = () => {
         </Container>
       ),
     })),
-    springConfig: { tension: 280, friction: 60 }
+    springConfig: { tension: 280, friction: 60 },
   });
 
   useEffect(() => {
@@ -163,10 +176,20 @@ const Slides = () => {
 
   return (
     <section tw="relative w-screen h-[fit-content] overflow-hidden">
-      <button css={[navStyle]} tw="pl-[5.2%] md:(pl-[5.3%]) left-0" aria-label="Previous slide" onClick={slideToPrevItem}>
+      <button
+        css={[navStyle]}
+        tw="pl-[5.2%] md:(pl-[5.3%]) left-0"
+        aria-label="Previous slide"
+        onClick={slideToPrevItem}
+      >
         <HiOutlineArrowNarrowLeft strokeWidth={btnStroke} />
       </button>
-      <button css={[navStyle]} tw="pr-[5.2%] md:(pr-[5.3%]) right-0" aria-label="Next slide" onClick={slideToNextItem}>
+      <button
+        css={[navStyle]}
+        tw="pr-[5.2%] md:(pr-[5.3%]) right-0"
+        aria-label="Next slide"
+        onClick={slideToNextItem}
+      >
         <HiOutlineArrowNarrowRight strokeWidth={btnStroke} />
       </button>
 

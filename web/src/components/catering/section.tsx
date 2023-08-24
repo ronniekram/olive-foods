@@ -6,15 +6,15 @@ import { MenuButton } from "../general/button";
 
 //! ----------> TYPES <----------
 export const menus = {
-  lunch: {
+  "lunch": {
     href: `menus/lunch`,
     filename: `lunch-menu`,
   },
-  family: {
+  "family": {
     href: `menus/family`,
     filename: `family-style`,
   },
-  boards: {
+  "boards": {
     href: `menus/boards`,
     filename: `boards-platters`,
   },
@@ -36,13 +36,14 @@ type Props = {
   title: string;
   detail: string;
   image: string;
+  blurHash?: string;
   items: ItemProps[];
   menu?: Menu;
   mediaLeft?: boolean;
 };
 
 //! ----------> STYLES <----------
-const Container = styled.section(({ mediaLeft }: { mediaLeft?: boolean}) => [
+const Container = styled.section(({ mediaLeft }: { mediaLeft?: boolean }) => [
   tw`grid grid-cols-1`,
   mediaLeft ? tw`lg:(grid-cols-[48%, 45.5%])` : tw`lg:(grid-cols-[45.5%, 48%])`,
   tw`gap-y-8 md:(gap-y-11) lg:(gap-y-0 gap-x-8) xl:(gap-x-12)`,
@@ -80,23 +81,22 @@ const Item = ({ title, body, menu }: ItemProps) => {
   return (
     <div tw="flex flex-col space-y-1.5 md:(space-y-2)">
       <H4>{title}</H4>
-      <Detail>
-        {body}
-      </Detail>
+      <Detail>{body}</Detail>
       {menu && <MenuButton menu={menu} label="Download Menu" />}
     </div>
   );
 };
 
-const CateringSection = ({ title, detail, image, items, menu, mediaLeft }: Props) => {
+const CateringSection = ({ title, detail, image, blurHash, items, menu, mediaLeft }: Props) => {
   return (
     <Container>
-      <div tw="flex flex-col space-y-6 xl:(space-y-8 w-[92.5%]) 2xl:(w-[95%])" css={[mediaLeft && tw`lg:(order-2)`]}>
+      <div
+        tw="flex flex-col space-y-6 xl:(space-y-8 w-[92.5%]) 2xl:(w-[95%])"
+        css={[mediaLeft && tw`lg:(order-2)`]}
+      >
         <div tw="flex flex-col space-y-1">
           {title !== `` && <H3>{title}</H3>}
-          <Heading css={[menu && tw`mb-1.5`]}>
-            {detail}
-          </Heading>
+          <Heading css={[menu && tw`mb-1.5`]}>{detail}</Heading>
           {menu && <MenuButton menu={menu} label="Download Menu" />}
         </div>
 
@@ -107,15 +107,29 @@ const CateringSection = ({ title, detail, image, items, menu, mediaLeft }: Props
         ))}
       </div>
       <ImageWrap css={[mediaLeft && tw`lg:(order-1)`]}>
-        <Image
-          src={image}
-          alt=""
-          width={1366}
-          height={2048}
-          style={{ objectFit: `cover`, objectPosition: `center` }}
-          loading="eager"
-          quality={100}
-        />
+        {blurHash ? (
+          <Image
+            src={image}
+            alt=""
+            width={1366}
+            height={2048}
+            placeholder="blur"
+            blurDataURL={blurHash}
+            style={{ objectFit: `cover`, objectPosition: `center` }}
+            loading="eager"
+            quality={100}
+          />
+        ) : (
+          <Image
+            src={image}
+            alt=""
+            width={1366}
+            height={2048}
+            style={{ objectFit: `cover`, objectPosition: `center` }}
+            loading="eager"
+            quality={100}
+          />
+        )}
       </ImageWrap>
     </Container>
   );
