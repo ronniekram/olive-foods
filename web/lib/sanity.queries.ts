@@ -173,7 +173,7 @@ type Testimonial = {
 };
 
 // ----------> PAGES
-export type CateringPage = SanityDocument & {
+export type CateringPage = {
   eventHeader: CateringHeader;
   events: CateringSection[];
   interactiveHeader: CateringHeader;
@@ -185,11 +185,11 @@ export type CateringPage = SanityDocument & {
   testimonials: Testimonial[];
 };
 
-export type HomePage = SanityDocument & {
+export type HomePage = {
   testimonials: Testimonial[];
 };
 
-export type ServicesPage = SanityDocument & {
+export type ServicesPage = {
   header: string;
   hero: string;
   howItWorks: {
@@ -213,7 +213,7 @@ export type ServicesPage = SanityDocument & {
 };
 
 // ----------> MENUS
-export type BoardMenu = SanityDocument & {
+export type BoardMenu = {
   options: {
     name: string;
     price: string;
@@ -222,7 +222,7 @@ export type BoardMenu = SanityDocument & {
   }[];
 };
 
-export type FamilyMenu = SanityDocument & {
+export type FamilyMenu = {
   mains: {
     name: string;
     price: string;
@@ -242,7 +242,7 @@ export type FamilyMenu = SanityDocument & {
   }[];
 };
 
-export type HorDMenu = SanityDocument & {
+export type HorDMenu = {
   byPrice: {
     name: number;
     items: {
@@ -252,7 +252,7 @@ export type HorDMenu = SanityDocument & {
   }[];
 };
 
-export type LunchMenu = SanityDocument & {
+export type LunchMenu = {
   lunchMenu: {
     specialty: MenuOption[];
     standard: MenuOption[];

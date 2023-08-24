@@ -1,9 +1,12 @@
 /* eslint-disable no-secrets/no-secrets */
-import type { NextPage, GetStaticProps } from "next";
+import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
 import Image from "next/image";
 import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
 import "twin.macro";
+
+import { getHomePage } from "lib/sanity.client";
+import { HomePage as PageProps } from "lib/sanity.queries";
 
 import { Wrapper } from "@/style/base";
 import Hero from "@/components/home/hero";
@@ -11,20 +14,13 @@ import Mission from "@/components/home/mission";
 import Meet from "@/components/home/meet";
 import config from "../next-seo.config";
 
-import { homeQuery } from "@/utils/queries";
-import { getClient } from "lib/sanity.client";
-import type { SanityTestimonal } from "@/utils/types";
-
-//! ----------> TYPES <----------
-type Props = {
-  testimonials: SanityTestimonal[];
-};
-
 //! ----------> COMPONENTS <----------
 const Testimonials = dynamic(() => import("../src/components/general/testimonial"));
 const Slides = dynamic(() => import("../src/components/home/slide"));
 
-const HomePage: NextPage<Props> = ({ testimonials }) => {
+const HomePage: NextPage<InferGetStaticPropsType<keyof typeof getStaticProps>> = ({
+  testimonials,
+}) => {
   return (
     <>
       <NextSeo
@@ -65,13 +61,12 @@ const HomePage: NextPage<Props> = ({ testimonials }) => {
 
 export default HomePage;
 
-export const getStaticProps: GetStaticProps<Props> = async ({ preview = false }) => {
-  const client = getClient();
-  const page = await client.fetch(homeQuery);
+export const getStaticProps: GetStaticProps<PageProps> = async ({ preview = false }) => {
+  const data = await getHomePage();
 
   return {
     props: {
-      testimonials: page[0].testimonials ?? [],
+      testimonials: data[0].testimonials,
     },
   };
 };
