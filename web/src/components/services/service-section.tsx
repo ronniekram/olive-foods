@@ -4,7 +4,7 @@ import Image from "next/image";
 import tw, { styled } from "twin.macro";
 import useMeasure from "react-use-measure";
 import { useWindowSize } from "react-use";
-import { useSpring, animated as a } from "react-spring";
+import { useSpring, animated as a } from "@react-spring/web";
 import { FiChevronDown } from "react-icons/fi";
 import AnchorLink from "react-anchor-link-smooth-scroll-v2";
 

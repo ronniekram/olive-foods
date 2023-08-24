@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import tw, { styled } from "twin.macro";
-import { useSpring, config, animated as a } from "react-spring";
+import { useSpring, config, animated as a } from "@react-spring/web";
 import { useWindowSize } from "react-use";
 import { Fade as Burger } from "hamburger-react";
 import { RemoveScroll } from "react-remove-scroll";
@@ -92,20 +92,39 @@ const NavBar = () => {
     return () => router.events.off(`routeChangeStart`, () => setOpen(false));
   }, []);
 
-
   return (
     <RemoveScroll enabled={open}>
       <>
-        <a.header tw="w-full bg-green-100 py-3 md:(py-4) xl:(py-5) fixed top-0" style={spring} id="nav">
+        <a.header
+          tw="w-full bg-green-100 py-3 md:(py-4) xl:(py-5) fixed top-0"
+          style={spring}
+          id="nav"
+        >
           <Wrapper>
             <Link href="/" prefetch={false} tw="w-14 h-auto md:(w-16) xl:(w-20)" aria-label="Home">
-              <Image src="/logo.png" width={304} height={307} alt="Olive Foods Catering Co. logo, orange background with thick blue outline and white text" priority quality={100} />
+              <Image
+                src="/logo.png"
+                width={304}
+                height={307}
+                alt="Olive Foods Catering Co. logo, orange background with thick blue outline and white text"
+                priority
+                quality={100}
+              />
             </Link>
 
-            <h1 tw="text-2xl text-orange-200 font-display tracking-[1px] md:(hidden)">Olive Foods Co.</h1>
+            <h1 tw="text-2xl text-orange-200 font-display tracking-[1px] md:(hidden)">
+              Olive Foods Co.
+            </h1>
 
             {width < 768 ? (
-              <Burger toggled={open} toggle={setOpen} size={24} rounded label={open ? `Close menu` : `Open menu`} color="#E95C32" />
+              <Burger
+                toggled={open}
+                toggle={setOpen}
+                size={24}
+                rounded
+                label={open ? `Close menu` : `Open menu`}
+                color="#E95C32"
+              />
             ) : (
               <ul tw="flex flex-col space-y-11 md:(flex-row items-center space-x-6 space-y-0) xl:(space-x-16)">
                 {items.map((item) => (
