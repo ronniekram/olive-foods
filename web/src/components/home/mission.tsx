@@ -1,3 +1,4 @@
+/* eslint-disable no-secrets/no-secrets */
 import Image from "next/image";
 import tw, { styled } from "twin.macro";
 
@@ -22,12 +23,18 @@ const Mission = () => (
   <>
     <section tw="w-full bg-green-100 py-12">
       <Wrapper tw="flex flex-col space-y-8 md:(flex-row items-center justify-between)">
-        <MissionH2 tw="text-green-500 pr-4">Exceptional hospitality driven by <span tw="text-green-400">innovation</span>, <span tw="text-green-400">quality</span> and <span tw="text-green-400">collaboration</span></MissionH2>
+        <MissionH2 tw="text-green-500 pr-4">
+          Exceptional hospitality driven by <span tw="text-green-400">innovation</span>,{" "}
+          <span tw="text-green-400">quality</span> and{" "}
+          <span tw="text-green-400">collaboration</span>
+        </MissionH2>
         <MissionImage>
           <Image
-            src="/images/home/HOME-002.png"
+            src="/images/home/HOME-002.webp"
             width={2048}
             height={1366}
+            placeholder="blur"
+            blurDataURL="LBFOiY?u00E2?wtR9FVYIqxZ9FD$"
             style={{ objectFit: `cover`, objectPosition: `bottom` }}
             alt="Several women standing around a table full of snacks, talking and laughing"
             quality={100}
@@ -39,12 +46,18 @@ const Mission = () => (
 
     <section tw="w-full bg-green-400 py-12 md:(py-14) xl:(py-20)">
       <Wrapper tw="flex flex-col space-y-8 md:(flex-row-reverse items-center justify-between)">
-        <MissionH2 tw="text-green-100 xl:(w-[36rem]) 2xl:(w-[42rem])">We foster <span tw="text-green-500">connections</span> and cultivate <span tw="text-green-500">community</span> through the love and art of <span tw="text-green-500">food</span></MissionH2>
+        <MissionH2 tw="text-green-100 xl:(w-[36rem]) 2xl:(w-[42rem])">
+          We foster <span tw="text-green-500">connections</span> and cultivate{" "}
+          <span tw="text-green-500">community</span> through the love and art of{" "}
+          <span tw="text-green-500">food</span>
+        </MissionH2>
         <MissionImage>
           <Image
-            src="/images/home/HOME-003.png"
+            src="/images/home/HOME-003.webp"
             width={2048}
             height={1366}
+            placeholder="blur"
+            blurDataURL="L7FFgK4oH=4:Y6r;*0ozx^M{Xn.8"
             style={{ objectFit: `cover`, objectPosition: `bottom` }}
             alt="A group of people making a toast, shot from below with a clear blue sky in the background"
             quality={100}

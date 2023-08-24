@@ -3,23 +3,24 @@ import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
 import "twin.macro";
 
-import ServiceHero from "@/components/services/hero";
-import ServiceSection, { prepared, feasts, enhance, gift } from "@/components/services/service-section";
 import config from "../next-seo.config";
 
-import { serviceQuery } from "@/utils/queries";
-import { getClient } from "lib/sanity.client";
-import type { SanityTestimonal } from "@/utils/types";
+import ServiceHero from "@/components/services/hero";
+import { getServicesPage } from "lib/sanity.client";
+import { ServicesPage as PageProps } from "lib/sanity.queries";
+import { Service } from "@/components/services/service-section";
 
-//! ----------> TYPES <----------
-type Props = {
-  testimonials: SanityTestimonal[];
-};
+import {
+  WeeklySection,
+  FeastsSection,
+  ProvisionsSection,
+  GiftsSection,
+} from "@/components/services/data";
 
 //! ----------> COMPONENTS <----------
 const Testimonials = dynamic(() => import("../src/components/general/testimonial"));
 
-const MealServicesPage: NextPage<Props> = ({ testimonials }) => {
+const MealServicesPage: NextPage<PageProps> = (props) => {
   return (
     <>
       <NextSeo
@@ -29,62 +30,50 @@ const MealServicesPage: NextPage<Props> = ({ testimonials }) => {
         canonical="https://olivefoodsco.com/meal-services"
       />
 
-      <ServiceHero />
+      <ServiceHero header={props.header} hero={props.hero} howItWorks={props.howItWorks} />
 
-      <ServiceSection
-        title={prepared.title}
-        col1={prepared.col1}
-        col2={prepared.col2}
-        sub={prepared?.sub}
-        imgRight={prepared?.imgRight}
-        color={prepared.color}
-        cards={prepared.cards}
+      <Service
+        section="weekly"
+        detailColumn={
+          <WeeklySection description={props.weekly.description} options={props.weekly.options} />
+        }
       />
 
-      <ServiceSection
-        title={feasts.title}
-        col1={feasts.col1}
-        col2={feasts.col2}
-        sub={feasts?.sub}
-        imgRight={feasts?.imgRight}
-        color={feasts.color}
-        cards={feasts.cards}
+      <Service
+        section="feasts"
+        detailColumn={
+          <FeastsSection description={props.feasts.description} pricing={props.feasts.pricing} />
+        }
       />
 
-      <ServiceSection
-        title={enhance.title}
-        col1={enhance.col1}
-        col2={enhance.col2}
-        sub={enhance?.sub}
-        imgRight={enhance?.imgRight}
-        color={enhance.color}
-        cards={enhance.cards}
+      <Service
+        section="provisions"
+        detailColumn={<ProvisionsSection provisions={props.provisions} />}
       />
 
-      <ServiceSection
-        title={gift.title}
-        col1={gift.col1}
-        col2={gift.col2}
-        sub={gift?.sub}
-        imgRight={gift?.imgRight}
-        color={gift.color}
-        cards={gift.cards}
-      />
+      <Service section="gift" detailColumn={<GiftsSection gift={props.gift} />} />
 
-      <Testimonials items={testimonials} />
+      <Testimonials items={props.testimonials} />
     </>
   );
 };
 
 export default MealServicesPage;
 
-export const getStaticProps: GetStaticProps<Props> = async ({ preview = false }) => {
-  const client = getClient();
-  const page = await client.fetch(serviceQuery);
+export const getStaticProps: GetStaticProps<PageProps> = async ({ preview = false }) => {
+  const data = await getServicesPage();
+  const { header, hero, howItWorks, weekly, feasts, provisions, gift, testimonials } = data[0];
 
   return {
     props: {
-      testimonials: page[0].testimonials ?? [],
+      header,
+      hero,
+      howItWorks,
+      weekly,
+      feasts,
+      provisions,
+      gift,
+      testimonials,
     },
   };
 };

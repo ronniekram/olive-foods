@@ -1,5 +1,5 @@
 import { definePreview } from "next-sanity/preview";
-import { dataset, projectId } from "./sanity.client";
+import { dataset, projectId } from "./sanity.api";
 
 function onPublicAccessOnly() {
   throw new Error(`Unable to load preview -- Please log in to your Sanity studio.`);
