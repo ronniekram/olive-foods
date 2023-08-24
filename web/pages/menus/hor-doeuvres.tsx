@@ -3,9 +3,9 @@ import format from "date-fns/format";
 import tw, { styled } from "twin.macro";
 import _chunk from "lodash/chunk";
 
-import { horDQuery } from "@/utils/queries";
-import { getClient } from "lib/sanity.client";
-import type { SanityHors, SanityHDSection } from "@/utils/types";
+import { getHorDMenu } from "lib/sanity.client";
+import type { SanityHDSection } from "@/utils/types";
+import { HorDMenu as PageProps } from "lib/sanity.queries";
 
 import MenuTemplate from "@/components/menus/template";
 import Breaker from "@/components/general/breaker";
@@ -65,7 +65,7 @@ const Section = ({ section }: { section: SanityHDSection }) => {
   );
 };
 
-const HorDMenu: NextPage<SanityHors> = ({ _updatedAt, byPrice }) => {
+const HorDMenu: NextPage<PageProps> = ({ _updatedAt, byPrice }) => {
   const chunks = _chunk(byPrice, 4);
 
   return (
@@ -99,10 +99,9 @@ const HorDMenu: NextPage<SanityHors> = ({ _updatedAt, byPrice }) => {
 
 export default HorDMenu;
 
-export const getStaticProps: GetStaticProps<SanityHors> = async ({ preview = false }) => {
-  const client = getClient();
-  const page: SanityHors[] = await client.fetch(horDQuery);
-  const { _updatedAt, byPrice } = page[0];
+export const getStaticProps: GetStaticProps<PageProps> = async ({ preview = false }) => {
+  const data = await getHorDMenu();
+  const { _updatedAt, byPrice } = data[0];
 
   return {
     props: {
