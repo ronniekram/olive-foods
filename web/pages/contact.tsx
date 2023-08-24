@@ -14,8 +14,8 @@ const ContactPage = () => {
       <NextSeo
         {...config}
         title="Contact Us"
-        description="Contact Olive Foods Catering Company about your next event."
-        canonical="https://olivefoodsco.com/contact"
+        description="We're thrilled that you're interested in working with us! Please share a few details about what you're looking for, and we'll work together to create an experience that perfectly meets your needs."
+        canonical="https://olivefoodscompany.com/contact"
       />
       <div tw="w-screen min-h-screen bg-orange-200 pt-16 pb-20 md:(pt-20 pb-36) xl:(pt-28 pb-48)">
         <Wrapper>

@@ -20,8 +20,8 @@ const Story = () => {
       <NextSeo
         {...config}
         title="Our Story"
-        description="Phillip & Lauren Dekanick - Owners & Founders of Olive Foods Catering Company"
-        canonical="https://olivefoodsco.com/our-story"
+        description="A meal is about more than just eating. We're committed to crafting an experience your guests will always remember."
+        canonical="https://olivefoodscompany.com/our-story"
       />
       <OurStory />
       <TwoCol
