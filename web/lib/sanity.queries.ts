@@ -1,4 +1,3 @@
-import type { SanityDocument } from "sanity";
 import { groq } from "next-sanity";
 
 //! ----------> QUERIES <----------
@@ -140,7 +139,7 @@ type CateringHeader = {
 type CateringSection = {
   title: string;
   body: string;
-  menu: string;
+  menu: `boards` | `family` | `lunch` | `hor-doeuvres`;
 };
 
 type MenuOption = {
@@ -190,8 +189,8 @@ export type HomePage = {
 };
 
 export type ServicesPage = {
-  header: string;
-  hero: string;
+  header: string[];
+  hero: string[];
   howItWorks: {
     list: string[];
     subtext: string[];

@@ -19,7 +19,14 @@ import CardRow, {
   giftCards,
 } from "@/components/services/card-row";
 
+import { cards, sectionDetails, ServiceSection as SectionName } from "./data";
+
 //! ----------> TYPES <----------
+type Props = {
+  section: SectionName;
+  detailColumn: JSX.Element;
+};
+
 export type SectionProps = {
   title: string;
   col1: JSX.Element;
@@ -267,3 +274,59 @@ const ServiceSection = ({ title, sub, col1, col2, imgRight, color, cards }: Sect
 };
 
 export default ServiceSection;
+
+export const Service = ({ section, detailColumn }: Props) => {
+  const sectionCards = cards[section];
+  const details = sectionDetails[section];
+  const { title, color, image, imgRight } = details;
+
+  const [open, setOpen] = useState<boolean>(false);
+  const { width } = useWindowSize();
+  const [ref, bounds] = useMeasure();
+
+  const toggle = () => setOpen(!open);
+
+  const heightSpring = useSpring({
+    height: open ? bounds.height : 0,
+  });
+
+  const rotateSpring = useSpring({
+    transform: open ? `rotate(180deg)` : `rotate(0deg)`,
+  });
+
+  useEffect(() => {
+    if (width > 375) {
+      setOpen(true);
+    }
+  }, [width]);
+
+  return (
+    <>
+      <Title open={open}>
+        <H2> {title} </H2>
+        <Toggle style={rotateSpring} onClick={toggle}>
+          <FiChevronDown size={36} strokeWidth={2} />
+        </Toggle>
+      </Title>
+      <a.div tw="w-full bg-green-100 overflow-hidden" style={heightSpring}>
+        <div ref={ref}>
+          <Wrapper tw="py-8 md:(pt-6 pb-24) lg:(pt-8)">
+            <div
+              tw="grid grid-cols-1 gap-y-5 md:(gap-y-7) lg:(gap-y-0 gap-x-12)"
+              css={[
+                imgRight
+                  ? tw`lg:(grid-cols-[47%, auto]) xl:(grid-cols-[45%, auto]) 2xl:(grid-cols-[41%, auto] gap-x-24)`
+                  : tw`lg:(grid-cols-[45%, auto]) xl:(grid-cols-[47%, auto]) 2xl:(grid-cols-[51%, auto] gap-x-20)`,
+              ]}
+            >
+              {image}
+              {detailColumn}
+            </div>
+          </Wrapper>
+
+          <CardRow color={color} cards={sectionCards} />
+        </div>
+      </a.div>
+    </>
+  );
+};
