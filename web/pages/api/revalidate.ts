@@ -29,27 +29,28 @@ export default async function handler(req: CustomRequest, res: NextApiResponse) 
 
     switch(_type) {
       case `home`: {
-        return await res.revalidate(`/`);
+        await res.revalidate(`/`);
       }
       case `catering`: {
-        return await res.revalidate(`/catering`);
+        await res.revalidate(`/catering`);
       }
       case `services`: {
-        return await res.revalidate(`/meal-services`);
+       await res.revalidate(`/meal-services`);
       }
       case `boards`: {
-        return await res.revalidate(`/menus/boards`);
+        await res.revalidate(`/menus/boards`);
       }
       case `lunch`: {
-        return await res.revalidate(`/menus/lunch`);
+        await res.revalidate(`/menus/lunch`);
       }
       case `family`: {
-        return await res.revalidate(`/menus/family`);
+        await res.revalidate(`/menus/family`);
       }
       case `horD`: {
-        return await res.revalidate(`/menus/hor-doeuvres`);
+        await res.revalidate(`/menus/hor-doeuvres`);
       }
     }
+    return res.json({ revalidated: true, message: `Path for ${_type}revalidated` });
 
   } catch (error) {
     console.error(error);
