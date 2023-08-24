@@ -22,6 +22,9 @@ dependencies:
   '@sanity/image-url':
     specifier: ^1.0.2
     version: 1.0.2
+  '@sanity/webhook':
+    specifier: ^3.0.1
+    version: 3.0.1
   '@sparticuz/chromium-min':
     specifier: ^114.0.0
     version: 114.0.0
@@ -3270,6 +3273,13 @@ packages:
     dependencies:
       base64url: 3.0.1
       tslib: 2.6.0
+    dev: false
+
+  /@sanity/webhook@3.0.1:
+    resolution: {integrity: sha512-2eTDg/+TR8lSX2OH6wH7M8UUwZUsD/i8Raw9mFH9myt2mkPY3ns77cU6K1QL2ZhwIIDJT5tttTELURF7RjlzVg==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      base64url: 3.0.1
     dev: false
 
   /@sideway/address@4.1.4:

@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import tw, { styled, css } from "twin.macro";
 import { useSpringCarousel } from "react-spring-carousel";
 
-import { SanityTestimonal } from "@/utils/types";
 import { Testimonial as Props } from "lib/sanity.queries";
 import { Background } from "@/assets/svg/testimonial";
 
