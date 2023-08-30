@@ -93,7 +93,9 @@ export const prepared: SectionProps = {
     <div tw="flex flex-col space-y-6 lg:(order-1 space-y-3 justify-center)">
       <Detail>These meals are individually packed and ready to eat!</Detail>
       <div>
-        <Detail tw="font-bold mb-1">We offer a rotating weekly menu with options like:</Detail>
+        <Detail tw="font-semi md:(font-bold) mb-1">
+          We offer a rotating weekly menu with options like:
+        </Detail>
         <List>
           <li>Power bowl (with grains)</li>
           <li>Power bowl (Paleo)</li>
@@ -140,7 +142,7 @@ export const feasts: SectionProps = {
       </Detail>
       <Detail>Family feasts include protein, vegetables, starch/grain, sauce and garnishes.</Detail>
       <div>
-        <Detail tw="font-bold mb-1">Pricing:</Detail>
+        <Detail tw="font-semi md:(font-bold) mb-1">Pricing:</Detail>
         <List>
           <li>Vegetarian, soup or salad: $60+</li>
           <li>Land proteins: $100+</li>

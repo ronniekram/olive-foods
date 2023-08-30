@@ -37,7 +37,7 @@ const Download = styled.a`
   ${tw`flex items-center space-x-1`};
   ${tw`px-6 py-1 md:(px-8) xl:(px-10)`};
   ${tw`border-[1.5px] border-orange-200 rounded-[36px]`};
-  ${tw`font-sans font-bold text-xs text-orange-200`};
+  ${tw`font-sans font-semi text-xs text-orange-200`};
   ${tw`md:(text-sm)`};
   ${tw`hover:(border-blue-200 text-blue-200)`};
 `;

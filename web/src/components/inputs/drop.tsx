@@ -137,7 +137,9 @@ const SelectMenu = ({
           isSearchable
         />
       </Wrapper>
-      <p tw="text-2xs font-bold text-orange-300 pl-2.5 md:(text-xs pl-3) xl:(pl-4)">{error}</p>
+      <p tw="text-2xs font-semi md:(font-bold) text-orange-300 pl-2.5 md:(text-xs pl-3) xl:(pl-4)">
+        {error}
+      </p>
     </label>
   );
 };

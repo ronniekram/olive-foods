@@ -103,7 +103,7 @@ const ServiceHero = ({ howItWorks, hero, header }: Header) => {
           </ImageWrap>
         </Content>
 
-        <p tw="text-grey font-sans font-bold text-xs md:(text-sm pb-4) lg:(text-base) xl:(text-lg) 2xl:(text-xl)">
+        <p tw="text-grey font-sans  font-semi md:(font-bold) text-xs md:(text-sm pb-4) lg:(text-base) xl:(text-lg) 2xl:(text-xl)">
           All meal services require a 72-hour advance notice. Orders should be submitted by email:{" "}
           <a
             href="mailto:olivefoods@gmail.com"

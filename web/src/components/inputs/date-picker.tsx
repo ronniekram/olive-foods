@@ -46,7 +46,7 @@ const styles = css`
     ${tw`transition duration-200 ease-in-out hover:(bg-orange-100 text-orange-300)`};
   }
   .react-datepicker__day--selected {
-    ${tw`bg-orange-200 text-orange-100 font-bold`};
+    ${tw`bg-orange-200 text-orange-100 font-semi md:(font-bold)`};
   }
   .react-datepicker__month {
     ${tw`text-green-500 font-sans text-sm pt-4 pb-5`};
@@ -58,7 +58,7 @@ const styles = css`
     ${tw`w-full font-sans text-xs font-medium flex! justify-between px-7 py-1`};
   }
   .react-datepicker__day-name {
-    ${tw`font-bold text-orange-100`};
+    ${tw`font-semi text-orange-100 md:(font-bold)`};
   }
   .react-datepicker__navigation {
     ${tw`mt-4 mx-1`};
@@ -88,7 +88,9 @@ const Calendar = ({ label, startDate, onChange, error, placeholder, ...rest }: P
         minDate={addDays(new Date(), 8)}
         dateFormat="MMM dd, yyyy"
       />
-      <p tw="text-2xs font-bold text-orange-300 pl-2.5 md:(text-xs pl-3) xl:(pl-4)">{error}</p>
+      <p tw="text-2xs font-semi md:(font-bold) text-orange-300 pl-2.5 md:(text-xs pl-3) xl:(pl-4)">
+        {error}
+      </p>
     </label>
   );
 };
