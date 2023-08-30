@@ -27,13 +27,13 @@ const Hero = () => {
           </H3>
         </div>
         <div tw="text-grey font-sans md:(w-[46%])">
-          <h2 tw="font-bold mb-2 text-base md:(mb-3) lg:(text-xl) xl:(text-[28px]) 2xl:(text-3xl)">
+          <h2 tw="font-semi mb-2 text-base md:(mb-3 font-bold) lg:(text-xl) xl:(text-[28px]) 2xl:(text-3xl)">
             A premier Twin Cities boutique caterer
           </h2>
           <p tw="text-sm lg:(text-base) xl:(text-xl) 2xl:(text-2xl)">
             We're passionate about crafting exceptional food and memorable experiences. From the
             planning stages to event day decor,{" "}
-            <span tw="font-bold text-orange-200">let us help make your next event a success</span>.
+            <span tw="font-semi text-orange-200 md:(font-semi)">let us help make your next event a success</span>.
           </p>
         </div>
       </Wrapper>

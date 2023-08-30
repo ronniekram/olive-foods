@@ -27,8 +27,8 @@ const slides: SlideData[] = [
   {
     img: {
       url: `/images/slides/SLIDE-001.webp`,
-      width: 1560,
-      height: 1040,
+      width: 740,
+      height: 480,
       alt: `Person wearing a blue apron preparing carrots and tomatoes in a bright kitchen`,
       blurHash: `LSL4Nbtm.8R5pK~WaeEOroM|Rjoz`,
     },
@@ -39,8 +39,8 @@ const slides: SlideData[] = [
   {
     img: {
       url: `/images/slides/SLIDE-002.webp`,
-      width: 1040,
-      height: 1560,
+      width: 740,
+      height: 480,
       alt: `A charcuterie board with meats, cheeses, olives, pickles and bread on a white background`,
       blurHash: `LhOpY_of.9tQ%0ogf,oy?wf5MxWB`,
     },
@@ -51,8 +51,8 @@ const slides: SlideData[] = [
   {
     img: {
       url: `/images/slides/SLIDE-003.webp`,
-      width: 1040,
-      height: 1456,
+      width: 740,
+      height: 480,
       alt: `Chef wearing a blue apron holding a black sheet tray filled with cut tomatoes and a white towel`,
       blurHash: `LJHd{h9v~qEM%Lb^=^NHYQ-p-;IA`,
     },
@@ -63,8 +63,8 @@ const slides: SlideData[] = [
   {
     img: {
       url: `/images/slides/SLIDE-004.webp`,
-      width: 1040,
-      height: 1560,
+      width: 740,
+      height: 480,
       alt: `Many kinds of meals pre-prepared in individual servings`,
       blurHash: `LOJaipM|tk%2S5M}oNM_~oNFadX9`,
     },
@@ -76,7 +76,7 @@ const slides: SlideData[] = [
 
 //! ----------> STYLES <----------
 const Container = styled.div`
-  ${tw`w-screen h-[23.3125rem] md:(h-[33.0625rem]) lg:(h-[40rem]) xl:(h-[50.4375rem])`};
+  ${tw`w-screen h-[23.3125rem] sm:(h-[26rem]) md:(h-[33.0625rem]) lg:(h-[40rem]) xl:(h-[50.4375rem])`};
   ${tw`text-green-100`};
   ${tw`flex items-center justify-center`};
 `;
@@ -84,51 +84,105 @@ const Container = styled.div`
 const TextWrap = styled.div`
   svg {
     ${tw`w-[15.625rem] md:(w-[25rem]) lg:(w-[32rem]) xl:(w-[43.75rem])`};
-    ${tw`h-10 md:(h-[3.75rem]) lg:(h-20) xl:(h-[6.75rem])`};
+    ${tw`h-10 sm:(h-[3rem]) md:(h-[4rem]) lg:(h-[4.75rem]) xl:(h-[4.85rem])`};
     ${tw`fill-green-100`};
     drop-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    @media (min-width: 1440px) {
+      ${tw`h-[5.85rem]`};
+    }
+  }
+`;
+
+const LabelContainer = styled.div`
+  ${tw`-mt-7 -ml-1.5 sm:(-mt-10)`};
+  ${tw`md:(-mt-[2.75rem] -ml-10) lg:(-mt-[4.5rem] -ml-12)`};
+  @media (min-width: 1440px) {
+    ${tw`-mt-[5.5rem] -ml-24`};
   }
 `;
 
 const ImageWrap = styled.div`
-  ${tw`w-[15.625rem] md:(w-[25rem]) lg:(w-[32rem]) xl:(w-[43.75rem])`};
-  ${tw`h-[13.5625rem] md:(h-[17.875rem]) lg:(h-[22rem]) xl:(h-[28rem])`};
+  ${tw`w-[15.625rem] sm:(w-[25rem]) md:(w-[30rem]) lg:(w-[38rem]) xl:(w-[45.75rem])`};
+  ${tw`h-[13.5625rem] sm:(h-[15rem]) md:(h-[17.875rem]) lg:(h-[22rem]) xl:(h-[28rem])`};
   ${tw`flex rounded-2xl overflow-hidden`};
-  ${tw`border-grey border`};
+  ${tw`border-grey border-[1.5px]`};
 `;
 
 const navStyle = tw`h-full flex items-center absolute z-10 text-green-100 text-[24px] md:(text-[40px]) xl:(text-[48px])`;
+
+//! ----------> HELPERS <----------
+const fontAndStrokes = (width: number) => {
+  switch (true) {
+    case width < 475: {
+      return {
+        font: 44,
+        stroke: 1,
+        btnStroke: 1.25,
+      };
+    }
+    case width >= 475 && width <= 640: {
+      return {
+        font: 60,
+        stroke: 1.3,
+        btnStroke: 1,
+      };
+    }
+    case width <= 768: {
+      return {
+        font: 70,
+        stroke: 1.5,
+        btnStroke: 1.25,
+      };
+    }
+    case width <= 1280: {
+      return {
+        font: 104,
+        stroke: 2,
+        btnStroke: 1.25,
+      };
+    }
+    case width > 1280: {
+      return {
+        font: 132,
+        stroke: 2.5,
+        btnStroke: 1.75,
+      };
+    }
+    default: {
+      return {
+        font: 40,
+        stroke: 1,
+        btnStroke: 1,
+      };
+    }
+  }
+};
 
 //! ----------> COMPONENTS <----------
 const Label = ({ text, stroke, font }: { text: string; stroke: number; font: number }) => {
   const words = text.split(` `);
 
   return (
-    <div
-      className={gentle.className}
-      tw="-mt-5 -ml-1.5 md:(-mt-[2.5rem] -ml-10) lg:(-mt-14 -ml-12) xl:(-mt-[5rem] -ml-24)"
-    >
+    <LabelContainer className={gentle.className}>
       {words.map((word) => (
         <TextWrap key={word}>
           <Text
             verticalAnchor="start"
-            style={{ fontSize: font, fontFamily: `var(--display)` }}
+            style={{ fontSize: `${font}px`, fontFamily: `var(--display)`, lineHeight: `1.75em` }}
             strokeWidth={stroke}
           >
             {word}
           </Text>
         </TextWrap>
       ))}
-    </div>
+    </LabelContainer>
   );
 };
 
 const Slides = () => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const { width } = useWindowSize();
-  const font = width < 376 ? 44 : width < 769 ? 70 : width < 1279 ? 96 : 128;
-  const stroke = width < 376 ? 1 : width < 769 ? 1.5 : width < 1279 ? 2 : 2.5;
-  const btnStroke = width < 376 ? 1 : width < 769 ? 1.25 : width < 1279 ? 1.5 : 1.75;
+  const { font, stroke, btnStroke } = fontAndStrokes(width);
 
   const { carouselFragment, slideToPrevItem, slideToNextItem } = useSpringCarousel({
     withLoop: true,
@@ -178,7 +232,7 @@ const Slides = () => {
     <section tw="relative w-screen h-[fit-content] overflow-hidden">
       <button
         css={[navStyle]}
-        tw="pl-[5.2%] md:(pl-[5.3%]) left-0"
+        tw="pl-[5.2%] sm:(pl-[5.3%]) left-0"
         aria-label="Previous slide"
         onClick={slideToPrevItem}
       >
@@ -186,7 +240,7 @@ const Slides = () => {
       </button>
       <button
         css={[navStyle]}
-        tw="pr-[5.2%] md:(pr-[5.3%]) right-0"
+        tw="pr-[5.3%] sm:(pr-[5.2%]) right-0"
         aria-label="Next slide"
         onClick={slideToNextItem}
       >

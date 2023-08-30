@@ -63,7 +63,7 @@ export const Detail = tw.p`text-lg text-grey font-sans font-medium md:(text-lg) 
 
 const Subscribe = tw(
   AnchorLink
-)`font-bold text-orange-200 transition duration-300 ease-in-out hover:(text-blue-200)`;
+)`font-semi md:(font-bold) text-orange-200 transition duration-300 ease-in-out hover:(text-blue-200)`;
 
 const List = tw.ul`font-sans font-medium text-base text-grey list-outside list-disc ml-4 md:(text-lg) 2xl:(text-xl ml-8)`;
 
@@ -244,7 +244,7 @@ export const FeastsSection = ({ description, pricing }: Feasts) => (
       <Detail key={x}>{x}</Detail>
     ))}
     <div>
-      <Detail tw="font-bold mb-1">Pricing:</Detail>
+      <Detail tw="font-semi md:(font-bold) mb-1">Pricing:</Detail>
       <List>
         {pricing.map((option) => (
           <li key={option.type}>

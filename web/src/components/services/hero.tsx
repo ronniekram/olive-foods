@@ -40,7 +40,7 @@ const P = tw.p`text-grey text-sm font-sans font-medium md:(text-lg) xl:(text-xl)
 const HowItWorks = ({ howItWorks, hero }: HowItWorks) => {
   const { list, subtext } = howItWorks;
   return (
-    <Wrapper tw="pt-6">
+    <Wrapper tw="py-6">
       <Breaker />
       <HowContainer>
         <div tw="font-sans font-medium text-grey flex flex-col justify-center items-end space-y-4 md:(space-y-2.5) lg:(text-xl space-y-6) xl:(text-2xl) 2xl:(text-3xl)">
@@ -103,7 +103,7 @@ const ServiceHero = ({ howItWorks, hero, header }: Header) => {
           </ImageWrap>
         </Content>
 
-        <p tw="text-grey font-sans font-bold text-xs md:(text-sm pb-4) lg:(text-base) xl:(text-lg) 2xl:(text-xl)">
+        <p tw="text-grey font-sans  font-semi md:(font-bold) text-xs md:(text-sm pb-4) lg:(text-base) xl:(text-lg) 2xl:(text-xl)">
           All meal services require a 72-hour advance notice. Orders should be submitted by email:{" "}
           <a
             href="mailto:olivefoods@gmail.com"

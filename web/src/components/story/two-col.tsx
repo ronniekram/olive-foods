@@ -15,13 +15,28 @@ type Props = {
 };
 
 const colors = {
-  green: css`${tw`bg-green-100 text-green-500`}; h3 { ${tw`text-green-400`}; }`,
-  blue: css`${tw`bg-blue-100 text-blue-300`}; h3 { ${tw`text-blue-200`}; }`,
-  orange: css`${tw`bg-orange-100 text-orange-300`}; h3 { ${tw`text-orange-200`}; }`,
+  green: css`
+    ${tw`bg-green-100 text-green-500`};
+    h3 {
+      ${tw`text-green-400`};
+    }
+  `,
+  blue: css`
+    ${tw`bg-blue-100 text-blue-300`};
+    h3 {
+      ${tw`text-blue-200`};
+    }
+  `,
+  orange: css`
+    ${tw`bg-orange-100 text-orange-300`};
+    h3 {
+      ${tw`text-orange-200`};
+    }
+  `,
 };
 
 //! ----------> STYLES <----------
-const Wrapper = styled(W)(({ imgLeft } : { imgLeft?: boolean}) => [
+const Wrapper = styled(W)(({ imgLeft }: { imgLeft?: boolean }) => [
   tw`py-12 md:(py-14) xl:(py-20)`,
   tw`md:(flex items-center space-x-5) lg:(space-x-8) xl:(space-x-14) 2xl:(space-x-20)`,
   imgLeft ? tw`md:(flex-row-reverse)` : tw`md:(flex-row)`,
@@ -53,25 +68,47 @@ export const ContactCols = () => {
     <div tw="bg-green-100 text-green-500">
       <Wrapper>
         <div tw="flex w-fit px-4 mb-10 md:(px-0 mb-0)">
-          <Image src="/images/story/VEG.png" alt="Minimalist flat line illustration of bouquet garniet with a green circle in the background" loading="lazy" quality={100} width={1132} height={837} />
+          <Image
+            src="/images/story/VEG.webp"
+            alt="Minimalist flat line illustration of bouquet garniet with a green circle in the background"
+            loading="lazy"
+            quality={100}
+            width={470.41}
+            height={531.43}
+          />
         </div>
         <Content tw="md:(pl-6) lg:(pl-16) 2xl:(pl-20)">
           <h3>
-            <Link href="/contact" prefetch={false} tw="text-green-400 hover:(text-green-500)">Contact us</Link> today to start planning your next event.
+            <Link href="/contact" prefetch={false} tw="text-green-400 hover:(text-green-500)">
+              Contact us
+            </Link>{" "}
+            today to start planning your next event.
           </h3>
         </Content>
       </Wrapper>
     </div>
-  )
+  );
 };
 
 const TwoCol = ({ heading, text, color, img, alt, imgLeft }: Props) => {
   return (
     <div css={colors[color]}>
       <Wrapper imgLeft={imgLeft}>
-        <Content css={[imgLeft && tw`md:(pl-6) lg:(pl-16) 2xl:(pl-20)`, !imgLeft && tw`2xl:(pr-8)`]}>
+        <Content
+          css={[imgLeft && tw`md:(pl-6) lg:(pl-16) 2xl:(pl-20)`, !imgLeft && tw`2xl:(pr-8)`]}
+        >
           <h3>{heading}</h3>
-          <Image src={img} alt={alt} loading="lazy" quality={100} width={1002} height={837} tw="px-4 md:(hidden)" />
+          <div tw="flex px-4">
+            <Image
+              src={img}
+              alt={alt}
+              loading="lazy"
+              quality={100}
+              width={470.71}
+              height={393.34}
+              tw="w-full md:(hidden)"
+            />
+          </div>
           {text.map((x, i) => (
             <p key={`text-${i}`}>{x}</p>
           ))}

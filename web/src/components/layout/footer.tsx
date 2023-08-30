@@ -73,7 +73,7 @@ const Footer = () => {
   return (
     <footer tw="w-screen bg-green-100">
       <Wrapper tw="pt-10 pb-8 md:(py-9) xl:(pt-16 pb-12)">
-        <div tw="flex flex-col space-y-5 md:(flex-row space-y-0 justify-between items-center)">
+        <div tw="flex flex-col space-y-5 sm:(flex-row space-y-0 justify-between items-center)">
           <div tw="flex flex-col space-y-5 w-full md:(w-[50.75%] space-y-4) xl:(w-[41%] space-y-6) 2xl:(w-[33.6%])">
             <h2 tw="text-orange-200 font-display text-[22px] md:(text-2xl) xl:(text-3xl)">
               Hungry for more? Join our list

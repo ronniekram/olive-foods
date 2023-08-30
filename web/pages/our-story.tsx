@@ -31,7 +31,7 @@ const Story = () => {
           `Sharing meals with family, friends and even strangers is our favorite way to create connections and build relationships.`,
         ]}
         color="green"
-        img="/images/story/PEAR.png"
+        img="/images/story/PEAR.webp"
         alt="Minimalist flat line drawing of a pear with a green cicle in the background"
         imgLeft
       />
@@ -69,7 +69,7 @@ const Story = () => {
         heading="A meal is about more than just eating."
         text={[`We're committed to crafting an experience your guests will always remember.`]}
         color="blue"
-        img="/images/story/AVOCADO.png"
+        img="/images/story/AVOCADO.webp"
         alt="Minimalist flat line drawing of an avocado with a blue circle in the background"
       />
       <ContactCols />
@@ -79,7 +79,7 @@ const Story = () => {
           `Whether you're planning a corporate event, a birthday party or an intimate dinner, we work closely with you to curate a menu and experience unique to your needs.`,
         ]}
         color="orange"
-        img="/images/story/CARROT.png"
+        img="/images/story/CARROT.webp"
         alt="Minimalist flat line drawing of a carrot with an orange circle in the background"
       />
       <JuliaChild />

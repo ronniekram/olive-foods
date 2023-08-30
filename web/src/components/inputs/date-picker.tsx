@@ -1,5 +1,4 @@
 import tw, { css } from "twin.macro";
-import { FiCalendar } from "react-icons/fi";
 import isValid from "date-fns/isValid";
 import ReactDatePicker, { ReactDatePickerProps } from "react-datepicker";
 import addDays from "date-fns/addDays";
@@ -9,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 export type Props = ReactDatePickerProps & {
   label: string;
   onChange: (date: Date | null) => void;
+  onBlur?: (e?: any) => void;
   placeholder?: string;
   error?: string;
   startDate?: Date;
@@ -19,7 +19,7 @@ const styles = css`
   ${tw`font-sans text-sm text-green-500 font-medium md:(text-base) xl:(text-lg)`};
 
   .react-datepicker {
-    ${tw`border border-grey font-sans antialiased`};
+    ${tw`font-sans antialiased rounded`};
     ${tw`bg-green-100`};
     box-shadow: 0px 4px 8px 0px rgba(31, 67, 40, 0.25);
   }
@@ -27,8 +27,12 @@ const styles = css`
   input {
     ${tw`border border-grey rounded`};
     ${tw`bg-green-100 font-sans xl:(text-lg)`};
-    ${tw`px-2.5 py-1.5 md:(pl-3 pr-2.5 py-2) xl:(pl-4 py-2.5)`};
+    ${tw`px-2.5 py-2 md:(pl-3 pr-2.5 py-1.5) xl:(pl-4)`};
     ${tw`w-full`};
+  }
+
+  .has-error {
+    ${tw`border-[1.5px]! border-orange-300! rounded`};
   }
 
   .react-datepicker__triangle {
@@ -47,7 +51,7 @@ const styles = css`
     ${tw`transition duration-200 ease-in-out hover:(bg-orange-100 text-orange-300)`};
   }
   .react-datepicker__day--selected {
-    ${tw`bg-orange-200 text-orange-100 font-bold`};
+    ${tw`bg-orange-200 text-orange-100 font-semi md:(font-bold)`};
   }
   .react-datepicker__month {
     ${tw`text-green-500 font-sans text-sm pt-4 pb-5`};
@@ -59,7 +63,7 @@ const styles = css`
     ${tw`w-full font-sans text-xs font-medium flex! justify-between px-7 py-1`};
   }
   .react-datepicker__day-name {
-    ${tw`font-bold text-orange-100`};
+    ${tw`font-semi text-orange-100 md:(font-bold)`};
   }
   .react-datepicker__navigation {
     ${tw`mt-4 mx-1`};
@@ -77,7 +81,7 @@ const styles = css`
 `;
 
 //! ----------> COMPONENTS <----------
-const Calendar = ({ label, startDate, onChange, error, placeholder, ...rest }: Props) => {
+const Calendar = ({ label, startDate, onChange, onBlur, error, placeholder, ...rest }: Props) => {
   const date = isValid(startDate) ? startDate : null;
   return (
     <label tw="w-full" css={styles}>
@@ -86,10 +90,14 @@ const Calendar = ({ label, startDate, onChange, error, placeholder, ...rest }: P
         {...rest}
         selected={date}
         onChange={onChange}
-        minDate={addDays(new Date(), 3)}
+        onBlur={onBlur}
+        minDate={addDays(new Date(), 8)}
         dateFormat="MMM dd, yyyy"
+        className={error ? `has-error` : ``}
       />
-      <p tw="text-2xs font-bold text-orange-300 pl-2.5 md:(text-xs pl-3) xl:(pl-4)">{error}</p>
+      <p tw="text-2xs font-semi h-3.5 mt-1 md:(font-bold) text-orange-300 pl-2.5 md:(text-xs pl-3 h-6) xl:(pl-4)">
+        {error}
+      </p>
     </label>
   );
 };

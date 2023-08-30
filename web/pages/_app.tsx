@@ -19,7 +19,10 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <DefaultSeo {...config} />
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-3TZHCSR4JQ" />
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-3TZHCSR4JQ"
+        strategy="afterInteractive"
+      />
       <Script id="google-analytics">
         {`
           window.dataLayer = window.dataLayer || [];
@@ -32,7 +35,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <GlobalStyles />
       <div
         className={`${gentle.variable} ${micro.variable}`}
-        tw="antialiased flex flex-col min-h-screen bg-green-100"
+        tw="antialiased! flex flex-col min-h-screen bg-green-100"
       >
         {isMenu ? (
           <Component {...pageProps} />

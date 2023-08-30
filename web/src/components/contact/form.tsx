@@ -1,6 +1,10 @@
+/* eslint-disable unicorn/better-regex */
 import { useState } from "react";
 import tw, { styled } from "twin.macro";
 import axios from "axios";
+import isAfter from "date-fns/isAfter";
+import addDays from "date-fns/addDays";
+import format from "date-fns/format";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 
 import Input, { TextArea } from "../inputs/text";
@@ -22,14 +26,17 @@ export type FormValues = {
 
 //! ----------> STYLES <----------
 const Wrapper = styled.section`
-  ${tw`xl:(w-[55%])`};
-  ${tw`flex flex-col space-y-7`};
-  ${tw`text-grey text-sm font-sans`};
-  ${tw`md:(text-xl)`};
-  ${tw`bg-green-100 border border-orange-300`};
+  ${tw`w-full`};
+  ${tw`flex flex-col`};
+  ${tw`space-y-8 sm:(space-y-8) md:(space-y-12)`};
+  ${tw`lg:(space-y-8) xl:(space-y-12) 2xl:(space-y-14)`};
+  ${tw`text-grey font-sans`};
+  ${tw`text-sm sm:(text-base) md:(text-lg) lg:(text-base) xl:(text-lg) 2xl:(text-xl)`};
+  ${tw`bg-green-100 border-[1.5px] border-orange-300`};
   ${tw`rounded-lg`};
-  ${tw`px-5 pt-8 pb-12`};
-  ${tw`md:(px-10 pt-14 pb-20) xl:(px-14 pt-14 pb-20)`};
+  ${tw`px-5 pt-12 pb-14 sm:(px-8 pt-14 pb-20)`};
+  ${tw`md:(px-12 pt-14 pb-20) lg:(px-8 pt-16 pb-20)`};
+  ${tw`xl:(px-10 pt-20 pb-24) 2xl:(px-14)`};
   box-shadow: 0px 4px 8px 0px rgba(31, 67, 40, 0.25);
 `;
 
@@ -44,6 +51,23 @@ const eventOptions: Option[] = [
   { label: `Charcuterie - Boards`, value: `boards` },
 ];
 
+//! ----------> HELPERS <----------
+const validateDate = (value: Date) => {
+  const minDate = addDays(new Date(), 7);
+
+  if (isAfter(minDate, value)) return true;
+  return `Event date should be after ${format(minDate, `MMM d, Y`)}`;
+};
+
+const validateEmail = (value: string) => {
+  const isValid =
+    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+      value
+    );
+
+  return isValid ? true : `Invalid email address`;
+};
+
 //! ----------> COMPONENTS <----------
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -57,7 +81,7 @@ const ContactForm = () => {
     reset,
     formState: { errors },
   } = useForm<FormValues>({
-    mode: `onSubmit`,
+    mode: `onBlur`,
   });
 
   const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
@@ -90,7 +114,7 @@ const ContactForm = () => {
         </div>
       ) : (
         <div tw="flex flex-col space-y-7 md:(space-y-8)">
-          <p tw="text-sm md:(text-base) xl:(text-lg)">
+          <p tw="">
             We're thrilled that you're interested in working with us! Please share a few details
             about what you're looking for, and we'll work together to create an experience that
             perfectly meets your needs.
@@ -106,24 +130,27 @@ const ContactForm = () => {
             </p>
           )}
 
-          <form tw="flex flex-col space-y-7 md:(space-y-8)" onSubmit={handleSubmit(onSubmit)}>
-            <div tw="grid grid-cols-1 gap-y-7 md:(grid-cols-2 gap-x-5) xl:(gap-y-5)">
+          <form
+            tw="flex flex-col space-y-3 md:(space-y-6) lg:(space-y-4) xl:(space-y-3) 2xl:(space-y-4)"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <div tw="grid grid-cols-1 gap-y-3 md:(grid-cols-2 gap-x-6 gap-y-2) lg:(gap-4) xl:(gap-x-6 gap-y-3) 2xl:(gap-y-4)">
               <Input
                 type="text"
-                label="First Name*"
+                label="First name*"
                 register={{
                   ...register(`firstName`, {
-                    required: `Required`,
+                    required: `First name is required`,
                   }),
                 }}
                 error={errors?.firstName?.message}
               />
               <Input
                 type="text"
-                label="Last Name*"
+                label="Last name*"
                 register={{
                   ...register(`lastName`, {
-                    required: `Required`,
+                    required: `Last name is required`,
                   }),
                 }}
                 error={errors?.lastName?.message}
@@ -133,7 +160,8 @@ const ContactForm = () => {
                 label="Email*"
                 register={{
                   ...register(`email`, {
-                    required: `Required`,
+                    required: `Email is required`,
+                    validate: (value) => validateEmail(value),
                   }),
                 }}
                 error={errors?.email?.message}
@@ -143,16 +171,21 @@ const ContactForm = () => {
                 control={control}
                 name="eventType"
                 rules={{
-                  required: `Required`,
+                  required: `Select an event type`,
                 }}
-                render={({ field: { onChange, value }, fieldState: { error } }) => (
+                render={({
+                  field: { onChange, onBlur, value },
+                  fieldState: { invalid, error },
+                }) => (
                   <SelectMenu
-                    label="Event Type*"
+                    label="Event type*"
                     placeholder="Select an event type"
                     value={value}
                     options={eventOptions}
                     onChange={onChange}
+                    onBlur={onBlur}
                     error={error?.message}
+                    invalid={invalid}
                   />
                 )}
               />
@@ -160,16 +193,20 @@ const ContactForm = () => {
               <Controller
                 control={control}
                 name="eventDate"
-                render={({ field: { onChange, value } }) => (
+                render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
                   <Calendar
-                    label="Event Date*"
-                    error={errors?.eventDate?.message}
+                    label="Event date*"
+                    error={error?.message}
                     startDate={new Date(value)}
                     onChange={onChange}
+                    onBlur={onBlur}
                     value={value}
                   />
                 )}
-                rules={{ required: `Required` }}
+                rules={{
+                  required: `Event date is required`,
+                  validate: (value) => validateDate(new Date(value)),
+                }}
               />
             </div>
 
@@ -178,7 +215,7 @@ const ContactForm = () => {
               rows={4}
               register={{
                 ...register(`detail`, {
-                  required: `Required`,
+                  required: `Please provide details about your event`,
                 }),
               }}
               error={errors?.detail?.message}

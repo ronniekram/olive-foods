@@ -47,6 +47,12 @@ const Wrapper = styled.nav`
   ${tw`2xl:(px-0 max-w-[86rem] mx-auto)`};
   ${tw`flex items-center justify-between`};
   ${tw`antialiased`};
+
+  .hamburger-react {
+    @media (min-width: 768px) {
+      ${tw`hidden`};
+    }
+  }
 `;
 
 const MobileContainer = styled(a.nav)`
@@ -111,31 +117,28 @@ const NavBar = () => {
                 quality={100}
               />
             </Link>
-
             <h1 tw="text-2xl text-orange-200 font-display tracking-[1px] md:(hidden)">
               Olive Foods Co.
             </h1>
 
-            {width < 768 ? (
-              <Burger
-                toggled={open}
-                toggle={setOpen}
-                size={24}
-                rounded
-                label={open ? `Close menu` : `Open menu`}
-                color="#E95C32"
-              />
-            ) : (
-              <ul tw="flex flex-col space-y-11 md:(flex-row items-center space-x-6 space-y-0) xl:(space-x-16)">
-                {items.map((item) => (
-                  <li key={item.href}>
-                    <NavItem href={item.href} prefetch={false}>
-                      {item.label}
-                    </NavItem>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <Burger
+              toggled={open}
+              toggle={setOpen}
+              size={24}
+              rounded
+              label={open ? `Close menu` : `Open menu`}
+              color="#E95C32"
+            />
+
+            <ul tw="hidden md:(flex items-center space-x-6 space-y-0) xl:(space-x-16)">
+              {items.map((item) => (
+                <li key={item.href}>
+                  <NavItem href={item.href} prefetch={false}>
+                    {item.label}
+                  </NavItem>
+                </li>
+              ))}
+            </ul>
           </Wrapper>
         </a.header>
         <MobileContainer ref={ref} style={mobileSpring} tw="overflow-hidden">
