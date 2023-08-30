@@ -12,7 +12,7 @@ type Props = {
   icon?: JSX.Element;
 };
 
-export type ButtonProps = Props &{
+export type ButtonProps = Props & {
   type: `button` | `reset` | `submit`;
   onClick?: () => void;
 };
@@ -49,9 +49,7 @@ export const Button = ({ label, type = `button`, outline, icon, onClick }: Butto
   return (
     <button type={type} css={styles} onClick={onClick}>
       {label}
-      <span tw="ml-1.5 lg:(ml-2)">
-        {icon}
-      </span>
+      {icon ? <span tw="ml-1.5 lg:(ml-2)">{icon}</span> : <></>}
     </button>
   );
 };
@@ -71,7 +69,7 @@ export const LinkButton = ({ label, outline, icon, href, external }: LinkProps) 
   );
 };
 
-export const MenuButton = ({ menu, label }: { menu: Menu, label: string }) => {
+export const MenuButton = ({ menu, label }: { menu: Menu; label: string }) => {
   const href = `/api/pdf?href=${menus[menu].href}&filename=${menus[menu].filename}`;
 
   return (

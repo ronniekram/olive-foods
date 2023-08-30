@@ -19,7 +19,10 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <DefaultSeo {...config} />
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-3TZHCSR4JQ" />
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-3TZHCSR4JQ"
+        strategy="afterInteractive"
+      />
       <Script id="google-analytics">
         {`
           window.dataLayer = window.dataLayer || [];

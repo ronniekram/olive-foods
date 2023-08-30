@@ -21,7 +21,12 @@ export type Option<T = OptionValue> = {
 
 //! ----------> STYLES <----------
 const dropStyle: StylesConfig = {
-  dropdownIndicator: (styles) => ({ ...styles, color: `#1F4328` }),
+  dropdownIndicator: (styles) => ({
+    ...styles,
+    color: `#1F4328`,
+    paddingTop: `4px`,
+    paddingBottom: `4px`,
+  }),
   indicatorSeparator: (styles) => ({ ...styles, display: `none` }),
   clearIndicator: (styles) => ({ ...styles, color: `#1F4328` }),
   option: (styles, state) => ({
@@ -46,14 +51,11 @@ const dropStyle: StylesConfig = {
   control: (styles, state) => ({
     ...styles,
     backgroundColor: `transparent`,
-    // padding: `0px 4px`,
     width: `100%`,
     border: state.isFocused ? `1.5px solid #819E3B` : `1px solid #32312F`,
     borderRadius: `4px`,
     color: `#68708A`,
-    // fontSize: `14px`,
-    // lineHeight: `22.4px`,
-    fontWeight: 500,
+    boxSizing: `border-box`,
   }),
   menu: (styles) => ({
     ...styles,
@@ -62,7 +64,6 @@ const dropStyle: StylesConfig = {
     borderRadius: `4px`,
     overflowX: `hidden`,
     position: `absolute`,
-    // top: `-10px`,
     zIndex: 30,
   }),
   singleValue: (styles) => ({
@@ -72,6 +73,10 @@ const dropStyle: StylesConfig = {
   valueContainer: (styles) => ({
     ...styles,
     padding: `0px`,
+  }),
+  container: (styles) => ({
+    ...styles,
+    boxSizing: `border-box`,
   }),
 };
 
@@ -89,9 +94,19 @@ const Wrapper = styled.div`
   }
 
   .select__control {
-    ${tw`text-sm px-2.5 py-0`};
-    ${tw`md:(text-base px-3 py-[2.5px])`};
-    ${tw`xl:(text-lg px-4 py-1.5)`};
+    ${tw`text-sm pl-2.5 py-0`};
+    ${tw`sm:(pl-3 py-0.5) md:(text-base) lg:(py-[3px])`};
+    ${tw`xl:(text-lg pl-4)`};
+  }
+
+  .select__placeholder {
+    ${tw`text-sm py-0`};
+    ${tw`sm:(py-0.5) md:(text-base) lg:(py-[3px])`};
+    ${tw`xl:(text-lg)`};
+  }
+
+  .select__input-container {
+    ${tw`my-0 py-0`};
   }
 `;
 

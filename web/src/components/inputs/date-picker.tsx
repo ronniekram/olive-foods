@@ -1,5 +1,4 @@
 import tw, { css } from "twin.macro";
-import { FiCalendar } from "react-icons/fi";
 import isValid from "date-fns/isValid";
 import ReactDatePicker, { ReactDatePickerProps } from "react-datepicker";
 import addDays from "date-fns/addDays";
@@ -27,7 +26,7 @@ const styles = css`
   input {
     ${tw`border border-grey rounded`};
     ${tw`bg-green-100 font-sans xl:(text-lg)`};
-    ${tw`px-2.5 py-1.5 md:(pl-3 pr-2.5 py-2) xl:(pl-4 py-2.5)`};
+    ${tw`px-2.5 py-2 md:(pl-3 pr-2.5 py-1.5) xl:(pl-4)`};
     ${tw`w-full`};
   }
 
@@ -86,7 +85,7 @@ const Calendar = ({ label, startDate, onChange, error, placeholder, ...rest }: P
         {...rest}
         selected={date}
         onChange={onChange}
-        minDate={addDays(new Date(), 3)}
+        minDate={addDays(new Date(), 8)}
         dateFormat="MMM dd, yyyy"
       />
       <p tw="text-2xs font-bold text-orange-300 pl-2.5 md:(text-xs pl-3) xl:(pl-4)">{error}</p>
