@@ -40,8 +40,8 @@ const HomePage: NextPage<InferGetStaticPropsType<keyof typeof getStaticProps>> =
       <section tw="w-full h-44 flex bg-orange-200 md:(h-[18.15625rem]) xl:(h-[36.3125rem])">
         <Image
           src="/images/home/HOME-001.webp"
-          width={2048}
-          height={1366}
+          width={1800}
+          height={581}
           placeholder="blur"
           blurDataURL="LTOMmVIo.TZgyYn*r?b^McM_WUxu"
           style={{ objectFit: `cover`, objectPosition: `bottom` }}
