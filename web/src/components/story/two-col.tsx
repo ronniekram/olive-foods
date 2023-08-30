@@ -69,12 +69,12 @@ export const ContactCols = () => {
       <Wrapper>
         <div tw="flex w-fit px-4 mb-10 md:(px-0 mb-0)">
           <Image
-            src="/images/story/VEG.png"
+            src="/images/story/VEG.webp"
             alt="Minimalist flat line illustration of bouquet garniet with a green circle in the background"
             loading="lazy"
             quality={100}
-            width={1132}
-            height={837}
+            width={304.02}
+            height={343.45}
           />
         </div>
         <Content tw="md:(pl-6) lg:(pl-16) 2xl:(pl-20)">
@@ -105,13 +105,13 @@ const TwoCol = ({ heading, text, color, img, alt, imgLeft }: Props) => {
             quality={100}
             width={470.71}
             height={393.34}
-            tw="px-4 flex md:(hidden)"
+            tw="px-4 w-fit flex md:(hidden)"
           />
           {text.map((x, i) => (
             <p key={`text-${i}`}>{x}</p>
           ))}
         </Content>
-        <div tw="hidden md:(flex w-full)">
+        <div tw="hidden md:(flex w-fit)">
           <Image src={img} alt={alt} loading="lazy" quality={100} width={1002} height={837} />
         </div>
       </Wrapper>
