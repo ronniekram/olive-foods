@@ -73,8 +73,8 @@ export const ContactCols = () => {
             alt="Minimalist flat line illustration of bouquet garniet with a green circle in the background"
             loading="lazy"
             quality={100}
-            width={304.02}
-            height={343.45}
+            width={470.41}
+            height={531.43}
           />
         </div>
         <Content tw="md:(pl-6) lg:(pl-16) 2xl:(pl-20)">
@@ -98,15 +98,17 @@ const TwoCol = ({ heading, text, color, img, alt, imgLeft }: Props) => {
           css={[imgLeft && tw`md:(pl-6) lg:(pl-16) 2xl:(pl-20)`, !imgLeft && tw`2xl:(pr-8)`]}
         >
           <h3>{heading}</h3>
-          <Image
-            src={img}
-            alt={alt}
-            loading="lazy"
-            quality={100}
-            width={470.71}
-            height={393.34}
-            tw="mx-4 w-fit flex md:(hidden)"
-          />
+          <div tw="flex px-4">
+            <Image
+              src={img}
+              alt={alt}
+              loading="lazy"
+              quality={100}
+              width={470.71}
+              height={393.34}
+              tw="w-full md:(hidden)"
+            />
+          </div>
           {text.map((x, i) => (
             <p key={`text-${i}`}>{x}</p>
           ))}
