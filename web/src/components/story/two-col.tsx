@@ -105,7 +105,7 @@ const TwoCol = ({ heading, text, color, img, alt, imgLeft }: Props) => {
             quality={100}
             width={470.71}
             height={393.34}
-            tw="px-4 md:(hidden)"
+            tw="px-4 flex md:(hidden)"
           />
           {text.map((x, i) => (
             <p key={`text-${i}`}>{x}</p>
