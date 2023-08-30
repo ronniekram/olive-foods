@@ -23,7 +23,7 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse
     await page.emulateMediaType(`screen`);
 
     const pdf = await page.pdf({
-      path: `/tmp/menu.pdf`,
+      path: `/public/menus/${filename}.pdf`,
       printBackground: true,
       format: `letter`
     });
