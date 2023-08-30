@@ -1,16 +1,17 @@
-import Select, { StylesConfig } from "react-select";
+import Select, { type StylesConfig, type Props as SelectProps } from "react-select";
 import tw, { styled } from "twin.macro";
 
 //! ----------> TYPES <----------
 type OptionValue = string | number | unknown;
 
-export type Props<Option = unknown> = {
+export type Props<Option = unknown> = SelectProps & {
   label: string;
   options: Option[];
   placeholder: string;
   value?: Option;
   defaultValue?: OptionValue;
   onChange?: (e?: any) => void;
+  onBlur?: (e?: any) => void;
   error?: string;
 };
 
@@ -110,6 +111,10 @@ const Wrapper = styled.div`
   .select__input-container {
     ${tw`my-0 py-0`};
   }
+
+  .has-error {
+    ${tw`border-2! border-orange-300! rounded`}
+  }
 `;
 
 //! ----------> COMPONENTS <----------
@@ -120,7 +125,9 @@ const SelectMenu = ({
   value,
   defaultValue,
   onChange,
+  onBlur,
   error,
+  ...rest
 }: Props) => {
   return (
     <label>
@@ -135,7 +142,9 @@ const SelectMenu = ({
           value={value}
           defaultValue={defaultValue}
           onChange={onChange}
+          onBlur={onBlur}
           classNamePrefix="select"
+          className={error ? `has-error` : ``}
           isSearchable
         />
       </Wrapper>

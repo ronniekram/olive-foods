@@ -173,13 +173,14 @@ const ContactForm = () => {
                 rules={{
                   required: `Select an event type`,
                 }}
-                render={({ field: { onChange, value }, fieldState: { error } }) => (
+                render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
                   <SelectMenu
                     label="Event type*"
                     placeholder="Select an event type"
                     value={value}
                     options={eventOptions}
                     onChange={onChange}
+                    onBlur={onBlur}
                     error={error?.message}
                   />
                 )}
@@ -188,12 +189,13 @@ const ContactForm = () => {
               <Controller
                 control={control}
                 name="eventDate"
-                render={({ field: { onChange, value } }) => (
+                render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
                   <Calendar
                     label="Event date*"
-                    error={errors?.eventDate?.message}
+                    error={error?.message}
                     startDate={new Date(value)}
                     onChange={onChange}
+                    onBlur={onBlur}
                     value={value}
                   />
                 )}
