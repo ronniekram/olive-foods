@@ -74,7 +74,7 @@ export const MenuButton = ({ menu, label }: { menu: Menu; label: string }) => {
 
   return (
     <Download
-      href={`${menu}.pdf`}
+      href={`/menus/${menu}.pdf`}
       download={`${menus[menu].filename}-${format(new Date(), `MMddyyy`)}.pdf`}
     >
       <FiDownload tw="mr-1" size={16} />
