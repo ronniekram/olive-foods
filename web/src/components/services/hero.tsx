@@ -40,7 +40,7 @@ const P = tw.p`text-grey text-sm font-sans font-medium md:(text-lg) xl:(text-xl)
 const HowItWorks = ({ howItWorks, hero }: HowItWorks) => {
   const { list, subtext } = howItWorks;
   return (
-    <Wrapper tw="pt-6">
+    <Wrapper tw="py-6">
       <Breaker />
       <HowContainer>
         <div tw="font-sans font-medium text-grey flex flex-col justify-center items-end space-y-4 md:(space-y-2.5) lg:(text-xl space-y-6) xl:(text-2xl) 2xl:(text-3xl)">

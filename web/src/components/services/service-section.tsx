@@ -38,7 +38,9 @@ export type SectionProps = {
 };
 
 //! ----------> STYLES <----------
-const Title = styled(Wrapper)(({ open }: { open: boolean }) => [
+const Title = styled(a.button)(({ open }: { open: boolean }) => [
+  tw`w-full px-[5.2%] xl:(px-[5.3%])`,
+  tw`2xl:(px-0 max-w-[86rem] mx-auto)`,
   open
     ? tw`bg-orange-200 text-orange-100 md:(bg-green-100 text-orange-200)`
     : tw`bg-green-100 text-orange-200`,
@@ -48,11 +50,11 @@ const Title = styled(Wrapper)(({ open }: { open: boolean }) => [
   !open && tw`border-b border-orange-200`,
 ]);
 
-const H2 = tw.h2`text-3xl font-display md:(text-[56px] leading-[50px]) xl:(text-[64px] leading-[60px])`;
+const H2 = tw.h2`text-3xl font-display text-left md:(text-[56px] leading-[50px]) xl:(text-[64px] leading-[60px])`;
 
 const Sub = tw.p`text-2xs text-grey font-sans mb-5 md:(text-base mb-7) lg:(mb-8) xl:(mb-11)`;
 
-const Toggle = styled(a.button)`
+const Toggle = styled(a.p)`
   ${tw`w-11 h-11 flex items-center justify-center md:(hidden)`}
 `;
 
@@ -245,9 +247,9 @@ const ServiceSection = ({ title, sub, col1, col2, imgRight, color, cards }: Sect
 
   return (
     <>
-      <Title open={open}>
+      <Title open={open} onClick={toggle} aria-label={open ? `Close details` : `Open details`}>
         <H2> {title} </H2>
-        <Toggle style={rotateSpring} onClick={toggle}>
+        <Toggle style={rotateSpring}>
           <FiChevronDown size={36} strokeWidth={2} />
         </Toggle>
       </Title>
@@ -304,9 +306,9 @@ export const Service = ({ section, detailColumn }: Props) => {
 
   return (
     <>
-      <Title open={open}>
+      <Title open={open} onClick={toggle} aria-label={open ? `Close details` : `Open details`}>
         <H2> {title} </H2>
-        <Toggle style={rotateSpring} onClick={toggle}>
+        <Toggle style={rotateSpring}>
           <FiChevronDown size={36} strokeWidth={2} />
         </Toggle>
       </Title>
