@@ -33,7 +33,7 @@ const dropStyle: StylesConfig = {
     ...styles,
     color: state.isSelected ? `#FDF0ED` : `#132A19`,
     background: state.isSelected ? `#E95C32` : `#FBF5EB`,
-    fontFamily: `Micro Grotesk`,
+    fontFamily: `var(--sans)`,
     fontWeight: 400,
     fontSize: `14px`,
     lineHeight: `22.4px`,
@@ -42,7 +42,7 @@ const dropStyle: StylesConfig = {
   placeholder: (styles) => ({
     ...styles,
     color: `#32312F`,
-    fontFamily: `Micro Grotesk`,
+    fontFamily: `var(--sans)`,
     fontSize: `14px`,
     lineHeight: `22.4px`,
     fontWeight: 400,
@@ -59,7 +59,7 @@ const dropStyle: StylesConfig = {
   }),
   menu: (styles) => ({
     ...styles,
-    fontFamily: `Micro Grotesk`,
+    fontFamily: `var(--sans)`,
     backgroundColor: `#FBF5EB`,
     border: `1px solid #32312F`,
     borderRadius: `4px`,
@@ -70,7 +70,7 @@ const dropStyle: StylesConfig = {
   singleValue: (styles) => ({
     ...styles,
     color: `#1F4328`,
-    fontFamily: `Micro Grotesk`,
+    fontFamily: `var(--sans)`,
   }),
   valueContainer: (styles) => ({
     ...styles,
