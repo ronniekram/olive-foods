@@ -19,6 +19,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.d.ts", "**/*.ts", "**/*.tsx", "**.*.js", "**/*.js", "with-twin.js"],
+  "include": ["next-env.d.ts", "**/*.d.ts", "**/*.ts", "**/*.tsx", "**.*.js", "**/*.js", "with-twin.js", "next-sitemap.config.js"],
   "exclude": ["node_modules"]
 }

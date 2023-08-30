@@ -7,19 +7,19 @@ import { MenuButton } from "../general/button";
 //! ----------> TYPES <----------
 export const menus = {
   "lunch": {
-    href: `menus/lunch`,
+    href: `/menus/lunch`,
     filename: `lunch-menu`,
   },
   "family": {
-    href: `menus/family`,
+    href: `/menus/family`,
     filename: `family-style`,
   },
   "boards": {
-    href: `menus/boards`,
+    href: `/menus/boards`,
     filename: `boards-platters`,
   },
   "hor-doeuvres": {
-    href: `menus/hor-doeuvres`,
+    href: `/menus/hor-doeuvres`,
     filename: `hor-doeuvres`,
   },
 };
