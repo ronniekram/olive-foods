@@ -33,7 +33,7 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse
     await browser.close();
   } catch (error: any) {
     console.log(error);
-    return res.status(error.statusCode || 500).json({ error: error.message })
+    return res.status(error.statusCode || 500).json({ error: error.message });
   }
 };
 
