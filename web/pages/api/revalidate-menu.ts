@@ -50,8 +50,9 @@ export default async function handler(req: CustomRequest, res: NextApiResponse) 
         format: `letter`
       });
 
-      return res.send(pdf);
+      res.send(pdf);
     });
+
     await browser.close();
 
   } catch (error: any) {
