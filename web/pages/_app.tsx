@@ -35,7 +35,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <GlobalStyles />
       <div
         className={`${gentle.variable} ${micro.variable}`}
-        tw="antialiased flex flex-col min-h-screen bg-green-100"
+        tw="antialiased! flex flex-col min-h-screen bg-green-100"
       >
         {isMenu ? (
           <Component {...pageProps} />

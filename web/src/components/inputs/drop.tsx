@@ -59,6 +59,7 @@ const dropStyle: StylesConfig = {
   }),
   menu: (styles) => ({
     ...styles,
+    fontFamily: `Micro Grotesk`,
     backgroundColor: `#FBF5EB`,
     border: `1px solid #32312F`,
     borderRadius: `4px`,
@@ -69,6 +70,7 @@ const dropStyle: StylesConfig = {
   singleValue: (styles) => ({
     ...styles,
     color: `#1F4328`,
+    fontFamily: `Micro Grotesk`,
   }),
   valueContainer: (styles) => ({
     ...styles,
@@ -82,7 +84,7 @@ const dropStyle: StylesConfig = {
 
 const Wrapper = styled.div`
   .select {
-    ${tw`w-full drop-shadow-sm`};
+    ${tw`w-full drop-shadow-sm font-sans!`};
     ${tw`focus:(outline-2 outline-green-400)`};
   }
 

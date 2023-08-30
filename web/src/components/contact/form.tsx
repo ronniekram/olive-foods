@@ -150,7 +150,7 @@ const ContactForm = () => {
                 label="Last name*"
                 register={{
                   ...register(`lastName`, {
-                    required: `Last name is equired`,
+                    required: `Last name is required`,
                   }),
                 }}
                 error={errors?.lastName?.message}
