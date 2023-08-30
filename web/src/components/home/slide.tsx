@@ -27,8 +27,8 @@ const slides: SlideData[] = [
   {
     img: {
       url: `/images/slides/SLIDE-001.webp`,
-      width: 1560,
-      height: 1040,
+      width: 698,
+      height: 446,
       alt: `Person wearing a blue apron preparing carrots and tomatoes in a bright kitchen`,
       blurHash: `LSL4Nbtm.8R5pK~WaeEOroM|Rjoz`,
     },
@@ -39,8 +39,8 @@ const slides: SlideData[] = [
   {
     img: {
       url: `/images/slides/SLIDE-002.webp`,
-      width: 1040,
-      height: 1560,
+      width: 698,
+      height: 446,
       alt: `A charcuterie board with meats, cheeses, olives, pickles and bread on a white background`,
       blurHash: `LhOpY_of.9tQ%0ogf,oy?wf5MxWB`,
     },
@@ -51,8 +51,8 @@ const slides: SlideData[] = [
   {
     img: {
       url: `/images/slides/SLIDE-003.webp`,
-      width: 1040,
-      height: 1456,
+      width: 698,
+      height: 446,
       alt: `Chef wearing a blue apron holding a black sheet tray filled with cut tomatoes and a white towel`,
       blurHash: `LJHd{h9v~qEM%Lb^=^NHYQ-p-;IA`,
     },
@@ -63,8 +63,8 @@ const slides: SlideData[] = [
   {
     img: {
       url: `/images/slides/SLIDE-004.webp`,
-      width: 1040,
-      height: 1560,
+      width: 698,
+      height: 446,
       alt: `Many kinds of meals pre-prepared in individual servings`,
       blurHash: `LOJaipM|tk%2S5M}oNM_~oNFadX9`,
     },
@@ -106,7 +106,7 @@ const Label = ({ text, stroke, font }: { text: string; stroke: number; font: num
   return (
     <div
       className={gentle.className}
-      tw="-mt-5 -ml-1.5 md:(-mt-[2.5rem] -ml-10) lg:(-mt-14 -ml-12) xl:(-mt-[5rem] -ml-24)"
+      tw="-mt-7 -ml-1.5 md:(-mt-[2.5rem] -ml-10) lg:(-mt-14 -ml-12) xl:(-mt-[5rem] -ml-24)"
     >
       {words.map((word) => (
         <TextWrap key={word}>
@@ -126,7 +126,7 @@ const Label = ({ text, stroke, font }: { text: string; stroke: number; font: num
 const Slides = () => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const { width } = useWindowSize();
-  const font = width < 376 ? 44 : width < 769 ? 70 : width < 1279 ? 96 : 128;
+  const font = width < 376 ? 40 : width < 769 ? 70 : width < 1279 ? 96 : 128;
   const stroke = width < 376 ? 1 : width < 769 ? 1.5 : width < 1279 ? 2 : 2.5;
   const btnStroke = width < 376 ? 1 : width < 769 ? 1.25 : width < 1279 ? 1.5 : 1.75;
 
