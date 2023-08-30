@@ -53,7 +53,7 @@ export const TextArea = ({ label, register, error, ...rest }: AreaProps) => {
         {label}
       </p>
       <Area {...rest} {...register} css={[error && tw`border-0 outline outline-orange-300`]} />
-      <p tw="text-2xs font-semi text-orange-300 pl-2.5 mt-0.5 md:(text-xs pl-3 mt-0) xl:(pl-4)">
+      <p tw="text-2xs h-3.5 font-semi text-orange-300 pl-2.5 mt-1 md:(text-xs pl-3 mt-0 h-6) xl:(pl-4)">
         {error}
       </p>
     </label>
@@ -67,7 +67,7 @@ const Input = ({ label, register, error, ...rest }: Props) => {
         {label}
       </p>
       <Field {...rest} {...register} css={[error && tw`border-0 outline outline-orange-300`]} />
-      <p tw="text-2xs font-semi text-orange-300 pl-2.5 mt-1 md:(text-xs pl-3 mt-0) xl:(pl-4)">
+      <p tw="text-2xs h-3.5 font-semi text-orange-300 pl-2.5 mt-1 md:(text-xs pl-3 mt-0 h-6) xl:(pl-4)">
         {error}
       </p>
     </label>

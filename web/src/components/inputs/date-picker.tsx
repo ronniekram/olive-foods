@@ -32,7 +32,7 @@ const styles = css`
   }
 
   .has-error {
-    ${tw`border-2! border-orange-300!`}
+    ${tw`border-[1.5px]! border-orange-300! rounded`};
   }
 
   .react-datepicker__triangle {
@@ -95,7 +95,7 @@ const Calendar = ({ label, startDate, onChange, onBlur, error, placeholder, ...r
         dateFormat="MMM dd, yyyy"
         className={error ? `has-error` : ``}
       />
-      <p tw="text-2xs font-semi md:(font-bold) text-orange-300 pl-2.5 md:(text-xs pl-3) xl:(pl-4)">
+      <p tw="text-2xs font-semi h-3.5 mt-1 md:(font-bold) text-orange-300 pl-2.5 md:(text-xs pl-3 h-6) xl:(pl-4)">
         {error}
       </p>
     </label>

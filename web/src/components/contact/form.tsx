@@ -131,10 +131,10 @@ const ContactForm = () => {
           )}
 
           <form
-            tw="flex flex-col space-y-5 sm:(space-y-4) md:(space-y-6) xl:(space-y-6) 2xl:(space-y-9)"
+            tw="flex flex-col space-y-3 md:(space-y-6) lg:(space-y-4) xl:(space-y-3) 2xl:(space-y-4)"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <div tw="grid grid-cols-1 gap-y-5 sm:(gap-y-4) md:(grid-cols-2 gap-6) lg:(gap-5) xl:(gap-y-6) 2xl:(gap-y-9)">
+            <div tw="grid grid-cols-1 gap-y-3 md:(grid-cols-2 gap-x-6 gap-y-2) lg:(gap-4) xl:(gap-x-6 gap-y-3) 2xl:(gap-y-4)">
               <Input
                 type="text"
                 label="First name*"
@@ -173,7 +173,10 @@ const ContactForm = () => {
                 rules={{
                   required: `Select an event type`,
                 }}
-                render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
+                render={({
+                  field: { onChange, onBlur, value },
+                  fieldState: { invalid, error },
+                }) => (
                   <SelectMenu
                     label="Event type*"
                     placeholder="Select an event type"
@@ -182,6 +185,7 @@ const ContactForm = () => {
                     onChange={onChange}
                     onBlur={onBlur}
                     error={error?.message}
+                    invalid={invalid}
                   />
                 )}
               />

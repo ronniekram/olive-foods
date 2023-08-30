@@ -12,6 +12,7 @@ export type Props<Option = unknown> = SelectProps & {
   defaultValue?: OptionValue;
   onChange?: (e?: any) => void;
   onBlur?: (e?: any) => void;
+  invalid?: boolean;
   error?: string;
 };
 
@@ -80,6 +81,8 @@ const dropStyle: StylesConfig = {
   container: (styles) => ({
     ...styles,
     boxSizing: `border-box`,
+    border: `1px solid #32312F`,
+    borderRadius: `4px`,
   }),
 };
 
@@ -102,6 +105,10 @@ const Wrapper = styled.div`
     ${tw`xl:(text-lg pl-4)`};
   }
 
+  .select_container {
+    box-sizing: border-box;
+  }
+
   .select__placeholder {
     ${tw`text-sm py-0`};
     ${tw`sm:(py-0.5) md:(text-base) lg:(py-[3px])`};
@@ -113,7 +120,7 @@ const Wrapper = styled.div`
   }
 
   .has-error {
-    ${tw`border-2! border-orange-300! rounded`}
+    ${tw`border! border-orange-300! rounded`};
   }
 `;
 
@@ -127,6 +134,7 @@ const SelectMenu = ({
   onChange,
   onBlur,
   error,
+  invalid,
   ...rest
 }: Props) => {
   return (
@@ -136,7 +144,19 @@ const SelectMenu = ({
       </p>
       <Wrapper>
         <Select
-          styles={dropStyle}
+          styles={{
+            ...dropStyle,
+            control: (styles, state) => ({
+              ...styles,
+              outline: error ? `2px solid #A63411` : `0px solid transparent`,
+              backgroundColor: `transparent`,
+              width: `100%`,
+              border: state.isFocused ? `1.5px solid #819E3B` : `1px solid transparent`,
+              borderRadius: `4px`,
+              color: `#68708A`,
+              boxSizing: `border-box`,
+            }),
+          }}
           options={options}
           placeholder={placeholder}
           value={value}
@@ -148,7 +168,7 @@ const SelectMenu = ({
           isSearchable
         />
       </Wrapper>
-      <p tw="text-2xs font-semi md:(font-bold) text-orange-300 pl-2.5 md:(text-xs pl-3) xl:(pl-4)">
+      <p tw="text-2xs font-semi h-3.5 mt-1 md:(font-bold) text-orange-300 pl-2.5 md:(text-xs pl-3 h-6) xl:(pl-4)">
         {error}
       </p>
     </label>
