@@ -1,11 +1,10 @@
-/* eslint-disable no-secrets/no-secrets */
 import { NextApiRequest, NextApiResponse, NextApiHandler } from "next";
 import chromium from "@sparticuz/chromium-min";
 import puppeteer from "puppeteer-core";
 
 const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const query = req?.query;
-  const { href, filename, _type, menu } = query;
+  const { href, filename } = query;
 
   try {
     const browser = await puppeteer.launch({
@@ -15,7 +14,7 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse
 
     const page = await browser.newPage();
 
-    const pdfUrl = `.next/server/pages/menu/${_type}`;
+    const pdfUrl = process.env.NEXT_PUBLIC_SITE_URL + href;
 
     await page.goto(pdfUrl, {
       waitUntil: `networkidle0`,
@@ -24,7 +23,7 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse
     await page.emulateMediaType(`screen`);
 
     const pdf = await page.pdf({
-      path: `/public/menus/menu.pdf`,
+      path: `/tmp/menu.pdf`,
       printBackground: true,
       format: `letter`
     });
@@ -34,7 +33,7 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse
     await browser.close();
   } catch (error: any) {
     console.log(error);
-    return res.status(error.statusCode || 500).json({ error: error.message });
+    return res.status(error.statusCode || 500).json({ error: error.message })
   }
 };
 
