@@ -84,7 +84,7 @@ const Container = styled.div`
 const TextWrap = styled.div`
   svg {
     ${tw`w-[15.625rem] md:(w-[25rem]) lg:(w-[32rem]) xl:(w-[43.75rem])`};
-    ${tw`h-8 sm:(h-[2.5rem]) md:(h-[3.25rem]) lg:(h-[4.75rem]) xl:(h-[4.85rem])`};
+    ${tw`h-10 sm:(h-[3rem]) md:(h-[4rem]) lg:(h-[4.75rem]) xl:(h-[4.85rem])`};
     ${tw`fill-green-100`};
     drop-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
     @media (min-width: 1440px) {
