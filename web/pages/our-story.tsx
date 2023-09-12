@@ -22,6 +22,12 @@ const Story = () => {
         title="Our Story"
         description="A meal is about more than just eating. We're committed to crafting an experience your guests will always remember."
         canonical="https://olivefoodscompany.com/our-story"
+        additionalMetaTags={[
+          {
+            property: `keywords`,
+            content: `team behind olive foods, evolution of olive foods, about us, our journey, our commitment`,
+          },
+        ]}
       />
       <OurStory />
       <TwoCol

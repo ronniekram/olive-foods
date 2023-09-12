@@ -132,10 +132,18 @@ const Footer = () => {
               rel="noreferrer"
               tw="underline transition duration-300 ease-in-out hover:(text-orange-200)"
             >
-              ronnie bee
+              totally human
             </a>
             .
           </p>
+        </div>
+        <div tw="flex space-x-2 mt-3 text-xs font-medium font-sans flex-wrap md:(text-sm) lg:(text-base space-x-3) xl:(text-lg space-x-6 mt-4)">
+          <Link href="/privacy" tw="transition duration-300 ease-in-out hover:(text-orange-200)">
+            Privacy Policy
+          </Link>
+          <Link href="/terms" tw="transition duration-300 ease-in-out hover:(text-orange-200)">
+            Terms of Use
+          </Link>
         </div>
       </Wrapper>
     </footer>

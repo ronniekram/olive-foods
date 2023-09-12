@@ -130,7 +130,7 @@ const NavBar = () => {
               color="#E95C32"
             />
 
-            <ul tw="hidden md:(flex items-center space-x-6 space-y-0) xl:(space-x-16)">
+            <ul tw="hidden list-none! md:(flex items-center space-x-6 space-y-0) xl:(space-x-16)">
               {items.map((item) => (
                 <li key={item.href}>
                   <NavItem href={item.href} prefetch={false}>

@@ -38,6 +38,12 @@ const ContactPage = () => {
         title="Contact Us"
         description="We're thrilled that you're interested in working with us! Please share a few details about what you're looking for, and we'll work together to create an experience that perfectly meets your needs."
         canonical="https://olivefoodscompany.com/contact"
+        additionalMetaTags={[
+          {
+            property: `keywords`,
+            content: `Contact Olive Foods, Contact Olive Foods Company`,
+          },
+        ]}
       />
       <Container>
         <Wrapper>
