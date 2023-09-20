@@ -52,9 +52,9 @@ const HowItWorks = ({ howItWorks, hero }: HowItWorks) => {
         </div>
 
         <div tw="flex flex-col font-sans text-grey space-y-4 xl:(space-y-5) 2xl:(space-y-6)">
-          <h3 tw="font-display text-orange-200 text-2xl md:(text-3xl) lg:(text-4xl) xl:(text-5xl)">
+          <h2 tw="font-display text-orange-200 text-2xl md:(text-3xl) lg:(text-4xl) xl:(text-5xl)">
             How It Works
-          </h3>
+          </h2>
           <ul tw="flex flex-col space-y-2 list-disc list-outside text-sm ml-5 md:(ml-4 pr-4) lg:(space-y-2 text-lg) xl:(text-xl) 2xl:(text-2xl pr-20 space-y-2.5)">
             {list.map((item) => (
               <li key={item}>{item}</li>

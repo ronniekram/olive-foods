@@ -62,10 +62,13 @@ const SignUp = () => {
       <Input
         type="text"
         name="email"
+        id="email"
         value={email}
         onChange={(e) => setEmail(e.currentTarget.value)}
       />
-      <Submit type="submit">Subscribe</Submit>
+      <Submit type="submit" value="Subscribe">
+        Subscribe
+      </Submit>
     </Newsletter>
   );
 };

@@ -61,7 +61,7 @@ const H3 = styled.h3`
   ${tw`md:(text-[40px]) xl:(text-5xl)`};
 `;
 
-const H4 = styled.h4`
+const H4 = styled.h3`
   ${tw`text-orange-200 text-xl font-display`};
   ${tw`md:(text-[28px]) xl:(text-3xl)`};
 `;
@@ -111,23 +111,25 @@ const CateringSection = ({ title, detail, image, blurHash, items, menu, mediaLef
           <Image
             src={image}
             alt=""
-            width={1366}
-            height={2048}
+            width={624}
+            height={942}
             placeholder="blur"
             blurDataURL={blurHash}
             style={{ objectFit: `cover`, objectPosition: `center` }}
             loading="eager"
             quality={100}
+            tw="w-full"
           />
         ) : (
           <Image
             src={image}
             alt=""
-            width={1366}
-            height={2048}
+            width={624}
+            height={942}
             style={{ objectFit: `cover`, objectPosition: `center` }}
             loading="eager"
             quality={100}
+            tw="w-full"
           />
         )}
       </ImageWrap>

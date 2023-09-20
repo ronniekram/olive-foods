@@ -27,8 +27,8 @@ const slides: SlideData[] = [
   {
     img: {
       url: `/images/slides/SLIDE-001.webp`,
-      width: 740,
-      height: 480,
+      width: 729,
+      height: 473,
       alt: `Person wearing a blue apron preparing carrots and tomatoes in a bright kitchen`,
       blurHash: `LSL4Nbtm.8R5pK~WaeEOroM|Rjoz`,
     },
@@ -39,8 +39,8 @@ const slides: SlideData[] = [
   {
     img: {
       url: `/images/slides/SLIDE-002.webp`,
-      width: 740,
-      height: 480,
+      width: 729,
+      height: 473,
       alt: `A charcuterie board with meats, cheeses, olives, pickles and bread on a white background`,
       blurHash: `LhOpY_of.9tQ%0ogf,oy?wf5MxWB`,
     },
@@ -51,8 +51,8 @@ const slides: SlideData[] = [
   {
     img: {
       url: `/images/slides/SLIDE-003.webp`,
-      width: 740,
-      height: 480,
+      width: 729,
+      height: 473,
       alt: `Chef wearing a blue apron holding a black sheet tray filled with cut tomatoes and a white towel`,
       blurHash: `LJHd{h9v~qEM%Lb^=^NHYQ-p-;IA`,
     },
@@ -63,8 +63,8 @@ const slides: SlideData[] = [
   {
     img: {
       url: `/images/slides/SLIDE-004.webp`,
-      width: 740,
-      height: 480,
+      width: 729,
+      height: 473,
       alt: `Many kinds of meals pre-prepared in individual servings`,
       blurHash: `LOJaipM|tk%2S5M}oNM_~oNFadX9`,
     },
