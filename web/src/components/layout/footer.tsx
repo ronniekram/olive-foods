@@ -25,10 +25,12 @@ const Input = styled.input`
 
 const Submit = styled.button`
   ${tw`w-[fit-content]`};
-  ${tw`bg-orange-200 text-orange-100`};
+  ${tw`bg-orange-200! text-green-100!`};
   ${tw`font-display tracking-[1px] text-base leading-[auto]`};
   ${tw`h-full px-5 py-1.5 flex items-center justify-center`};
+  ${tw`transition duration-300 ease-in-out`};
   ${tw`xl:(text-xl px-6 py-1.5)`};
+  ${tw`hover:(bg-orange-300!)`};
 `;
 
 const Social = styled.a`
@@ -66,7 +68,7 @@ const SignUp = () => {
         value={email}
         onChange={(e) => setEmail(e.currentTarget.value)}
       />
-      <Submit type="submit" value="Subscribe">
+      <Submit type="submit">
         Subscribe
       </Submit>
     </Newsletter>

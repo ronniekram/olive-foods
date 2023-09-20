@@ -28,7 +28,7 @@ const text = tw`font-display leading-[1.25rem] tracking-[1px] md:(text-lg leadin
 
 const style = tw`transition duration-300 ease-in-out flex items-center rounded-[36px] w-[fit-content]`;
 
-const solid = tw`bg-orange-200 text-orange-100 hover:(bg-orange-300)`;
+const solid = tw`bg-orange-200! text-green-100! hover:(bg-orange-300!)`;
 const outlineStyle = tw`text-orange-200 border-orange-200 border-2 hover:(border-orange-300 text-orange-300)`;
 
 const Download = styled.a`
@@ -44,7 +44,7 @@ const Download = styled.a`
 
 //! ----------> COMPONENTS <----------
 export const Button = ({ label, type = `button`, outline, icon, onClick }: ButtonProps) => {
-  const styles = outline ? [size, text, style, outlineStyle] : [size, text, style, solid];
+  const styles = outline ? [size, text, style, outlineStyle] : [solid, size, text, style];
 
   return (
     <button type={type} css={styles} onClick={onClick}>
