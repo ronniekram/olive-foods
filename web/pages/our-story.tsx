@@ -22,6 +22,12 @@ const Story = () => {
         title="Our Story"
         description="A meal is about more than just eating. We're committed to crafting an experience your guests will always remember."
         canonical="https://olivefoodscompany.com/our-story"
+        additionalMetaTags={[
+          {
+            property: `keywords`,
+            content: `team behind olive foods, evolution of olive foods, about us, our journey, our commitment`,
+          },
+        ]}
       />
       <OurStory />
       <TwoCol
@@ -41,8 +47,8 @@ const Story = () => {
             <Image
               src="/images/story/STORY-004.webp"
               alt="A married couple wearing aprons and reading cookbooks while sitting on couch cushions"
-              width={1423}
-              height={966.5}
+              width={686}
+              height={422}
               placeholder="blur"
               blurDataURL="LZL4KS-:_3jE~qR.tmIV-TV@ogk9"
               loading="lazy"

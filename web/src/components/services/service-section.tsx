@@ -81,8 +81,8 @@ export const prepared: SectionProps = {
       <Image
         src="/images/services/SERVICES-002.webp"
         alt="Individually packaged and pre-prepared meals"
-        width={1366}
-        height={2049}
+        width={714}
+        height={1071}
         placeholder="blur"
         blurDataURL="LPJk4DRRtk%2S5NHoNM_~oRiadX8"
         style={{ objectFit: `cover`, objectPosition: `center` }}
@@ -125,8 +125,8 @@ export const feasts: SectionProps = {
       <Image
         src="/images/services/SERVICES-003.webp"
         alt="Individually packaged and pre-prepared meals"
-        width={1366}
-        height={2049}
+        width={714}
+        height={1071}
         placeholder="blur"
         blurDataURL="LdOWWu%L.9W?smogo#Ri_NNGIUsl"
         style={{ objectFit: `cover`, objectPosition: `center` }}
@@ -201,8 +201,8 @@ export const gift: SectionProps = {
       <Image
         src="/images/services/SERVICES-004.webp"
         alt="Individually packaged and pre-prepared meals"
-        width={1366}
-        height={2049}
+        width={714}
+        height={1071}
         placeholder="blur"
         blurDataURL="LoQJ1As.kYS6x]WBjYoe%%X8nhs+"
         style={{ objectFit: `cover`, objectPosition: `center` }}

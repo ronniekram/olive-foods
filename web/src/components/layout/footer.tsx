@@ -1,3 +1,4 @@
+/* eslint-disable no-secrets/no-secrets */
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -61,10 +62,13 @@ const SignUp = () => {
       <Input
         type="text"
         name="email"
+        id="email"
         value={email}
         onChange={(e) => setEmail(e.currentTarget.value)}
       />
-      <Submit type="submit">Subscribe</Submit>
+      <Submit type="submit" value="Subscribe">
+        Subscribe
+      </Submit>
     </Newsletter>
   );
 };
@@ -136,6 +140,26 @@ const Footer = () => {
             </a>
             .
           </p>
+        </div>
+        <div tw="flex space-x-2 mt-3 text-xs font-medium font-sans flex-wrap md:(text-sm) lg:(text-base space-x-3) xl:(text-lg space-x-6 mt-4)">
+          <a
+            href="https://app.enzuzo.com/policies/privacy/ab2a1fa2-51a9-11ee-8546-1fc056a2b58d"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Privacy Policy - Opens in new tab"
+            tw="transition duration-300 ease-in-out hover:(text-orange-200)"
+          >
+            Privacy Policy <span tw="sr-only">(opens in new tab)</span>
+          </a>
+          <a
+            href="https://app.enzuzo.com/policies/tos/ab2a1fa2-51a9-11ee-8546-1fc056a2b58d"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Terms of Use - Opens in new tab"
+            tw="transition duration-300 ease-in-out hover:(text-orange-200)"
+          >
+            Terms of Use <span tw="sr-only">(opens in new tab)</span>
+          </a>
         </div>
       </Wrapper>
     </footer>

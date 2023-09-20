@@ -43,6 +43,12 @@ const CateringPage: NextPage<PageProps> = ({
         title="Catering"
         description="We take a collaborative and customizable approach to your event, ensuring that every detail is tailored to your needs. Whether you have specific dietary restrictions or prefer a full creative menu, we've got you covered."
         canonical="https://olivefoodscompany.com/catering"
+        additionalMetaTags={[
+          {
+            property: `keywords`,
+            content: `Minneapolis catering, Minneapolis caterer, St. Paul catering, St. Paul caterer, Twin Cities catering, catered lunch, charcuterie boards, family style dinners, dietary restrictions, allergies, creative catering, collaborative catering, hors d'oeuvres, events, meal prep coaching, chef experiences`,
+          },
+        ]}
       />
       <CateringHero />
       <Wrapper tw="md:(py-8) lg:(py-10) xl:(py-12)" id="events">

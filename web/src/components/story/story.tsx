@@ -35,26 +35,27 @@ const Bio = ({
   detail: string;
   blurHash: string;
 }) => (
-  <div tw="md:(flex space-x-8)">
+  <div tw="sm:(flex space-x-5) md:(space-x-8)">
     <div>
-      <h3 tw="text-green-300 font-display text-2xl md:(text-3xl mb-2.5) lg:(text-5xl) xl:(text-3xl)">
+      <h3 tw="text-green-300 font-display text-2xl sm:(text-3xl mb-2.5) lg:(text-5xl) xl:(text-3xl)">
         {name}
       </h3>
-      <p tw="text-green-100 font-sans text-sm mt-1 mb-3 md:(text-lg) lg:(text-xl) xl:(text-lg)">
+      <p tw="text-green-100 font-sans text-sm mt-1 mb-3 sm:(text-lg) lg:(text-xl) xl:(text-lg)">
         {detail}
       </p>
     </div>
-    <div tw="flex rounded-2xl overflow-hidden h-[15.625rem] md:(h-[13.8125rem])">
+    <div tw="flex rounded-2xl overflow-hidden sm:(min-w-[13.8125rem]) md:(min-w-[15.625rem]) h-[15.625rem] md:(h-[13.8125rem])">
       <Image
         src={img}
-        width={910}
-        height={851}
+        width={336}
+        height={314}
         placeholder="blur"
         blurDataURL={blurHash}
         alt={name}
         quality={100}
         loading="lazy"
         style={{ objectFit: `cover`, objectPosition: `center` }}
+        tw="w-full"
       />
     </div>
   </div>
@@ -78,14 +79,15 @@ const OurStory = () => {
           <div tw="flex w-full rounded-2xl overflow-hidden h-[15.625rem] md:(h-[30.1875rem]) xl:(h-[38.3125rem])">
             <Image
               src="/images/story/STORY-001.webp"
-              width={1024}
-              height={927}
+              width={688}
+              height={696}
               placeholder="blur"
               blurDataURL="LgNS~VOE.S#l?^wcxaN_%MRkM|jY"
               alt="Husband and wife wearing aprons and smiling brightly"
               quality={100}
               loading="eager"
               style={{ objectFit: `cover`, objectPosition: `center` }}
+              tw="w-full"
             />
           </div>
 
@@ -97,7 +99,7 @@ const OurStory = () => {
               blurHash="LfN0J0MI~VoL}?oeIokWIUo#V?ad"
             />
 
-            <h3 tw="text-green-100 text-xl font-display md:(text-4xl)">
+            <h3 tw="text-green-100 text-xl font-display sm:(text-3xl) md:(text-4xl)">
               Bringing people together through food is at the heart of what we do.
             </h3>
 
