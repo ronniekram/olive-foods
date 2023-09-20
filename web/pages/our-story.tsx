@@ -47,8 +47,8 @@ const Story = () => {
             <Image
               src="/images/story/STORY-004.webp"
               alt="A married couple wearing aprons and reading cookbooks while sitting on couch cushions"
-              width={1423}
-              height={966.5}
+              width={686}
+              height={422}
               placeholder="blur"
               blurDataURL="LZL4KS-:_3jE~qR.tmIV-TV@ogk9"
               loading="lazy"
